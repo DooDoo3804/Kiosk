@@ -8,6 +8,8 @@
 ┃┃┣ feature
 ```
 
+feature/{기능 상세}
+
 ### 컨벤션
 
 | Tag Name | Description                                                  |
