@@ -1,12 +1,12 @@
 import React from "react";
 
-const style = {
+const styles = {
     wrapper:{
         margin: 8,
         padding: 8,
         display: "flex",
         flexDirection:"row",
-        border: "1px soild grey",
+        border: "1px solid grey",
         borderRadius: 16,
     },
     imageContainer:{},
@@ -34,15 +34,15 @@ const style = {
 
 function Comment(props){
     return(
-       <div style={style.wrapper}>
-        <div style={style.imageContainer}>
+       <div style={styles.wrapper}>
+         <div style={styles.imageContainer}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" 
-                style={style.image}/>
+                style={styles.image}/>
         </div>
         <div style={styles.contentContainer}>
             <span style={styles.nameText}>{props.name}</span>
-            <span style={styles.commentText}>{props.Comment}</span>
-        </div>
+            <span style={styles.commentText}>{props.comment}</span>
+        </div> 
        </div>
      
     );
