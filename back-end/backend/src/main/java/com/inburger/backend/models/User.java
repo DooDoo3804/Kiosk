@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "TABLE_USER")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +20,5 @@ public class User {
     private String name;
     private int age;
     private int height;
+
 }

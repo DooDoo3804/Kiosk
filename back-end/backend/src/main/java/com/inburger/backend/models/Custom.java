@@ -6,8 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name = "custom")
+@Table(name = "TABLE_CUSTOM")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,5 +20,10 @@ public class Custom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "ingredient_count")
+    private int count;
 
+    @OneToMany(mappedBy = "custom")
+    private List<Ingredient> ingredient = new ArrayList<>();
 }
+

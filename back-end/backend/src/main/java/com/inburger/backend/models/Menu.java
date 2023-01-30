@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "menu")
+@Table(name = "TABLE_MENU")
 public class Menu {
 
     @Id
@@ -27,5 +27,8 @@ public class Menu {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToOne
+    private Order order;
 
 }

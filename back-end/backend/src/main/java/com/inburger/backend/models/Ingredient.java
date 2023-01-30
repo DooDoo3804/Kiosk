@@ -11,16 +11,21 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ingrediendt")
+@Table(name = "TABLE_INGREDIENT")
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
+
     @Column(name = "ingredient_price")
     private int price;
     @Column(name = "ingredient_name")
     private String name;
     @Column(name = "ingredient_count")
     private int count ;
+
+    @ManyToOne
+    @JoinColumn(name = "custom_id")
+    private Custom custom;
+
 }

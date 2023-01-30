@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "recommend")
+@Table(name = "TABLE_RECOMMEND")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,4 +18,12 @@ public class Recommend {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+    @ManyToOne
+    @JoinColumn(name = "history_id")
+    private History history;
 }
