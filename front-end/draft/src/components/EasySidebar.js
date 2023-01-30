@@ -1,1 +1,0 @@
-// 이지모드 메뉴선택바(recommendation, burger, set, side, beverage)
