@@ -28,6 +28,8 @@ public class Order {
 
     private Date orderDate;
 
-    @OneToMany(mappedBy = "order")
-    private List<Menu> menu = new ArrayList<Menu>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }

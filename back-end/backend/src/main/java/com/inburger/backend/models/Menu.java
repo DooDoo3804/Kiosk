@@ -22,13 +22,10 @@ public class Menu {
     private String name;
     @Column(name = "menu_price")
     private int price;
-    private int count;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
-    private Order order;
 
 }

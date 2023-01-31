@@ -21,11 +21,7 @@ public class Ingredient {
     private int price;
     @Column(name = "ingredient_name")
     private String name;
-    @Column(name = "ingredient_count")
-    private int count ;
-
-    @ManyToOne
-    @JoinColumn(name = "custom_id")
-    private Custom custom;
+//    @Column(name = "ingredient_count")
+//    private int count ;
 
 }

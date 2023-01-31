@@ -23,7 +23,8 @@ public class Custom {
     @Column(name = "ingredient_count")
     private int count;
 
-    @OneToMany(mappedBy = "custom")
-    private List<Ingredient> ingredient = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "ingredient_id")
+    private Ingredient ingredient;
 }
 

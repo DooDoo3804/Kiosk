@@ -4,10 +4,7 @@ import com.inburger.backend.models.Menu;
 import com.inburger.backend.repositories.MenuRepository;
 import com.inburger.backend.services.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +20,11 @@ public class MenuController {
                           MenuRepository menuRepository) {
         this.menuRepository = menuRepository;
         this.menuService = menuService;
+    }
+
+    @PostMapping(value = "menu/")
+    public Menu createMenu(@RequestBody Menu menu) {
+        return menuRepository.save(menu);
     }
 
     @GetMapping(value = "menu/")
