@@ -1,0 +1,85 @@
+{
+    "햄버거": [
+      {
+        "id": 1,
+        "commonName" : "빅맥",
+        "easyName" : "대표 햄버거",
+        "price" : 4900,
+        "bread" : "기본",
+        "patty" : ["소고기", 1],
+        "vegetable" : ["상추", "오이"]
+      },
+      {
+        "id": 2,
+        "commonName" : "1955 버거",
+        "easyName" : "1955년 햄버거",
+        "price" : 6800,
+        "bread" : "기본",
+        "patty" : ["소고기", 1],
+        "vegetable" : ["버섯", "상추", "토마토"]
+      },
+      {
+        "id": 3,
+        "commonName" : "불고기버거",
+        "easyName" : "불고기버거",
+        "price" : 3300,
+        "bread" : "기본",
+        "patty" : ["돼지고기", 1],
+        "vegetable" : ["상추", "양파"]
+      },
+      {
+        "id": 4,
+        "commonName" : "치즈버거",
+        "easyName" : "치즈버거",
+        "price" : 3300,
+        "bread" : "기본",
+        "patty" : ["소고기", 1],
+        "vegetable" : ["오이"]
+      },
+      {
+        "id": 5,
+        "commonName" : "더블불고기버거",
+        "easyName" : "큰 불고기버거",
+        "price" : 5300,
+        "bread" : "기본",
+        "patty" : ["돼지고기", 2],
+        "vegetable" : ["상추", "양파"]
+      },
+      {
+        "id": 6,
+        "commonName" : "더블치즈버거",
+        "easyName" : "큰 치즈버거",
+        "price" : 5300,
+        "bread" : "기본",
+        "patty" : ["돼지고기", 2],
+        "vegetable" : ["오이"]
+      },
+      {
+        "id": 7,
+        "commonName" : "베이컨 토마토 디럭스",
+        "easyName" : "베이컨 토마토 햄버거",
+        "price" : 6600,
+        "bread" : "기본",
+        "patty" : ["소고기", 1],
+        "vegetable" : ["상추", "토마토", "햄"]
+      },
+      {
+        "id": 8,
+        "commonName" : "쿼터파운더 치즈버거",
+        "easyName" : "큰 치즈버거",
+        "price" : 6300,
+        "bread" : "기본",
+        "patty" : ["소고기", 1],
+        "vegetable" : ["양파", "오이"]
+      },
+      {
+        "id": 9,
+        "commonName" : "에그 불고기버거",
+        "easyName" : "계란 불고기버거",
+        "price" : 4300,
+        "bread" : "기본",
+        "patty" : ["계란", 1],
+        "vegetable" : ["상추"]
+      }
+    ]
+  }

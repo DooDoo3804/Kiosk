@@ -1,0 +1,58 @@
+{
+    "사이드" : [
+        {
+            "id": 1,
+            "commonName" : "프렌치 프라이",
+            "easyName" : "감자튀김",
+            "price" : 2600
+        },
+        {
+            "id": 2,
+            "commonName" : "치즈스틱",
+            "easyName" : "치즈튀김",
+            "price" : 3300
+        },
+        {
+            "id": 3,
+            "commonName" : "해쉬브라운",
+            "easyName" : "잘게 썬 감자튀김",
+            "price" : 2600
+        },
+        {
+            "id": 4,
+            "commonName" : "맥너겟",
+            "easyName" : "치킨너겟",
+            "price" : 5500
+        },
+        {
+            "id": 5,
+            "commonName" : "맥스파이시 치킨텐더",
+            "easyName" : "매운 치킨너겟",
+            "price" : 5500
+        },
+        {
+            "id": 6,
+            "commonName" : "상하이치킨스낵랩",
+            "easyName" : "치킨 또띠아",
+            "price" : 3200
+        },
+        {
+            "id": 7,
+            "commonName" : "딸기 선데이 아이스크림",
+            "easyName" : "딸기맛 아이스크림",
+            "price" : 2500
+        },
+        {
+            "id": 8,
+            "commonName" : "바닐라 선데이 아이스크림",
+            "easyName" : "바닐라맛 아이스크림",
+            "price" : 2500
+        },
+        {
+            "id": 9,
+            "commonName" : "초코 선데이 아이스크림",
+            "easyName" : "초코맛 아이스크림",
+            "price" : 2500
+        }
+    ]
+ }
