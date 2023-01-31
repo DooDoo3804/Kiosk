@@ -7,16 +7,21 @@ const styles = {
         padding: 40,
         border: "1px solid grey",
         borderRadius: 20,
-        width: "19%"
     },
-    nameText:{   
-        color: "black",
-        fontSize:16,
-        fontWeight: "bold",
+    imageBox:{   
+
+        border: "1px solid grey",
+        borderRadius: 20,
+    },
+    menuBox:{
+        border: "1px solid grey",
+        borderRadius: 20,
     },
 };
 
-function Menu(props){
+
+
+function Ingredient(props){
     return(
        <div style={styles.wrapper}>
          <span style={styles.nameText}>{props.name}</span>
@@ -24,4 +29,4 @@ function Menu(props){
     );
 }
 
-export default Menu;
+export default Ingredient;
