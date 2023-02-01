@@ -1,10 +1,12 @@
 package com.inburger.backend.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,11 +23,18 @@ public class OrderDetail {
     @Column(name = "order_count")
     private Integer count;
 
-    @ManyToOne
+    @Column(name = "each_menu_price")
+    private Integer price;
+
+    @Column(name = "is_set")
+    private Boolean is_set;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
 
     @ManyToOne
     @JoinColumn(name = "menu_id")
     private Menu menu;
+
 }

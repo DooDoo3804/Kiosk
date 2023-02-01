@@ -28,7 +28,7 @@ class MenuControllerTest {
     void setUp() {
         String name = "hamburger";
         Category category = new Category();
-        category.setCategoryName(name);
+        category.setName(name);
 
         //when
         categoryRepository.save(category);

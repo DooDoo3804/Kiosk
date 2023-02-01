@@ -22,12 +22,13 @@ public class CategoryRepositoryTest extends BackendApplicationTests {
     void insert(){
         String name = "hamburger";
         Category category = new Category();
-        category.setCategoryName(name);
+        category.setName(name);
+
 
         //when
         categoryRepository.save(category);
 
         //then
-        assertEquals(name, category.getCategoryName());
+        assertEquals(name, category.getName());
     }
 }
