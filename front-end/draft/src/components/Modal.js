@@ -1,5 +1,6 @@
 import React from "react";
 import '../App.css'; 
+// import ModalItem from "./ModalItem"
 
 function Modal(props) {
  
@@ -13,6 +14,7 @@ function closeModal() {
           <button id="modalCloseBtn" onClick={closeModal}>
             ❌
           </button>
+          {/* <ModalItem/>   */}
           {props.children}
         </div>
       </div>
