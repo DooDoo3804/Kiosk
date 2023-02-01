@@ -1,6 +1,7 @@
 import React from "react";
 import CustmerBar from "./CustmerBar";
-import Custmer from "./Custmer";
+import CustmerSide from "./CustmerSide";
+import CustmerImage from "./CustmerImage";
 
 const styles = {
     wrapper:{
@@ -27,13 +28,6 @@ const styles = {
         flexWrap: "wrap",
         justifyContent:"space-between",
     },
-    imageBox:{   
-        margin: 10,
-        padding: 40,
-        border: "1px solid grey",
-        borderRadius: 20,
-        width: "69%",
-    },
     menuBox:{
         margin: 10,
         padding: 40,
@@ -58,22 +52,16 @@ function CustmerList(props){
         <div style={styles.wrapper}>
 
         <div style={styles.wrapper3}>
-        <div style={styles.Button}>토글</div>
         <div style={styles.Button}>담기</div>
+        <div style={styles.Button}>토글</div>
         </div>
 
-      
         <CustmerBar/>
     
          <div style={styles. wrapper2}>
             
-        <Custmer/>
-
-         <div style={styles.imageBox}> 
-         {/* {Jsonfle.map((comment) => {
-             return (<Comment key={comment.id} name={comment.name}/>);
-           })} */}
-           </div>
+        <CustmerSide/>
+        <CustmerImage/>
          
          </div>
  

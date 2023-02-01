@@ -2,6 +2,7 @@ import React from "react";
 import Comment from "./Menu";
 import Jsonfle from "../db/date.json"
 
+
   const styles = {
     wrapper:{
         margin: 0,
@@ -20,7 +21,7 @@ function  MenuList(props)
     return (
       <div style={styles.wrapper}>
         {Jsonfle.map((comment) => {
-            return (<Comment key={comment.id} name={comment.name}/>);
+            return (<Comment key={comment.id} name={comment.name} price={comment.price}/>);
           })}
         
       </div>  

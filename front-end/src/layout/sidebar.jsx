@@ -3,18 +3,20 @@ import React from "react";
 const styles = {
     wrapper:{
         margin: 0,
-        padding: 40,
+        padding: 5,
         display: "flex",
         flexDirection:"row",
         border: "1px solid grey",
         borderRadius: 0,
+        height: 150,
+        justifyContent: "center",
     },
     nameText:{
-        alignalign: "center",
         color: "black",
-        fontSize:16,
+        fontSize: 30,
         fontWeight: "bold",
-       
+        lineHeight : 4.5,
+        
     },
 };
 

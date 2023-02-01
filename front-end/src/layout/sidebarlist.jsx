@@ -3,6 +3,10 @@ import Comment from "./sidebar";
 
 const comments = [
   {
+    id:4,
+    name: "추천메뉴",
+  },
+  {
     id:1,
     name: "세트만",
   },
@@ -13,20 +17,24 @@ const comments = [
   {
     id:3,
     name: "음료",
-  },
+  }
+  ,  
+  {
+    id:5,
+    name: "사이드",
+  }
+ 
 ];
 
 
 const styles = {
   wrapper:{
       margin: 0,
-      padding: 40,
-    
-      width: "15%",
+      padding: 0,
+      width: "25%",
       border: "1px solid grey",
       borderRadius: 0,
   },
-
 
 };
 

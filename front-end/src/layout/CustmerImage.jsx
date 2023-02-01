@@ -1,32 +1,54 @@
 import React from "react";
+import Ingredient from "./Ingredient";
+import Jsonfle from "../db/date3.json";
 
 const styles = {
     wrapper:{
-        margin: 10,
+        display: "flex",
+        flexDirection:"row",
+        marginBottom: 10,
         padding: 40,
         border: "1px solid grey",
         borderRadius: 20,
-        width: "20%",
+        width: "69%",
     },
-    imageBox:{   
+    foodBox:{
+        marginBottom: 10,
+        padding: 40,
+        border: "1px solid grey",
+        borderRadius: 20, 
+        width: "70%",
+        
+    },
+
+    sideBox:{
         border: "1px solid grey",
         borderRadius: 20,
-    },
-    menuBox:{
-        border: "1px solid grey",
-        borderRadius: 20,
+        width: "40%",
     },
 };
 
-function Custmer(props){
+
+
+function CustmertImage(props){
     return(
-        <div style={styles.wrapper}>
-        {Jsonfle.map((comment) => {
-            return (<Ingredient key={comment.id} name={comment.name}/>);
-          })}
+       <div style={styles.wrapper}>
+        <div style={styles.foodBox}>
+     
+          {
+          Jsonfle[0]['ingrdent'].map((comment) => {
+                return (<Ingredient key={comment.id} name={comment}/>);
+            })}
+       </div>
+
+      <div style={styles.sideBox}>
+       <Ingredient name={Jsonfle[0]['sider']}/>
+       <Ingredient name={Jsonfle[0]["drink"]}/>
+       </div>
+       
        </div>
     );
 }
 
 
-export default Custmer;
+export default CustmertImage;

@@ -32,27 +32,41 @@ const styles = {
 
   wrapper:{
       margin: 0,
-      padding: 40,
+      padding: 0,
       border: "1px solid grey",
       borderRadius: 0,
       alignitems: "center",
   },
   wrapper2:{
     margin: 0,
-    padding: 40,
+    padding: 0,
     border: "1px solid grey",
     borderRadius: 0,
     alignitems: "center",
     display: "flex",
+    height: 70,
   },
   headerText:{
       alignitems: "center",
       color: "black",
-      fontSize:16,
+      fontSize: 35,
       fontWeight: "bold", 
-      marginLeft: "20%",
-      width: "100px",  
+      marginLeft: "15%",
+      width: "150px",  
+      lineHeight : 2,
   },
+  Button:{
+
+    alignitems: "center",
+    color: "black",
+    fontSize: 35,
+    fontWeight: "bold", 
+    width: "300px", 
+    marginLeft: 160,
+    backgroundColor:"red",
+    lineHeight : 2,
+    textAlign: "center",
+  }
 };
 
 function CommentList(props)
@@ -71,7 +85,7 @@ function CommentList(props)
         <div style={styles.wrapper2}> 
          <div style={styles.headerText}>총합</div>
          <div style={styles.headerText}>총 가격</div>
-         <div style={styles.headerText}>결제</div>
+         <div style={styles.Button}>결제</div>
         </div>
       </div>  
     );

@@ -3,17 +3,18 @@ import React from "react";
 const styles = {
     wrapper:{
         margin: 0,
-        padding: 40,
+        padding: 10,
         border: "1px solid grey",
         borderRadius: 0,
         display: "flex",
     },
     nameText:{
         color: "black",
-        fontSize:16,
+        fontSize: 25,
         fontWeight: "bold",
-        marginLeft: "20%",
-        width: "100px",
+        marginLeft: "13%",
+        width: "200px",
+        
     }
 };
 function Comment(props){
