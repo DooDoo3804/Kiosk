@@ -53,7 +53,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+<!--		mqtt-->
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-mqtt</artifactId>
+			<version>6.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.paho</groupId>
+			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+			<version>1.2.0</version>
+		</dependency>
 <!--		Swagger2-->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -89,6 +99,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>inburger</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

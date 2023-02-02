@@ -1,15 +1,20 @@
 package com.inburger.backend.controllers;
 
+import com.inburger.backend.exceptions.ResourceNotFoundException;
 import com.inburger.backend.models.User;
 import com.inburger.backend.repositories.UserRepository;
 import com.inburger.backend.services.UserService;
+import nonapi.io.github.classgraph.json.JSONUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "admin/")
+@CrossOrigin("http://70.12.246.87:3000/")
 public class UserController {
 
     private UserService userService;
@@ -22,13 +27,23 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "user/")
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    @GetMapping(value = "users/")
+    public List<User> getAllUser(){
+        return userService.getAllUser();
     }
 
-    @PostMapping(value = "user/")
-    public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+    @PostMapping(value = "users/")
+    public ResponseEntity<User> saveUser(@RequestBody User user) {
+        return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "users/")
+    public void deleteUser(@RequestBody long id){
+        userService.deleteUserById(id);
+    }
+
+    @PostMapping(value = "user/age/")
+    public void getUserAge(@RequestBody int age) {
+        System.out.println(age);
     }
 }

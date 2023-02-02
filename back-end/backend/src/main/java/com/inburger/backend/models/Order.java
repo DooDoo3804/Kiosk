@@ -22,13 +22,14 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column
     private Boolean isPackaging;
     @Column(name = "total_count")
     private int count;
     @Column(name = "total_price")
     private int price;
+    @Column(name = "order_date")
     private Timestamp orderDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -36,6 +37,6 @@ public class Order {
     private User user;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderDetail> Details;
+    private List<OrderDetail> orderDetails;
 
 }

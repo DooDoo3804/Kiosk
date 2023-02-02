@@ -6,25 +6,29 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table(name = "TABLE_CUSTOM")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Embeddable
 public class Custom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "ingredient_count")
     private int count;
 
     @ManyToOne
-    @JoinColumn(name = "ingredient_id")
+    @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_detail_id", nullable = true)
+    private OrderDetail orderDetail;
 }
+
+
 

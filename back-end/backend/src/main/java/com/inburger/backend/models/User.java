@@ -17,13 +17,13 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false)
     private String name;
-    @Column(name = "user_age")
+    @Column(name = "user_age", nullable = true)
     private int age;
-    @Column(name = "kiosk_height")
+    @Column(name = "kiosk_height", nullable = true)
     private int height;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

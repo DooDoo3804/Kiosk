@@ -5,14 +5,14 @@ import com.inburger.backend.models.OrderDetail;
 import com.inburger.backend.repositories.OrderDetailRepository;
 import com.inburger.backend.services.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
 @RestController
-@RequestMapping(path = "test/order-detail")
+@RequestMapping(path = "test/")
 public class OrderDetailController {
 
     private OrderDetailService orderDetailService;
@@ -25,8 +25,22 @@ public class OrderDetailController {
         this.orderDetailService = orderDetailService;
     }
 
-
-    public Collection<OrderDetail> getAllOrderDetailByOrderId(@RequestBody Order order) {
-        return orderDetailRepository.findByOrderId(order.getId());
+    // 주문에 해당되는 모든 상세 주문 조회
+    @GetMapping(value = "order-detail/")
+    public Collection<OrderDetail> getAllOrderDetailByOrderId(@RequestBody long id) {
+        return orderDetailService.getAllOrderDetail(id);
     }
+
+    // 주문 하기 (상세 주문 1개 생성)
+    @PostMapping(value = "order-detail/")
+    public ResponseEntity<OrderDetail> createOrderDetail(@RequestBody OrderDetail orderDetail) {
+        return new ResponseEntity<OrderDetail>(orderDetailService.saveOrderDetail(orderDetail), HttpStatus.CREATED);
+    }
+
+    // 상세 주문 보기(1개)
+    @GetMapping(value = "order-detail/{id}")
+    public OrderDetail getOrderDetailById(@PathVariable("id") long id ) {
+        return orderDetailService.getOrderDetailById(id);
+    }
+
 }

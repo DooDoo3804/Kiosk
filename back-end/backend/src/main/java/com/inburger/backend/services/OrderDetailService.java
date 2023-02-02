@@ -7,6 +7,6 @@ import java.util.Collection;
 public interface OrderDetailService {
 
     Collection<OrderDetail> getAllOrderDetail(Long orderId);
-
-    OrderDetail getOrderDetailById(Long id);
+    OrderDetail saveOrderDetail(OrderDetail orderDetail);
+    OrderDetail getOrderDetailById(long id);
 }

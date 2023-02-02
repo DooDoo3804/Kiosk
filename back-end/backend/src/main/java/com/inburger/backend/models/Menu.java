@@ -18,18 +18,18 @@ public class Menu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "menu_name")
+    @Column(name = "menu_name", nullable = false)
     private String name;
-    @Column(name = "menu_price")
+    @Column(name = "menu_price", nullable = false)
     private int price;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     @OneToMany(mappedBy = "menu")
-    private List<OrderDetail> orderDetail;
+    private List<OrderDetail> orderDetails;
 
 }
