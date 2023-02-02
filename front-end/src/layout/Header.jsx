@@ -10,7 +10,7 @@ const styles = {
     text:{
       fontWeight: "bolder",
       fontSize: 60,
- 
+      color: "#003049"
     }
 };
 

@@ -6,12 +6,12 @@ import CustmerImage from "./CustmerImage";
 const styles = {
     wrapper:{
         margin: 10,
-        padding: 40,
+        padding: 0,
         border: "1px solid grey",
         borderRadius: 20,
     },
     wrapper2:{
-        margin: 10,
+        margin: 0,
         border: "1px solid grey",
         borderRadius: 20,
         display: "flex",
@@ -20,7 +20,7 @@ const styles = {
 
     },
     wrapper3:{
-        margin: 10,
+        margin: 0,
         border: "1px solid grey",
         borderRadius: 20,
         display: "flex",
@@ -29,7 +29,7 @@ const styles = {
         justifyContent:"space-between",
     },
     menuBox:{
-        margin: 10,
+        margin: 0,
         padding: 40,
         border: "1px solid grey",
         borderRadius: 20,
@@ -52,8 +52,8 @@ function CustmerList(props){
         <div style={styles.wrapper}>
 
         <div style={styles.wrapper3}>
-        <div style={styles.Button}>담기</div>
-        <div style={styles.Button}>토글</div>
+        <button style={styles.Button}>담기</button>
+        <button style={styles.Button}>토글</button>
         </div>
 
         <CustmerBar/>

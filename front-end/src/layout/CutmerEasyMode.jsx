@@ -19,8 +19,7 @@ export default function CutmerEasyMode() {
         </div>
         <div className="btn">
             <button className="blue">커스텀하기</button>
-            <br />
-            <button className="red" >이거 먹기</button>
+            <button className="red" >이거먹기</button>
         </div>
     </div>
   )

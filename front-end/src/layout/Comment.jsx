@@ -7,14 +7,14 @@ const styles = {
         border: "1px solid grey",
         borderRadius: 0,
         display: "flex",
+        backgroundColor: "#D9D9D9",
     },
     nameText:{
         color: "black",
         fontSize: 25,
         fontWeight: "bold",
         marginLeft: "13%",
-        width: "200px",
-        
+        width: "200px",   
     }
 };
 function Comment(props){
@@ -26,6 +26,4 @@ function Comment(props){
         </div>
     );
 }
-
-
 export default Comment;

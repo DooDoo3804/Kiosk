@@ -5,8 +5,8 @@ import Ingredient from "./Ingredient"
 
 const styles = {
     wrapper:{
-        margin: 10,
-        padding: 40,
+        marginLeft: 10,
+        padding: 0,
         border: "1px solid grey",
         borderRadius: 20,
         width: "20%",

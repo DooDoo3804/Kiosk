@@ -32,7 +32,6 @@ const styles = {
       margin: 0,
       padding: 0,
       width: "25%",
-      border: "1px solid grey",
       borderRadius: 0,
   },
 
@@ -43,7 +42,7 @@ function sidebalsit(props)
     return (
       <div style={styles.wrapper}>
         {comments.map((comment) => {
-            return (<Comment key={comment.id} name={comment.name} comment={comment.comment}/>);
+            return (<Comment key={comment.id} id={comment.id} name={comment.name} comment={comment.comment}/>);
           })}
       </div>  
     );

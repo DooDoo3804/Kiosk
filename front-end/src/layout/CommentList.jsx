@@ -33,14 +33,14 @@ const styles = {
   wrapper:{
       margin: 0,
       padding: 0,
-      border: "1px solid grey",
+      borderTop: "1px solid black",
+      borderBottom: "1px solid black",
       borderRadius: 0,
       alignitems: "center",
   },
   wrapper2:{
     margin: 0,
     padding: 0,
-    border: "1px solid grey",
     borderRadius: 0,
     alignitems: "center",
     display: "flex",
@@ -58,12 +58,12 @@ const styles = {
   Button:{
 
     alignitems: "center",
-    color: "black",
+    color: "white",
     fontSize: 35,
     fontWeight: "bold", 
     width: "300px", 
     marginLeft: 160,
-    backgroundColor:"red",
+    backgroundColor:"#C1121F",
     lineHeight : 2,
     textAlign: "center",
   }
@@ -85,7 +85,7 @@ function CommentList(props)
         <div style={styles.wrapper2}> 
          <div style={styles.headerText}>총합</div>
          <div style={styles.headerText}>총 가격</div>
-         <div style={styles.Button}>결제</div>
+         <button style={styles.Button}>결제</button>
         </div>
       </div>  
     );

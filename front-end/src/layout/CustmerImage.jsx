@@ -7,10 +7,10 @@ const styles = {
         display: "flex",
         flexDirection:"row",
         marginBottom: 10,
-        padding: 40,
+        padding: 0,
         border: "1px solid grey",
         borderRadius: 20,
-        width: "69%",
+        flex:"auto",
     },
     foodBox:{
         marginBottom: 10,
@@ -18,7 +18,6 @@ const styles = {
         border: "1px solid grey",
         borderRadius: 20, 
         width: "70%",
-        
     },
 
     sideBox:{

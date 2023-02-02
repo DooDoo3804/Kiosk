@@ -5,11 +5,12 @@ const styles = {
     wrapper:{
         display: "flex",
         flexDirection:"row", 
-        padding: 40,
+        padding: 20,
         border: "1px solid grey",
         borderRadius: 20,
         justifyContent : "space-around",
         alignItem: "center",
+        margin : 10,
     },
     nameText: {
         border: "1px solid grey",

@@ -1,4 +1,5 @@
 import React from "react";
+import Menulist from "./Menulist";
 
 const styles = {
     wrapper:{
@@ -6,25 +7,32 @@ const styles = {
         padding: 5,
         display: "flex",
         flexDirection:"row",
-        border: "1px solid grey",
+        borderBottom: "1px solid grey",
         borderRadius: 0,
         height: 150,
+        width: "100%",
         justifyContent: "center",
+        backgroundColor: "#FDF0D5",
     },
     nameText:{
         color: "black",
-        fontSize: 30,
+        fontSize: 35,
         fontWeight: "bold",
         lineHeight : 4.5,
-        
     },
 };
 
 function sidebar(props){
+
+    const handleConfirm = (num) => {
+        console.log(num);
+        <Menulist number={num}/>
+    };
+    
     return(
-       <div style={styles.wrapper}>
+       <button style={styles.wrapper} onClick={handleConfirm(props.id)}>
          <span style={styles.nameText}>{props.name}</span>
-        </div>
+        </button>
     );
 }
 
