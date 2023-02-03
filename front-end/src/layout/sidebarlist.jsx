@@ -33,8 +33,7 @@ const styles = {
       padding: 0,
       width: "25%",
       borderRadius: 0,
-  },
-
+  }
 };
 
 function sidebalsit(props)
