@@ -24,9 +24,13 @@ public class IngredientController {
         this.ingredientService = ingredientService;
     }
 
+    // 모든 재료 조회
     @GetMapping(value = "ingredients/")
     public List<Ingredient> getAllIngredient(){
         return ingredientService.getAllIngredient();
     }
+
+    // 재료 등록
+    // public Ingredient
 
 }

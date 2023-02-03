@@ -25,4 +25,5 @@ public class Ingredient {
     @JoinColumn(name = "category_id")
     private Category category;
 
+
 }

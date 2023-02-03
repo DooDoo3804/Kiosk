@@ -29,8 +29,9 @@ public class Order {
     private int count;
     @Column(name = "total_price")
     private int price;
+    @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
-    private Timestamp orderDate;
+    private Date orderDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

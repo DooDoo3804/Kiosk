@@ -7,15 +7,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "TABLE_CUSTOM")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Embeddable
+@Table(name = "TABLE_CUSTOM")
 public class Custom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "custom_id")
     private Long id;
 
     @Column(name = "ingredient_count")
@@ -26,7 +26,7 @@ public class Custom {
     private Ingredient ingredient;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_detail_id", nullable = true)
+    @JoinColumn(name = "order_detail_id", nullable = true, updatable = true)
     private OrderDetail orderDetail;
 }
 

@@ -28,4 +28,6 @@ public class CustomController {
     public List<Custom> getAllCustom(){
         return customService.getAllCustom();
     }
+
+
 }
