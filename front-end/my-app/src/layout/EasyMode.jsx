@@ -22,10 +22,7 @@ function EasyMode() {
       <div>
        <Header/>
        <CutmerEasyMode/>
-       <div style={styles.wrapper}>
         <Sidebar/>
-        <Menu number={1}/>
-      </div>
       <CommentList/> 
       </div>
   

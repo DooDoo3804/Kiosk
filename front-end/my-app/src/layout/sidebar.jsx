@@ -23,14 +23,8 @@ const styles = {
 };
 
 function sidebar(props){
-
-    const handleConfirm = (num) => {
-        console.log(num);
-        <Menulist number={num}/>
-    };
-    
     return(
-       <button style={styles.wrapper} onClick={handleConfirm(props.id)}>
+       <button onClick={()=>setCount(count = props)} style={styles.wrapper}>
          <span style={styles.nameText}>{props.name}</span>
         </button>
     );

@@ -19,8 +19,6 @@ const styles = {
     },
 };
 
-
-
 function Ingredient(props){
     return(
        <div style={styles.wrapper}>

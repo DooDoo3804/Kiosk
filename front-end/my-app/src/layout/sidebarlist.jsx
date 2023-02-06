@@ -1,5 +1,5 @@
-import React from "react";
-import Comment from "./sidebar";
+import React, { useState, useEffect } from "react";
+import Menu from "./Menulist"
 
 const comments = [
   {
@@ -28,25 +28,66 @@ const comments = [
 
 
 const styles = {
+  wrapper2:{
+    margin: 0,
+    padding: 5,
+    display: "flex",
+    flexDirection:"row",
+    borderBottom: "1px solid grey",
+    borderRadius: 0,
+    height: 150,
+    width: "100%",
+    justifyContent: "center",
+    backgroundColor: "#FDF0D5",
+},
+nameText:{
+    color: "black",
+    fontSize: 35,
+    fontWeight: "bold",
+    lineHeight : 4.5,
+},
   wrapper:{
       margin: 0,
       padding: 0,
       width: "25%",
       borderRadius: 0,
-  }
+  },
+  wrapper3:{
+    margin: 0,
+    padding: 0,
+    display: "flex",
+    flexDirection:"row",
+    borderRadius: 0,
+},
 };
 
-function sidebalsit(props)
+let count = 1;
+
+function Sidebalist(props)
 {
+  const [, setCount] = useState(0);
+  
+  let incrementCount = (e) =>{
+    count = e;
+    console.log(count);
+    setCount({})
+  }
     return (
+      <div  style={styles.wrapper3}>
       <div style={styles.wrapper}>
         {comments.map((comment) => {
-            return (<Comment key={comment.id} id={comment.id} name={comment.name} comment={comment.comment}/>);
+            return (
+            <button key={comment.id} onClick={()=>incrementCount(comment.id)} style={styles.wrapper2}>
+            <span style={styles.nameText}>{comment.name}</span>
+           </button>
+           );
           })}
-      </div>  
+        </div>
+          <Menu number={count}></Menu>
+        </div>
     );
 }
 
 
-export default sidebalsit;
+export default Sidebalist;
 

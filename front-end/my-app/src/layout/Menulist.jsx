@@ -1,4 +1,4 @@
-import React from "react";
+import React, {userState, useState, useEffect} from "react";
 import Comment from "./Menu";
 import Jsonfle1 from "../db/date.json"
 import Jsonfle2 from "../db/sidemenu.json"
@@ -18,7 +18,8 @@ import Jsonfle2 from "../db/sidemenu.json"
 };
 function MenuList(props)
 {
-    if(props.number === 1){
+
+    if(props.number=== 1){
     return (
       <div style={styles.wrapper}>
         { 
@@ -28,8 +29,7 @@ function MenuList(props)
         }
       </div>  
     );
-      }
-
+    }
     else if(props.number === 2)
     {
       return (
