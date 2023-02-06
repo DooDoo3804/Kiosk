@@ -33,11 +33,11 @@ public class UserController {
     }
 
     // 나이 보내기기
-   @GetMapping(value = "users/{id}")
-    public int getUserById(@PathVariable("id") int id){
-        // FE 에서 나이 UI 바꾸고, 높이 kiosk 높이 바꾸고
-        return userService.getUserById(id).getAge();
-    }
+//   @GetMapping(value = "users/{id}")
+//    public int getUserById(@PathVariable("id") int id){
+//        // FE 에서 나이 UI 바꾸고, 높이 kiosk 높이 바꾸고
+//        return userService.getUserById(id).getAge();
+//    }
 
     // 유저 정보 저장
     @PostMapping(value = "users/")

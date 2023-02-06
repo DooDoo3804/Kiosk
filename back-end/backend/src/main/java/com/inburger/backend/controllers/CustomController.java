@@ -30,6 +30,4 @@ public class CustomController {
         return customService.getAllCustom();
     }
 
-
-
 }

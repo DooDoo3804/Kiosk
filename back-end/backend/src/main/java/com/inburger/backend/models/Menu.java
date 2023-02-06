@@ -1,5 +1,6 @@
 package com.inburger.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,7 @@ public class Menu {
     private Category category;
 
     @OneToMany(mappedBy = "menu")
+    @JsonManagedReference
     private List<OrderDetail> orderDetails;
 
 }

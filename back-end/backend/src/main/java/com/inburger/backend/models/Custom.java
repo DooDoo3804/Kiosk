@@ -1,6 +1,8 @@
 package com.inburger.backend.models;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +28,7 @@ public class Custom {
     private Ingredient ingredient;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference //추가
     @JoinColumn(name = "order_detail_id", nullable = true, updatable = true)
     private OrderDetail orderDetail;
 }

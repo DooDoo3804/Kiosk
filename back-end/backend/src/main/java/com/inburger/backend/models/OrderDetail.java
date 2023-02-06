@@ -1,6 +1,9 @@
 package com.inburger.backend.models;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,12 +34,15 @@ public class OrderDetail {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
+    @JsonBackReference //추가
     private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_id")
+    @JsonBackReference //추가
     private Menu menu;
 
+    @JsonManagedReference  // 추가
     @OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL)
     private List<Custom> customs;
 

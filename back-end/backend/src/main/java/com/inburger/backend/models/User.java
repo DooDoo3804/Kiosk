@@ -2,6 +2,7 @@ package com.inburger.backend.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import java.util.List;
@@ -27,6 +28,7 @@ public class User {
     private int height;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Order> history;
 
 }
