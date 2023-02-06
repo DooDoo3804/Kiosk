@@ -22,7 +22,7 @@ const io = sockeIo(server, {
 let interval;
 
 io.on("connection", (socket) =>{
-    console.log("New client connected");
+    console.log("들어옴");
     if(interval){
         clearInterval(interval);
     }
@@ -31,7 +31,7 @@ io.on("connection", (socket) =>{
         console.log(`클라이언트에서 보낸 메시지 수신: ${data}`);
     });
 
-    socket.on("disconnect", () => {
+    socket.on("나감", () => {
         console.log("Client disconnected");
         clearInterval(interval);
     });
