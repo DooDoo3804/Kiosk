@@ -27,12 +27,12 @@ io.on("connection", (socket) =>{
         clearInterval(interval);
     }
 
-    socket.on("client_msg", (data) =>{
+    socket.on("incompany", (data) =>{
         console.log(`클라이언트에서 보낸 메시지 수신: ${data}`);
     });
 
-    socket.on("나감", () => {
-        console.log("Client disconnected");
+    socket.on("disconnect", () => {
+        console.log("나감");
         clearInterval(interval);
     });
 });
