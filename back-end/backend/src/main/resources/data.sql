@@ -33,10 +33,10 @@ INSERT INTO TABLE_USER(user_name, user_age, kiosk_height) VALUES("사람2", 18, 
 -- 한 명의 유저와 선택한 옵션 여러개
 -- 선택한 하나 이상의 메뉴가 넘어옴
 
--- 주문이 들어오면 USER와 이용하여 ORDER를 먼저 생성
+-- 주문이 들어오면 USER와 메뉴를 이용하여 ORDER를 먼저 생성
 -- ORDER 데이터 추가
-INSERT INTO TABLE_ORDER(total_count, total_price, is_packaging, order_date, user_id) VALUES(1, 3000, true,"1999-12-31", 1);
-
--- INGREDIENT로 CUSTOM생성 이후 ORDER_DETAIL 생성
-
--- MENU와 ORDER와 CUSTOM를 통해 ORDER_DETAIL 생성 가능
+INSERT INTO TABLE_ORDER(total_count, total_price, is_packaging, order_date, user_id) VALUES(1, 3000, false,"1999-12-31", 1);
+INSERT INTO TABLE_ORDER(total_count, total_price, is_packaging, order_date, user_id) VALUES(3, 7500, true,"1999-01-01", 2);
+-- INGREDIENT와 Menu로 ORDER_DETAIL 생성
+INSERT INTO TABLE_ORDER_DETAIL(menu_count, each_menu_price, is_set, order_id, menu_id) VALUES(1, 3000, false, 1, 1);
+-- MenuDetail로 Custom 생성 가능

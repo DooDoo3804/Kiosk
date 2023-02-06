@@ -26,8 +26,8 @@ public class OrderDetailController {
     }
 
     // 주문에 해당되는 모든 상세 주문 조회
-    @GetMapping(value = "order-detail/")
-    public Collection<OrderDetail> getAllOrderDetailByOrderId(@RequestBody long id) {
+    @GetMapping(value = "order-detail/details/{id}")
+    public Collection<OrderDetail> getAllOrderDetailByOrderId(@PathVariable("id") long id) {
         return orderDetailService.getAllOrderDetail(id);
     }
 

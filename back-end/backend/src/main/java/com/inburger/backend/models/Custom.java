@@ -21,7 +21,7 @@ public class Custom {
     @Column(name = "ingredient_count")
     private int count;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
 

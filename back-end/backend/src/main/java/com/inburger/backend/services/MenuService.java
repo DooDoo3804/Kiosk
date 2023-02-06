@@ -7,4 +7,5 @@ import java.util.List;
 public interface MenuService {
 
     List<Menu> getAllMenu();
+    Menu getMenuDetail(long id);
 }

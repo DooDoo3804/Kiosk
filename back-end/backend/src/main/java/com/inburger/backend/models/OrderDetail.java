@@ -20,7 +20,7 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "order_count", nullable = false)
+    @Column(name = "menu_count", nullable = false)
     private Integer count;
 
     @Column(name = "each_menu_price", nullable = false)

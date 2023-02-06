@@ -5,6 +5,7 @@ import com.inburger.backend.repositories.CustomRepository;
 import com.inburger.backend.services.CustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,10 +25,11 @@ public class CustomController {
         this.customService = customService;
     }
 
-    @GetMapping(value = "customs/")
+    @GetMapping(value="customs/")
     public List<Custom> getAllCustom(){
         return customService.getAllCustom();
     }
+
 
 
 }
