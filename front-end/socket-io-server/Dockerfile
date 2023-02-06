@@ -7,4 +7,4 @@ COPY package.json /usr/src/server/package.json
 RUN npm install
 COPY . /usr/src/server
 EXPOSE 4001
-CMD [ "npm", "start" ]
+CMD [ "node", "app.js" ]
