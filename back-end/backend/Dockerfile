@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM openjdk:17-jdk-alpine
 VOLUME /tmp
 EXPOSE 8081
 FROM openjdk:11
