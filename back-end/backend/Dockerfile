@@ -1,6 +1,7 @@
-FROM
+FROM openjdk:17
 VOLUME /tmp
-EXPOSE 8081
-#ARG JAR_FILE={이름}
+EXPOSE 8080
+FROM openjdk:11
+ARG JAR_FILE=*.jar
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
