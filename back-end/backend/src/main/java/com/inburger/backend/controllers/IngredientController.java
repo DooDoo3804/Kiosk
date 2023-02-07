@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "test/")
+@RequestMapping(path = "/test")
 public class IngredientController {
 
     private IngredientService ingredientService;
@@ -25,7 +25,7 @@ public class IngredientController {
     }
 
     // 모든 재료 조회
-    @GetMapping(value = "ingredients/")
+    @GetMapping(value = "/ingredients")
     public List<Ingredient> getAllIngredient(){
         return ingredientService.getAllIngredient();
     }
