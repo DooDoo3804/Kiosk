@@ -17,8 +17,8 @@ import Jsonfle2 from "../db/sidemenu.json"
     },
 };
 function MenuList(props)
-{
-
+ 
+{ 
     if(props.number=== 1){
     return (
       <div style={styles.wrapper}>

@@ -1,32 +1,34 @@
 import React from "react";
 import Comment from "./Comment";
+import { useState, useCallback } from 'react'
+import { forwardRef, useImperativeHandle } from "react";
 
-const comments = [
-  {
-    id:1,
-    name: "빅맥",
-    price: "2000",
-    count: 2,
-  },
-  {
-    id:2,
-    name: "불고기 버거",
-    price: "2000",
-    count: 2,
-  },
-  {
-    id:3,
-    name: "치즈버거",
-    price: "2000",
-    count: 1,
-  },
-  {
-    id:4,
-    name: "치즈버거",
-    price: "2000",
-    count: 1,
-  }
-];
+// const comments = [
+//   {
+//     id:1,
+//     name: "빅맥",
+//     price: "2000",
+//     count: 2,
+//   },
+//   {
+//     id:2,
+//     name: "불고기 버거",
+//     price: "2000",
+//     count: 2,
+//   },
+//   {
+//     id:3,
+//     name: "치즈버거",
+//     price: "2000",
+//     count: 1,
+//   },
+//   {
+//     id:4,
+//     name: "치즈버거",
+//     price: "2000",
+//     count: 1,
+//   }
+// ];
 
 const styles = {
 
@@ -69,8 +71,49 @@ const styles = {
   }
 };
 
-function CommentList(props)
-{
+function CommentList(props) {
+// = forwardRef((props, ref) => {
+//   useImperativeHandle(ref, () => ({
+//       setOrders() {
+//         console.log(props)
+  //     }
+
+  // }))
+// })
+// {
+
+  const [comments, setOrders] = useState([])
+
+  const addToOrder = useCallback((item) => {
+    setOrders((orders) => {
+      // 이미 담은 상품인지 확인하는 과정
+      const finded = orders.find((order) => order.id === item.id);
+      const { id, name, price } = item;
+
+      // 담긴 상품이 아니면
+      if (finded === undefined) {
+        // 새로 데이터를 return
+        return [...orders, { id, name, price, count: 1 }]; // 처음 담긴 상품이니까 quantity가 1
+      }
+      // 이미 담긴 상품 이면 quantity를 1 올려줘야함
+      else {
+        return orders.map((order) => {
+          if (order.id === id) {
+            return {
+              id,
+              name,
+              price,
+              count: order.count + 1,
+            };
+          } else {
+            return order;
+          }
+        });
+      }
+    });
+  }, []);
+    
+ 
     return (
       <div style={styles.wrapper}>
         <div style={styles.wrapper2}> 

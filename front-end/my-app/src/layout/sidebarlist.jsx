@@ -69,7 +69,7 @@ function Sidebalist(props)
   
   let incrementCount = (e) =>{
     count = e;
-    console.log(count);
+    // console.log(count);
     setCount({})
   }
     return (

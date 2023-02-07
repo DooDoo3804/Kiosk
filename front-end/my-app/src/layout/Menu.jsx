@@ -1,7 +1,8 @@
 import React from "react";
+import { useRef, useState } from "react";
+import CommentList from "./CommentList"
 
-
-const styles = {
+const styles = {    
     wrapper:{
         marginBottom: 10,
         padding : 15,
@@ -24,7 +25,8 @@ const styles = {
     },
 };
 
-function Menu(props){
+function Menu(props)
+{
     return(
        <div style={styles.wrapper}>
          <span style={styles.nameText}>{props.name}</span>

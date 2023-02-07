@@ -23,6 +23,7 @@ const styles = {
 };
 
 function sidebar(props){
+    // console.log(props)
     return(
        <button onClick={()=>setCount(count = props)} style={styles.wrapper}>
          <span style={styles.nameText}>{props.name}</span>
