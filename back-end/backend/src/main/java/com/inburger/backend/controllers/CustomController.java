@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "test/")
+@RequestMapping(path = "/test")
 public class CustomController {
 
     private CustomService customService;
@@ -25,7 +25,7 @@ public class CustomController {
         this.customService = customService;
     }
 
-    @GetMapping(value="customs/")
+    @GetMapping(value="/customs")
     public List<Custom> getAllCustom(){
         return customService.getAllCustom();
     }

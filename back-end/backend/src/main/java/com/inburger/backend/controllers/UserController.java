@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "admin/")
+@RequestMapping(path = "/admin")
 
 @CrossOrigin("http://70.12.246.87:3000/")
 
@@ -27,7 +27,7 @@ public class UserController {
     }
 
     // 모든 유저 정보 조회
-    @GetMapping(value = "users/")
+    @GetMapping(value = "/users")
     public List<User> getAllUser(){
         return userService.getAllUser();
     }
@@ -40,13 +40,13 @@ public class UserController {
 //    }
 
     // 유저 정보 저장
-    @PostMapping(value = "users/")
+    @PostMapping(value = "/users")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
     // 유저 정보 삭제
-    @DeleteMapping(value = "users/")
+    @DeleteMapping(value = "/users")
     public void deleteUser(@RequestBody long id){
         userService.deleteUserById(id);
     }
