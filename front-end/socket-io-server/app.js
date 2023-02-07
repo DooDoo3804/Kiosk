@@ -14,7 +14,7 @@ const server = http.createServer(app);
 
 const io = sockeIo(server, {
     cors: {
-        origin: "http://70.12.246.124:8080",
+        origin: "http://localhost:3000",
         megthods: ["GET", "POST"]
     }
 });
@@ -22,17 +22,17 @@ const io = sockeIo(server, {
 let interval;
 
 io.on("connection", (socket) =>{
-    console.log("New client connected");
+    console.log("들어옴");
     if(interval){
         clearInterval(interval);
     }
 
-    socket.on("client_msg", (data) =>{
+    socket.on("incompany", (data) =>{
         console.log(`클라이언트에서 보낸 메시지 수신: ${data}`);
     });
 
     socket.on("disconnect", () => {
-        console.log("Client disconnected");
+        console.log("나감");
         clearInterval(interval);
     });
 });
