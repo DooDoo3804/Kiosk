@@ -3,11 +3,9 @@ package com.inburger.backend.models;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -36,13 +35,14 @@ public class Order {
     @Column(name = "order_date")
     private Date orderDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<OrderDetail> orderDetails;
+    @JsonIgnore
+    private List<OrderDetail> orderDetails = new ArrayList<>();
 
 }

@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -44,7 +45,7 @@ public class OrderDetail {
 
     @JsonManagedReference  // 추가
     @OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL)
-    private List<Custom> customs;
+    private List<Custom> customs = new ArrayList<>();
 
 }
 

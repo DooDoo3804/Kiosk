@@ -42,3 +42,10 @@ INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, me
 INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, menu_id) VALUES(2, 3000, false, 2, 2);
 INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, menu_id) VALUES(1, 2500, true, 2, 2);
 -- MenuDetail로 Custom 생성 가능
+
+-- 결제 시에 받을 데이터
+-- 유저 정보
+-- 전체 주문 전체 생성 (메뉴 정보, 카테고리 정보)
+-- 커스텀 정보 생성 (재료정보, 카테고리 정보)
+-- 상세 주문 생성 (주문, 커스텀, 메뉴, 정보들 사용)
+

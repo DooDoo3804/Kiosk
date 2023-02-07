@@ -7,4 +7,5 @@ import java.util.List;
 public interface OrderService {
 
     List<Order> getAllOrder();
+    Order saveOrder(Order order, Long id);
 }

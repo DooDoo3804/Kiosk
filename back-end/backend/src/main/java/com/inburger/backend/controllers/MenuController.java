@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/admin")
+@RequestMapping(path = "/inburger")
 public class MenuController {
 
     private UserService userService;

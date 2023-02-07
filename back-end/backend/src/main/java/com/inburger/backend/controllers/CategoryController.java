@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/admin")
+@RequestMapping(path="/inburger")
 public class CategoryController {
 
     private CategoryRepository categoryRepository;

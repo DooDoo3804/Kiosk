@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/test")
+@RequestMapping(path = "/inburger")
 public class CustomController {
 
     private CustomService customService;
