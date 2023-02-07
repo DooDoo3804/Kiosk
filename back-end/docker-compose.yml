@@ -1,6 +1,6 @@
-version: "3"
+version: "3.3"
 services:
-  mysql:
+  database:
     image: mysql
     environment:
       MYSQL_DATABASE: inburger
@@ -16,7 +16,7 @@ services:
   application:
     build: ./back-end/backend/
     depands_on:
-      - mysql
+      - database
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://3.36.49.220:3306/inburger
       SPRING_DATASOURCE_USERNAME: root
