@@ -28,11 +28,12 @@ public class Menu {
     private int price;
 
     @ManyToOne(fetch = FetchType.LAZY)
+
     @JsonBackReference //추가
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @OneToMany(mappedBy = "menu")
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<OrderDetail> orderDetails;
 

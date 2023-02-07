@@ -2,25 +2,35 @@ package com.inburger.backend.controllers;
 
 import com.inburger.backend.models.Menu;
 import com.inburger.backend.repositories.MenuRepository;
+import com.inburger.backend.repositories.UserRepository;
 import com.inburger.backend.services.MenuService;
+import com.inburger.backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/admin")
 public class MenuController {
 
+    private UserService userService;
+    private final UserRepository userRepository;
+
     private MenuService menuService;
     private final MenuRepository menuRepository;
 
     @Autowired
     public MenuController(MenuService menuService,
-                          MenuRepository menuRepository) {
+                          MenuRepository menuRepository,
+                          UserRepository userRepository,
+                          UserService userService) {
         this.menuRepository = menuRepository;
         this.menuService = menuService;
+        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @PostMapping(value="/menu")
@@ -29,8 +39,11 @@ public class MenuController {
     }
 
     @GetMapping(value="/menu")
-    public List<Menu> getAllMenu() {
-        return menuService.getAllMenu();
+    public ArrayList<List> getAllMenu() {
+        ArrayList<List> returnMenu = new ArrayList<>();
+        returnMenu.add(userService.getAllUser());
+        returnMenu.add(menuService.getAllMenu());
+        return returnMenu;
     }
 
     @GetMapping(value="/menu/{id}")
