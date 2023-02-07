@@ -1,5 +1,6 @@
 package com.inburger.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class Menu {
     private int price;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference //추가
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 

@@ -24,6 +24,7 @@ public class Custom {
     private int count;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference //추가
     @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
 
