@@ -3,25 +3,23 @@ import EasyMode from './layout/EasyMode';
 import CustmerList from './layout/CustmerList';
 import EmployeeService from './EmployeeService';
 import NomalMode from './layout/NormalMode';
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route} from "react-router-dom"
-import { Navigate } from "react-router-dom"
-import  socketIOClient from 'socket.io-client';
-const ENDPOINT = "http://70.12.246.124:8080/admin/users/1";
-
-
+import React from 'react';
+import io from 'socket.io-client';
+import { Link, Route, BrowserRouter , Routes } from "react-router-dom";
+import Choose from './layout/Choose';
 
 function App() {
- 
- 
- // let answer = 1;
 
   return (
-    <div>
-    <EasyMode/>
-    </div>
+     <BrowserRouter>
+      <Routes>
+        <Route path="/" element={ <EasyMode /> }></Route>
+        <Route path="/Choose" element={ <Choose /> }></Route>
+      </Routes>
+    </BrowserRouter>
   );
 
 }
 
 export default App;
+

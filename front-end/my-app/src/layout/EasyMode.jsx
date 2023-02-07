@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState}from 'react';
 import CommentList from './CommentList';
 import Sidebar from './sidebarlist'
 import Menu from './Menulist'
@@ -18,12 +18,16 @@ const styles = {
   
 
 function EasyMode() {
+
+  const [selectMenu, setMenu] = useState('');
+  const [check, setcheck] = useState('');
+
     return (
       <div>
        <Header/>
-       <CutmerEasyMode/>
-        <Sidebar/>
-      <CommentList/> 
+       <CutmerEasyMode checkfun={setcheck} check={check} imagemenu={selectMenu}/>
+        <Sidebar imagemenu={setMenu}/>
+      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check}/> 
       </div>
   
     );
