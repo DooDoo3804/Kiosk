@@ -1,8 +1,9 @@
-import React from "react";
-import { useRef, useState } from "react";
-import CommentList from "./CommentList"
+import React, { useState } from "react";
+import CustmertImage from "./CustmerImage";
+import CutmerEasyMode from "./CutmerEasyMode";
 
-const styles = {    
+
+const styles = {
     wrapper:{
         marginBottom: 10,
         padding : 15,
@@ -13,9 +14,7 @@ const styles = {
         boxSizing: "content-box",
         width: "28%",
         height: "28%",
-        display:"flex",
-        flexDirection: "column",
-        justifyContent: "center",
+       
     },
     nameText:{   
         color: "black",
@@ -25,13 +24,25 @@ const styles = {
     },
 };
 
-function Menu(props)
-{
+
+
+function Menu(props){
+
+    const [select, setState] = useState('');
+
+    function addCart(str)
+    {
+        props.imageMenu(str);
+        console.log(str);
+        setState({});
+    }
+
     return(
-       <div style={styles.wrapper}>
+       <button onClick={() => addCart(props.name)} style={styles.wrapper}>
          <span style={styles.nameText}>{props.name}</span>
-         <span style={styles.nameText}>{props.price}</span>
-        </div>
+        <br></br>
+        <span style={styles.nameText}>{props.price}</span>
+        </button>
     );
 }
 

@@ -1,34 +1,33 @@
-import React from "react";
+import React , {useState,useCallback, useEffect, useMemo}from "react";
 import Comment from "./Comment";
-import { useState, useCallback } from 'react'
-import { forwardRef, useImperativeHandle } from "react";
-
-// const comments = [
-//   {
-//     id:1,
-//     name: "빅맥",
-//     price: "2000",
-//     count: 2,
-//   },
-//   {
-//     id:2,
-//     name: "불고기 버거",
-//     price: "2000",
-//     count: 2,
-//   },
-//   {
-//     id:3,
-//     name: "치즈버거",
-//     price: "2000",
-//     count: 1,
-//   },
-//   {
-//     id:4,
-//     name: "치즈버거",
-//     price: "2000",
-//     count: 1,
-//   }
-// ];
+import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import Choose from "./Choose"
+const comments = [
+  {
+    id:1,
+    name: "빅맥",
+    price: "2000",
+    count: 2,
+  },
+  {
+    id:2,
+    name: "불고기 버거",
+    price: "2000",
+    count: 2,
+  },
+  {
+    id:3,
+    name: "치즈버거",
+    price: "2000",
+    count: 1,
+  },
+  {
+    id:4,
+    name: "치즈버거",
+    price: "2000",
+    count: 1,
+  }
+];
 
 const styles = {
 
@@ -71,64 +70,62 @@ const styles = {
   }
 };
 
-function CommentList(props) {
-// = forwardRef((props, ref) => {
-//   useImperativeHandle(ref, () => ({
-//       setOrders() {
-//         console.log(props)
-  //     }
+let Maxid;
 
-  // }))
-// })
-// {
+function CommentList(props)
+{
+  const [Cartlist, setCart] = useState(comments);
 
-  const [comments, setOrders] = useState([])
+  const [nextModal1, setModal1] = useState(false);
+  const [nextModal2, setModal2] = useState(false);
 
-  const addToOrder = useCallback((item) => {
-    setOrders((orders) => {
-      // 이미 담은 상품인지 확인하는 과정
-      const finded = orders.find((order) => order.id === item.id);
-      const { id, name, price } = item;
+ console.log("%^"+ props.imagemenu + `${Maxid + 1}`);
 
-      // 담긴 상품이 아니면
-      if (finded === undefined) {
-        // 새로 데이터를 return
-        return [...orders, { id, name, price, count: 1 }]; // 처음 담긴 상품이니까 quantity가 1
+  useEffect(() => {
+    if(props.imagemenu !== ''){
+        const addcomment = {
+        id: `${Maxid + 1}`,
+        name: props.imagemenu,
+        price: "1000",
+        count: 1,
       }
-      // 이미 담긴 상품 이면 quantity를 1 올려줘야함
-      else {
-        return orders.map((order) => {
-          if (order.id === id) {
-            return {
-              id,
-              name,
-              price,
-              count: order.count + 1,
-            };
-          } else {
-            return order;
-          }
-        });
-      }
-    });
-  }, []);
+      setCart([...Cartlist, addcomment]);
+    }
+
+  }, [props.check]);
+  
+const Sumprice = () =>{
+
+    let total = 0;
     
- 
+    Cartlist.map((comment) => {
+      total += Number(comment.price);
+    })
+    console.log(total);
+    return total;
+  }
+
+  const location = useMemo(() =>Sumprice(), [Cartlist]);
+
     return (
       <div style={styles.wrapper}>
+        
         <div style={styles.wrapper2}> 
          <div style={styles.headerText}>메뉴</div>
          <div style={styles.headerText}>갯수</div>
          <div style={styles.headerText}>가격</div>
         </div>
-        {comments.map((comment) => {
+        {Cartlist.map((comment) => {
+            Maxid = comment.id;
             return (<Comment key={comment.id} menu={comment.name} count={comment.count} price={comment.price}/>);
           })}
 
         <div style={styles.wrapper2}> 
          <div style={styles.headerText}>총합</div>
-         <div style={styles.headerText}>총 가격</div>
-         <button style={styles.Button}>결제</button>
+         <div style={styles.headerText}>{location}</div>
+         <Link to="/Choose"> 
+         <button  style={styles.Button}>결제</button>
+         </Link>
         </div>
       </div>  
     );
@@ -136,4 +133,5 @@ function CommentList(props) {
 
 
 export default CommentList;
+
 

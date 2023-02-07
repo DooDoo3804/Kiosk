@@ -3,19 +3,19 @@ import Menu from "./Menulist"
 
 const comments = [
   {
-    id:4,
+    id:1,
     name: "추천메뉴",
   },
   {
-    id:1,
+    id:2,
     name: "세트만",
   },
   {
-    id:2,
+    id:3,
     name: "버거만",
   },
   {
-    id:3,
+    id:4,
     name: "음료",
   }
   ,  
@@ -69,25 +69,36 @@ function Sidebalist(props)
   
   let incrementCount = (e) =>{
     count = e;
-    // console.log(count);
-    setCount({})
+    console.log(count);
+
+  let list =  document.getElementsByClassName("sidebar");
+
+  for(let i = 0; i < 5; i++)
+  {
+    list[i].style.backgroundColor = "#FDF0D5";
+  }
+  list[count - 1].style.backgroundColor = "#C1121F";
+ // list[i].backgroundColor = "red";
+
+  setCount({})
   }
     return (
       <div  style={styles.wrapper3}>
       <div style={styles.wrapper}>
         {comments.map((comment) => {
             return (
-            <button key={comment.id} onClick={()=>incrementCount(comment.id)} style={styles.wrapper2}>
+            <button className="sidebar" key={comment.id} onClick={()=>incrementCount(comment.id)} style={styles.wrapper2}>
             <span style={styles.nameText}>{comment.name}</span>
            </button>
            );
           })}
         </div>
-          <Menu number={count}></Menu>
+          <Menu imageMenu={props.imagemenu} number={count}></Menu>
         </div>
     );
 }
 
 
 export default Sidebalist;
+
 

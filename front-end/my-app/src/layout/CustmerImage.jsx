@@ -1,6 +1,6 @@
 import React from "react";
 import Ingredient from "./Ingredient";
-import Jsonfle from "../db/date3.json";
+import Jsonfle from "../db/single.json";
 
 const styles = {
     wrapper:{
@@ -30,6 +30,7 @@ const styles = {
 
 
 function CustmertImage(props){
+
     return(
        <div style={styles.wrapper}>
         <div style={styles.foodBox}>

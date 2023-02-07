@@ -1,6 +1,6 @@
 import React from "react";
 import Comment from "./Menu2";
-import Jsonfle1 from "../db/date.json"
+import Jsonfle1 from "../db/single.json"
 import Jsonfle2 from "../db/sidemenu.json"
 
   const styles = {
