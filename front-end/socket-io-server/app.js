@@ -14,7 +14,7 @@ const server = http.createServer(app);
 
 const io = sockeIo(server, {
     cors: {
-        origin: ['http://localhost:3000', 'http://70.12.246.87:3000'],
+        origin: ['http://localhost:3000', 'http://3.36.49.220:3000'],
         megthods: ["GET", "POST"]
     }
 });
@@ -25,12 +25,11 @@ io.on("connection", (socket) =>{
     console.log("접속");
 
     console.log("Before msg1");
-    socket.on("client_msg1", (data) =>{
+    console.log(socket)
+    socket.on("msg", (data) =>{
         console.log(data);
-        console.log(1);
         console.log(`클라이언트에서 보낸 메시지 수신: ${data}`);
         socket.broadcast.emit('event_name', data);
-        
     }); 
 
     console.log("Before msg2");
@@ -39,6 +38,7 @@ io.on("connection", (socket) =>{
         socket.broadcast.emit('event_name', data);
     }); 
 
+    console.log("나가기 직전")
     socket.on("disconnect", () => {
         console.log("나감");
         clearInterval(interval);
