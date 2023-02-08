@@ -24,7 +24,7 @@ public class UserControllerTest extends BackendApplicationTests {
     void createUser() {
         User user1 = new User();
         user1.setName("A1");
-        user1.setAge(20);
+        user1.setIsEasy(1);
         user1.setHeight(1);
 
         //when
@@ -42,7 +42,7 @@ public class UserControllerTest extends BackendApplicationTests {
 
         User user1 = new User();
         user1.setName(name);
-        user1.setAge(age);
+        user1.setIsEasy(age);
         user1.setHeight(height);
         userRepository.save(user1);
 
@@ -52,7 +52,7 @@ public class UserControllerTest extends BackendApplicationTests {
         //then
         User user = userList.get(0);
         assertEquals(name, user.getName());
-        assertEquals(age, user.getAge());
+        assertEquals(age, user.getIsEasy());
         assertEquals(height, user.getHeight());
     }
 }

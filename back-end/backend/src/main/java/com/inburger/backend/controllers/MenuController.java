@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -33,25 +34,29 @@ public class MenuController {
         this.userService = userService;
     }
 
+    // 메뉴 저장
     @PostMapping(value="/menu")
     public Menu createMenu(@RequestBody Menu menu) {
         return menuRepository.save(menu);
     }
 
+    // 메뉴 + 유저 정보 전달
     @GetMapping(value="/menu")
-    public ArrayList<List> getAllMenu() {
-        ArrayList<List> returnMenu = new ArrayList<>();
-        returnMenu.add(userService.getAllUser());
-        returnMenu.add(menuService.getAllMenu());
+    public HashMap<String, List> getAllMenu() {
+        HashMap<String, List> returnMenu= new HashMap<>();
+        returnMenu.put("User", userService.getAllUser());
+        returnMenu.put("Menu", menuService.getAllMenu());
         return returnMenu;
     }
 
+    // 메뉴 하나 반환
     @GetMapping(value="/menu/{id}")
     public ResponseEntity<Menu> getMenuDetail(@PathVariable("id") Long id) {
         Menu menu = menuService.getMenuDetail(id);
         return ResponseEntity.ok(menu);
     }
 
+    // 메뉴 수정
     @PostMapping(value="/menu/{id}")
     public ResponseEntity<Menu> updateMenu(@PathVariable("id") Long id, @RequestBody Menu menuDetail) {
         Menu menu = menuService.getMenuDetail(id);
@@ -64,10 +69,9 @@ public class MenuController {
         return ResponseEntity.ok(updatedMenu);
     }
 
+    //메뉴 삭제
     @DeleteMapping(value="/menu/{id}")
     public void deleteMenu(@PathVariable("id") Long id) {
         menuRepository.deleteById(id);
     }
-
-
 }

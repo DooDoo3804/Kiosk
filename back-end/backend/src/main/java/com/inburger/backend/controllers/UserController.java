@@ -27,7 +27,7 @@ public class UserController {
     }
 
     // 모든 유저 정보 조회
-    @GetMapping(value = "/users")
+    @GetMapping(value = "/user")
     public List<User> getAllUser(){
         return userService.getAllUser();
     }
@@ -35,8 +35,6 @@ public class UserController {
     // 유저 정보 저장
     @PostMapping(value = "/user", produces = "application/json;charset=UTF-8")
     public User saveUser(@RequestBody User user) {
-//        return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.CREATED);
-
         return userService.saveUser(user);
     }
 

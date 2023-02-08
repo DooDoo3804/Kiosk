@@ -24,6 +24,7 @@ public class CategoryController {
         this.categoryRepository = categoryRepository;
     }
 
+    // 모든 재료 죠회
     @GetMapping(value="/category")
     public List<Category> getAllCategory() {
         return categoryService.getAllCategory();
