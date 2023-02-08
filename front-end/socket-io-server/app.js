@@ -24,18 +24,15 @@ let interval;
 io.on("connection", (socket) =>{
     console.log("접속");
 
-    console.log("Before msg1");
-    console.log(socket)
-    socket.on("msg", (data) =>{
+    socket.on("pi", (data) =>{
         console.log(data);
-        console.log(`클라이언트에서 보낸 메시지 수신: ${data}`);
-        socket.broadcast.emit('event_name', data);
+        console.log(`파이에서 들어온 메시지 수신: ${data}`);
+        socket.broadcast.emit('react', data);
     }); 
 
-    console.log("Before msg2");
-    socket.on("client_msg2", (data) =>{
-        console.log(`클라이언트에서 보낸 메시지 수신: ${data}`);
-        socket.broadcast.emit('event_name', data);
+    socket.on("react", (data) =>{
+        console.log(`리액트에서 들어온 메시지 수신: ${data}`);
+        socket.broadcast.emit('pi', data);
     }); 
 
     console.log("나가기 직전")
