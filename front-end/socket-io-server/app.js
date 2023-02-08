@@ -25,7 +25,6 @@ io.on("connection", (socket) =>{
     console.log("접속");
 
     socket.on("pi", (data) =>{
-        console.log(data);
         console.log(`파이에서 들어온 메시지 수신: ${data}`);
         socket.broadcast.emit('react', data);
     }); 
