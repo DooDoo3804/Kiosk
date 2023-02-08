@@ -30,10 +30,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order saveOrder(Order order, Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> {
-            return new ResourceNotFoundException("User", "Userid", id);
-        });
+        User user = userRepository.findById(id).orElseThrow(() ->
+           new ResourceNotFoundException("User", "Userid", id)
+        );
         Order new_order = Order.builder()
+                .isPackaging(order.getIsPackaging())
                 .count(order.getCount())
                 .price(order.getPrice())
                 .orderDate(order.getOrderDate())

@@ -3,11 +3,9 @@ package com.inburger.backend.models;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "TABLE_ORDER_DETAIL")
+@Builder
 public class OrderDetail {
 
     @Id
@@ -35,16 +34,17 @@ public class OrderDetail {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    @JsonBackReference //추가
+    @JsonBackReference
     private Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "menu_id")
-    @JsonBackReference //추가
+    @JsonBackReference
     private Menu menu;
 
-    @JsonManagedReference  // 추가
+    @JsonManagedReference
     @OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Custom> customs = new ArrayList<>();
 
 }

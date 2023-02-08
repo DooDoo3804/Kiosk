@@ -26,9 +26,10 @@ INSERT INTO table_menu(menu_name, menu_price, category_id) VALUES("더블불고�
 INSERT INTO table_menu(menu_name, menu_price, category_id) VALUES("음료 단품", 1500, 3) ;
 INSERT INTO table_menu(menu_name, menu_price, category_id) VALUES("감자튀김 단품", 2000, 2) ;
 
+-- 저장 과정
 -- user 데이터 추가
-INSERT INTO table_user(user_name, user_age, kiosk_height) VALUES("사람1", 20, 2);
-INSERT INTO table_user(user_name, user_age, kiosk_height) VALUES("사람2", 18, 3);
+INSERT INTO table_user(user_name, is_easy, kiosk_height) VALUES("사람1", 1, 2);
+INSERT INTO table_user(user_name, is_easy, kiosk_height) VALUES("사람2", 0, 3);
 
 -- 한 명의 유저와 선택한 옵션 여러개
 -- 선택한 하나 이상의 메뉴가 넘어옴
@@ -45,7 +46,7 @@ INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, me
 
 -- 결제 시에 받을 데이터
 -- 유저 정보
--- 전체 주문 전체 생성 (메뉴 정보, 카테고리 정보)
+-- 전체 주문 생성 (메뉴 정보, 카테고리 정보)
 -- 커스텀 정보 생성 (재료정보, 카테고리 정보)
 -- 상세 주문 생성 (주문, 커스텀, 메뉴, 정보들 사용)
 

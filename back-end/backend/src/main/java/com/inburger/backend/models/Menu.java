@@ -1,6 +1,7 @@
 package com.inburger.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class Menu {
 
     @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @JsonIgnore
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
 }

@@ -24,8 +24,8 @@ public class User {
 
     @Column(name = "user_name", nullable = true)
     private String name;
-    @Column(name = "user_age", nullable = true)
-    private int age;
+    @Column(name = "is_easy", nullable = true)
+    private int isEasy;
     @Column(name = "kiosk_height", nullable = true)
     private int height;
 
