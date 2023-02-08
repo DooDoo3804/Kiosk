@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping(path = "test/")
+@RequestMapping(path = "/inburger")
 public class OrderDetailController {
 
     private OrderDetailService orderDetailService;
@@ -26,19 +26,19 @@ public class OrderDetailController {
     }
 
     // 주문에 해당되는 모든 상세 주문 조회
-    @GetMapping(value = "order-detail/")
-    public Collection<OrderDetail> getAllOrderDetailByOrderId(@RequestBody long id) {
+    @GetMapping(value = "/order-detail/details/{id}")
+    public Collection<OrderDetail> getAllOrderDetailByOrderId(@PathVariable("id") long id) {
         return orderDetailService.getAllOrderDetail(id);
     }
 
     // 주문 하기 (상세 주문 1개 생성)
-    @PostMapping(value = "order-detail/")
+    @PostMapping(value = "/order-detail")
     public ResponseEntity<OrderDetail> createOrderDetail(@RequestBody OrderDetail orderDetail) {
         return new ResponseEntity<OrderDetail>(orderDetailService.saveOrderDetail(orderDetail), HttpStatus.CREATED);
     }
 
     // 상세 주문 보기(1개)
-    @GetMapping(value = "order-detail/{id}")
+    @GetMapping(value = "/order-detail/{id}")
     public OrderDetail getOrderDetailById(@PathVariable("id") long id ) {
         return orderDetailService.getOrderDetailById(id);
     }

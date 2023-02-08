@@ -1,11 +1,15 @@
 package com.inburger.backend.models;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -20,7 +24,7 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "order_count", nullable = false)
+    @Column(name = "menu_count", nullable = false)
     private Integer count;
 
     @Column(name = "each_menu_price", nullable = false)
@@ -31,14 +35,17 @@ public class OrderDetail {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
+    @JsonBackReference //추가
     private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_id")
+    @JsonBackReference //추가
     private Menu menu;
 
+    @JsonManagedReference  // 추가
     @OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL)
-    private List<Custom> customs;
+    private List<Custom> customs = new ArrayList<>();
 
 }
 

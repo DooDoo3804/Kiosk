@@ -1,13 +1,17 @@
 import './App.css';
 import EasyMode from './layout/EasyMode';
-import CustmerList from './layout/CustmerList';
-import EmployeeService from './EmployeeService';
 import NomalMode from './layout/NormalMode';
+<<<<<<< HEAD
 import React from 'react';
 import io from 'socket.io-client';
 import { Link, Route, BrowserRouter , Routes } from "react-router-dom";
 import Choose from './layout/Choose';
 import axios from 'axios'
+=======
+import React, { useState, useEffect } from 'react';
+import  socketIOClient from 'socket.io-client';
+const ENDPOINT = "http://70.12.246.124:8080/admin/users/1";
+>>>>>>> cf16215b7a86ea90229e90243ac78c8a5e628216
 
 axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
 

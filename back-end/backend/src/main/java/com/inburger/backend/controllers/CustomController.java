@@ -5,13 +5,14 @@ import com.inburger.backend.repositories.CustomRepository;
 import com.inburger.backend.services.CustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "test/")
+@RequestMapping(path = "/inburger")
 public class CustomController {
 
     private CustomService customService;
@@ -24,10 +25,9 @@ public class CustomController {
         this.customService = customService;
     }
 
-    @GetMapping(value = "customs/")
+    @GetMapping(value="/customs")
     public List<Custom> getAllCustom(){
         return customService.getAllCustom();
     }
-
 
 }

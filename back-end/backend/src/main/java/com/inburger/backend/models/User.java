@@ -2,8 +2,11 @@ package com.inburger.backend.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,6 +30,7 @@ public class User {
     private int height;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Order> history;
-
+    @JsonManagedReference
+    @JsonIgnore
+    private List<Order> history = new ArrayList<>();
 }

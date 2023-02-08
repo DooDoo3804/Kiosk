@@ -1,11 +1,14 @@
 package com.inburger.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,11 +28,14 @@ public class Menu {
     @Column(name = "menu_price", nullable = false)
     private int price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+
+    @JsonBackReference //추가
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @OneToMany(mappedBy = "menu")
-    private List<OrderDetail> orderDetails;
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<OrderDetail> orderDetails = new ArrayList<>();
 
 }

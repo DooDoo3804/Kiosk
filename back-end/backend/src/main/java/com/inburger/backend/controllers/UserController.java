@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "admin/")
+@RequestMapping(path = "/inburger")
 
 @CrossOrigin("http://70.12.246.87:3000/")
 
@@ -27,27 +27,22 @@ public class UserController {
     }
 
     // 모든 유저 정보 조회
-    @GetMapping(value = "users/")
+    @GetMapping(value = "/users")
     public List<User> getAllUser(){
         return userService.getAllUser();
     }
 
-    // 나이 보내기기
-   @GetMapping(value = "users/{id}")
-    public int getUserById(@PathVariable("id") int id){
-        // FE 에서 나이 UI 바꾸고, 높이 kiosk 높이 바꾸고
-        return userService.getUserById(id).getAge();
-    }
-
     // 유저 정보 저장
-    @PostMapping(value = "users/")
-    public ResponseEntity<User> saveUser(@RequestBody User user) {
-        return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.CREATED);
+    @PostMapping(value = "/user", produces = "application/json;charset=UTF-8")
+    public User saveUser(@RequestBody User user) {
+//        return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.CREATED);
+
+        return userService.saveUser(user);
     }
 
     // 유저 정보 삭제
-    @DeleteMapping(value = "users/")
-    public void deleteUser(@RequestBody long id){
+    @DeleteMapping(value = "/user/{id}")
+    public void deleteUser(@PathVariable("id") Long id){
         userService.deleteUserById(id);
     }
 
