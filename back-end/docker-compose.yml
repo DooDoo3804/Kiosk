@@ -18,4 +18,6 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://3.36.49.220:3306/inburger?useSSH=false
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: "1234"
+    ports:
+      - 8081:8081
     restart: always
