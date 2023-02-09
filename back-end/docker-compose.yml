@@ -4,7 +4,7 @@ services:
     image: mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD: 1234
+      - MYSQL_ROOT_PASSWORD: "1234"
       - MYSQL_DATABASE=mydb
     volumes:
       - ./db/data:/var/lib/mysql
@@ -17,5 +17,5 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://3.36.49.220:3306/inburger?useSSH=false
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DATASOURCE_PASSWORD: "1234"
     restart: always
