@@ -1,10 +1,8 @@
-import React from 'react';
+import React , {useState}from 'react';
 import CommentList from './CommentList';
 import Sidebar from './sidebarlist2'
-import Menu from './Menulist2'
-import CustmerList from './CustmerList';
 import Header from './Header'
-import CutmerEasyMode from './CutmerEasyMode';
+import CustmerList from './CustmerList';
 
 const styles = {
     wrapper:{
@@ -17,19 +15,22 @@ const styles = {
   };
   
 
-function EasyMode() {
+function NormalMode() {
+
+  const [selectMenu, setMenu] = useState('');
+  const [check, setcheck] = useState('');
+  const [custmercheck, setcustmer] = useState(false);
+  const [sidecheck, setside] = useState(true);
+
     return (
       <div>
-       <Header/>
-
-       <div style={styles.wrapper}>
-        <Sidebar/>
-        <Menu number={1}/>
-      </div>
-      <CommentList/> 
+      <Header stye={{border:"1px"}}/>
+      {sidecheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} setside={setside}/>}
+      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check}/>}
+      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check}/> 
       </div>
   
     );
   }
   
-  export default EasyMode;
+  export default NormalMode;

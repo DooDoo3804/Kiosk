@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { useNavigate } from "react-router-dom"
 import Modal from "./Modal";
 import choose from "./choose.css"
@@ -13,26 +13,58 @@ function Choose() {
   // 결제 완료 모달
   const [payModal, setPayModal] = useState(false);
 
+  // 먹고가기 선택 여부 state
+  const [isSelect, setSelect] = useState(false);
+
+  // 가져가기 선택 여부 state
+  const [isClick, setClick] = useState(false);
+
+  // 첫화면으로 이동
+  const navigate = useNavigate()
+
+  // useEffect(() => {
+   
+  //   if(isClick)
+  //   {
+  //     let color = document.getElementsByTagName("button");
+  //     color[2].style.backgroundColor = "red";
+  //     setClick(false);
+  //   }
+
+  //   if(isSelect)
+  //   {
+  //     let color = document.getElementsByTagName("button");
+  //     color[1].style.backgroundColor = "red";
+  //     setSelect(false);
+  //   }
+
+  //   set
+
+  // }, [isClick, isSelect]);
+  
   return (
   <div>
       {takeoutModal && (
         <Modal closeModal={() => setTakeoutModal(!takeoutModal)}>
           <div id="rectangle">
-            <div className="box green" onClick={() => { 
-              setTakeoutModal(!takeoutModal) 
-              setPayModal(!payModal)}} > 먹고 가기 </div> 
-            <div className="box green" onClick={() => { 
+            <button className="box" onClick={() => { 
+              setSelect(!isSelect)
+                setTakeoutModal(!takeoutModal)
+                setPayModal(!payModal)
+              }}> 먹고 가기 </button> 
+            <button className="box" onClick={() => { 
+              setClick(!isClick)
               setTakeoutModal(!takeoutModal)
-              setPayModal(!payModal)}} > 가져 가기 </div>
+              setPayModal(!payModal)}} > 가져 가기 </button>
           </div>
         </Modal>
       )}
         {payModal && (
         <Modal closeModal={() => setPayModal(!payModal)}>
           <div id="rectangle">
-          <Link to="/"> 
-            <button className="bigbox green" onClick={() => setPayModal(!payModal)}>결제가 완료되었습니다</button>
-          </Link> 
+            <button className="bigbox" onClick={() => {
+              setPayModal(!payModal)
+              navigate('/')}}> <div style={{margin:"120px"}}>결제가<br/>완료 되었습니다</div></button>     
           </div>
         </Modal>
         )}
