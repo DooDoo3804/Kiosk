@@ -1,5 +1,6 @@
 package com.inburger.backend.controllers;
 
+import com.inburger.backend.models.Custom;
 import com.inburger.backend.models.Order;
 import com.inburger.backend.models.OrderDTO;
 import com.inburger.backend.models.OrderDetail;
@@ -40,25 +41,16 @@ public class OrderController {
 
     // 주문과 유저 정보를 받아서 저장
     @PostMapping(value = "/order")
-    public Order createOrder(@RequestBody OrderDTO orderDTO) {
+    public List<OrderDetail> createOrder(@RequestBody OrderDTO orderDTO) {
         // 전체 order 주문 저장
         Order newOrder = orderService.saveOrder(orderDTO.getOrder(), orderDTO.getUser_id());
 
         // 전체 order에 따른 orderDetail들을 생성
-        orderDTO.getOrderDetailDTO().stream().map(od ->
+        List<OrderDetail> newOrderDetails = orderDTO.getOrderDetailDTO().stream().map(od ->
                 orderDetailService.saveOrderDetail(od, newOrder.getId())).collect(Collectors.toList());
-
-
-        return newOrder;
+        return newOrderDetails;
 
         // 각 OrderDetail에 맞는 Custom을 등록
-
-
-        // order-detail
-        // count
-        // price
-        // is_set
-        // custom
 
     }
 }

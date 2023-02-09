@@ -8,6 +8,7 @@ import com.inburger.backend.models.OrderDetail;
 import com.inburger.backend.repositories.CategoryRepository;
 import com.inburger.backend.repositories.CustomRepository;
 import com.inburger.backend.repositories.IngredientRepository;
+import com.inburger.backend.repositories.OrderDetailRepository;
 import com.inburger.backend.services.CustomService;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +20,17 @@ public class CustomServiceImpl implements CustomService {
     private CustomRepository customRepository;
     private CategoryRepository categoryRepository;
     private IngredientRepository ingredientRepository;
+    private OrderDetailRepository orderDetailRepository;
+
     private CustomServiceImpl(CustomRepository customRepository,
                               CategoryRepository categoryRepository,
-                              IngredientRepository ingredientRepository) {
+                              IngredientRepository ingredientRepository,
+                              OrderDetailRepository orderDetailRepository) {
         super();
         this.customRepository = customRepository;
         this.categoryRepository = categoryRepository;
         this.ingredientRepository = ingredientRepository;
+        this.orderDetailRepository = orderDetailRepository;
     }
     @Override
     public List<Custom> getAllCustom() {
@@ -33,14 +38,17 @@ public class CustomServiceImpl implements CustomService {
     }
 
     @Override
-    public Custom saveCustom(long ingredient_id, int category_count, OrderDetail orderDetailId) {
+    public Custom saveCustom(long ingredient_id, int count, long orderDetailId) {
         Ingredient ingredient = ingredientRepository.findById(ingredient_id).orElseThrow(() ->
                 new ResourceNotFoundException("category", "category_id", ingredient_id));
+        OrderDetail orderdetail = orderDetailRepository.findById(orderDetailId).orElseThrow(() ->
+                new ResourceNotFoundException("OrderDetail", "orderDetailId", orderDetailId));
         Custom newCustom = Custom.builder()
                 .ingredient(ingredient)
-                .orderDetail(orderDetailId)
-                .count(category_count)
+                .orderDetail(orderdetail)
+                .count(count)
                 .build();
+        customRepository.save(newCustom);
         return newCustom;
     }
 
