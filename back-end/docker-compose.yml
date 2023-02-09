@@ -12,7 +12,7 @@ services:
       - 3306:3306
   application:
     build: ./back-end/backend/
-    depands_on:
+    depends_on:
       - database
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://3.36.49.220:3306/inburger?useSSH=false
