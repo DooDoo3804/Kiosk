@@ -24,7 +24,7 @@ export default function CutmerEasyMode(props) {
   
         <div className="btn">
             <button className="blue">커스텀하기</button>
-            <button  onClick={()=> setstate(state + 1)} className="red" >이거먹기</button>
+            <button  onClick={()=> setstate(state + 1)} className="blue" >이거먹기</button>
         </div>
     </div>
   )

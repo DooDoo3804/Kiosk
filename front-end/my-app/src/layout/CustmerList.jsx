@@ -1,7 +1,7 @@
-import React from "react";
 import CustmerBar from "./CustmerBar";
 import CustmerSide from "./CustmerSide";
 import CustmerImage from "./CustmerImage";
+import React, {userState, useState, useEffect} from "react";
 
 const styles = {
     wrapper:{
@@ -9,6 +9,9 @@ const styles = {
         padding: 0,
         border: "1px solid grey",
         borderRadius: 20,
+        display: "flex",
+        flexDirection:"column",
+        height: 1000,
     },
     wrapper2:{
         margin: 0,
@@ -16,8 +19,7 @@ const styles = {
         borderRadius: 20,
         display: "flex",
         flexDirection:"row",
-        flexWrap: "wrap",
-
+        height: "100%",
     },
     wrapper3:{
         margin: 0,
@@ -30,7 +32,7 @@ const styles = {
     },
     menuBox:{
         margin: 0,
-        padding: 40,
+        padding: 0,
         border: "1px solid grey",
         borderRadius: 20,
         width: "20%",
@@ -45,27 +47,32 @@ const styles = {
     }
 
 };
-
-
 function CustmerList(props){
+
+    const [selectbutton, setbutton] = useState('패티');
+    const [custmenu, setcustmenu] = useState('')
+    const [state, setstate] = useState(0);
+
+    useEffect(() => {
+        if(props.imagemenu !== ''){
+        console.log("누름");
+        props.checkfun(state);
+        }
+    },[state]);
+
     return(
         <div style={styles.wrapper}>
-
         <div style={styles.wrapper3}>
-        <button style={styles.Button}>담기</button>
+        <button onClick={()=> setstate(state + 1)} style={styles.Button}>담기</button>
         <button style={styles.Button}>토글</button>
         </div>
 
-        <CustmerBar/>
-    
-         <div style={styles. wrapper2}>
-            
-        <CustmerSide/>
-        <CustmerImage/>
-         
+        <CustmerBar setbutton={setbutton}/>
+         <div style={styles.wrapper2}>
+        <CustmerSide selectbutton={selectbutton}/>
+        <CustmerImage menuname={props.imagemenu}/>
          </div>
- 
-         </div>
+        </div>
      );
 }
 
