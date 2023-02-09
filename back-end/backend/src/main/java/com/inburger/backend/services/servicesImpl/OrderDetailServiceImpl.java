@@ -5,6 +5,7 @@ import com.inburger.backend.models.*;
 import com.inburger.backend.repositories.MenuRepository;
 import com.inburger.backend.repositories.OrderDetailRepository;
 import com.inburger.backend.repositories.OrderRepository;
+import com.inburger.backend.services.CustomService;
 import com.inburger.backend.services.OrderDetailService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,14 +19,17 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     private OrderDetailRepository orderDetailRepository;
     private OrderRepository orderRepository;
     private MenuRepository menuRepository;
+    private CustomService customService;
 
     public OrderDetailServiceImpl(OrderDetailRepository orderDetailRepository,
                                   MenuRepository menuRepository,
-                                  OrderRepository orderRepository) {
+                                  OrderRepository orderRepository,
+                                  CustomService customService) {
         super();
         this.orderDetailRepository = orderDetailRepository;
         this.menuRepository = menuRepository;
         this.orderRepository = orderRepository;
+        this.customService = customService;
     }
 
     @Override
@@ -52,6 +56,11 @@ public class OrderDetailServiceImpl implements OrderDetailService {
                 .order(order)
                 .menu(menu)
                 .build();
+
+        if (orderDetailDTO.getCustomDTO() != null) {
+            orderDetailDTO.getCustomDTO().stream().map(cdto ->
+                    customService.saveCustom(cdto.getIngredient_id(), cdto.getCount(), newOrderDetail));
+        }
         return newOrderDetail;
     }
 

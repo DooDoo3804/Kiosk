@@ -1,6 +1,7 @@
 package com.inburger.backend.services.servicesImpl;
 
 import com.inburger.backend.models.Category;
+import com.inburger.backend.models.Custom;
 import com.inburger.backend.repositories.CategoryRepository;
 import com.inburger.backend.services.CategoryService;
 import org.springframework.stereotype.Service;
@@ -21,4 +22,5 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> getAllCategory() {
         return categoryRepository.findAll();
     }
+
 }

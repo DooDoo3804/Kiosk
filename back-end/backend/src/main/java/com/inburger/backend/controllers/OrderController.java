@@ -47,6 +47,8 @@ public class OrderController {
         // 전체 order에 따른 orderDetail들을 생성
         orderDTO.getOrderDetailDTO().stream().map(od ->
                 orderDetailService.saveOrderDetail(od, newOrder.getId())).collect(Collectors.toList());
+
+
         return newOrder;
 
         // 각 OrderDetail에 맞는 Custom을 등록
