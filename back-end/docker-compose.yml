@@ -11,7 +11,7 @@ services:
     ports:
       - 3306:3306
   application:
-    build: ./back-end/backend/
+    build: ./backend/
     depends_on:
       - database
     environment:
