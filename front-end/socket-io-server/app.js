@@ -25,16 +25,15 @@ io.on("connection", (socket) =>{
     console.log("접속");
 
     socket.on("pi", (data) =>{
-        console.log(`파이에서 들어온 메시지 수신: ${data}`);
+        console.log(`pi에서 들어온 메시지 수신: ${data}`);
         socket.broadcast.emit('react', data);
     }); 
 
     socket.on("react", (data) =>{
-        console.log(`리액트에서 들어온 메시지 수신: ${data}`);
+        console.log(`react에서 들어온 메시지 수신: ${data}`);
         socket.broadcast.emit('pi', data);
     }); 
 
-    console.log("나가기 직전")
     socket.on("disconnect", () => {
         console.log("나감");
         clearInterval(interval);
