@@ -8,5 +8,5 @@ import java.util.List;
 public interface CustomService {
 
     List<Custom> getAllCustom();
-    Custom saveCustom(long ingredient_id, int count, long orderDetailId);
+    Custom saveCustom(String name, int count, long orderDetailId);
 }

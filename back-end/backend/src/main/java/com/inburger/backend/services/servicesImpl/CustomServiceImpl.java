@@ -38,9 +38,11 @@ public class CustomServiceImpl implements CustomService {
     }
 
     @Override
-    public Custom saveCustom(long ingredient_id, int count, long orderDetailId) {
-        Ingredient ingredient = ingredientRepository.findById(ingredient_id).orElseThrow(() ->
-                new ResourceNotFoundException("category", "category_id", ingredient_id));
+    public Custom saveCustom(String ingredientName, int count, long orderDetailId) {
+        System.out.println(ingredientRepository.findByName(ingredientName));
+        Ingredient ingredient = ingredientRepository.findByName(ingredientName);
+//        Ingredient ingredient = ingredientRepository.findById(ingredient_id).orElseThrow(() ->
+//                new ResourceNotFoundException("category", "category_id", ingredient_id));
         OrderDetail orderdetail = orderDetailRepository.findById(orderDetailId).orElseThrow(() ->
                 new ResourceNotFoundException("OrderDetail", "orderDetailId", orderDetailId));
         Custom newCustom = Custom.builder()

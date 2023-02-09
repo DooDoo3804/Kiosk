@@ -10,11 +10,11 @@ import lombok.Setter;
 @Data
 public class CustomDTO {
 
-    long ingredientId;
+    String ingredientName;
     int ingredientCount;
 
-    public CustomDTO(long ingredientId, int ingredientCount) {
-        this.ingredientId = ingredientId;
+    public CustomDTO(String ingredientName, int ingredientCount) {
+        this.ingredientName = ingredientName;
         this.ingredientCount = ingredientCount;
     }
 }

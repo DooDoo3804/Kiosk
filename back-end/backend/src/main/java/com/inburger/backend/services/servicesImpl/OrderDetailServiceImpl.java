@@ -61,7 +61,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
                 .menu(menu)
                 .build());
         for (CustomDTO customdto : orderDetailDTO.getCustomDTO()) {
-            customService.saveCustom(customdto.getIngredientId(), customdto.getIngredientCount(), newOrderDetail.getId());
+            customService.saveCustom(customdto.getIngredientName(), customdto.getIngredientCount(), newOrderDetail.getId());
         }
         return newOrderDetail;
     }
