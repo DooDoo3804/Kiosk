@@ -43,14 +43,7 @@
     font-weight: bold;
   }
   
-  .red {
+  .blue:hover{
     background-color: #C1121F;
-    color: white;
-    margin: 0;
-    height: 60px;
-    border-radius: 10px;
-    font-size: 25px;
-    font-weight: bold;
   }
-  
-  
+

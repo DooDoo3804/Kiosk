@@ -26,7 +26,6 @@ const comments = [
  
 ];
 
-
 const styles = {
   wrapper2:{
     margin: 0,
@@ -59,10 +58,10 @@ nameText:{
     flexDirection:"row",
     borderRadius: 0,
 },
+
 };
 
 let count = 1;
-
 function Sidebalist(props)
 {
   const [, setCount] = useState(0);
@@ -78,7 +77,12 @@ function Sidebalist(props)
     list[i].style.backgroundColor = "#FDF0D5";
   }
   list[count - 1].style.backgroundColor = "#C1121F";
- // list[i].backgroundColor = "red";
+
+  let list2 = document.getElementsByClassName("menu");
+         // console.log(list.length);
+
+   for(let i = 0; i < list2.length; i++)
+      list2[i].style.backgroundColor  = "#FDF0D5";
 
   setCount({})
   }
