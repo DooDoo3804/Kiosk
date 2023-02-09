@@ -2,23 +2,20 @@ version: "3.3"
 services:
   database:
     image: mysql
+    restart: always
     environment:
-      MYSQL_DATABASE: inburger
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 1234
-      MYSQL_ROOT_HOST: root
-      MYSQL_ROOT_PASSWORD: 1234
-    volumns:
+      - MYSQL_ROOT_PASSWORD: 1234
+      - MYSQL_DATABASE=mydb
+    volumes:
       - ./db/data:/var/lib/mysql
     ports:
       - 3306:3306
-    restart: always
   application:
     build: ./back-end/backend/
     depands_on:
       - database
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://3.36.49.220:3306/inburger
+      SPRING_DATASOURCE_URL: jdbc:mysql://3.36.49.220:3306/inburger?useSSH=false
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 1234
     restart: always
