@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/inburger")
 
-@CrossOrigin("http://70.12.246.87:3000/")
+@CrossOrigin("http://3.36.49.220:3000/")
 
 public class UserController {
 
