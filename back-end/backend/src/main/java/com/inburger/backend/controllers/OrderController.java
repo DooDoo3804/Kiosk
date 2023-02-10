@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path="/inburger")
+@CrossOrigin("http://3.36.49.220:3000/")
 public class OrderController {
 
     private final OrderRepository orderRepository;
