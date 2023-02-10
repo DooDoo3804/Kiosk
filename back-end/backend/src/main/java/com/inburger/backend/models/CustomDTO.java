@@ -1,5 +1,6 @@
 package com.inburger.backend.models;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,13 +9,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
+@Builder
+
 public class CustomDTO {
 
-    long ingredientId;
+    String ingredientName;
     int ingredientCount;
 
-    public CustomDTO(long ingredientId, int ingredientCount) {
-        this.ingredientId = ingredientId;
+    public CustomDTO(String ingredientName, int ingredientCount) {
+        this.ingredientName = ingredientName;
         this.ingredientCount = ingredientCount;
     }
 }

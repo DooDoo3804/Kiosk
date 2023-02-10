@@ -44,7 +44,6 @@ public class OrderDetail {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Custom> customs = new ArrayList<>();
 
 }
