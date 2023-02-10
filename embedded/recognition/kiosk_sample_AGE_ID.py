@@ -1,4 +1,6 @@
 # COMMON lib
+import sys
+import os
 import numpy as np
 import cv2
 
@@ -18,13 +20,13 @@ from datetime import datetime
 # GPIO sensor lib
 from gpiozero import DistanceSensor
 from time import sleep
-sensor = DistanceSensor(21,20) # Echo, Trig
+sensor = DistanceSensor(21, 20)  # Echo, Trig
 
 # SYSTEMCALL lib
-import os
-import sys
 
 # FACE ID CLASS
+
+
 class FaceClassifier():
     def __init__(self, threshold, ratio):
         self.similarity_threshold = threshold
@@ -53,15 +55,16 @@ class FaceClassifier():
 
     # return list of dlib.rectangle
     def locate_faces(self, frame):
-        #start_time = time.time()
+        # start_time = time.time()
         if self.ratio == 1.0:
             rgb = frame[:, :, ::-1]
         else:
-            small_frame = cv2.resize(frame, (0, 0), fx=self.ratio, fy=self.ratio)
+            small_frame = cv2.resize(
+                frame, (0, 0), fx=self.ratio, fy=self.ratio)
             rgb = small_frame[:, :, ::-1]
         boxes = face_recognition.face_locations(rgb)
-        #elapsed_time = time.time() - start_time
-        #print("locate_faces takes %.3f seconds" % elapsed_time)
+        # elapsed_time = time.time() - start_time
+        # print("locate_faces takes %.3f seconds" % elapsed_time)
         if self.ratio == 1.0:
             return boxes
         boxes_org_size = []
@@ -151,33 +154,37 @@ class FaceClassifier():
         cv2.line(frame, (left, top), (left+width, top), color, thickness)
         cv2.line(frame, (right, top), (right-width, top), color, thickness)
         cv2.line(frame, (left, bottom), (left+width, bottom), color, thickness)
-        cv2.line(frame, (right, bottom), (right-width, bottom), color, thickness)
+        cv2.line(frame, (right, bottom),
+                 (right-width, bottom), color, thickness)
         cv2.line(frame, (left, top), (left, top+height), color, thickness)
         cv2.line(frame, (right, top), (right, top+height), color, thickness)
-        cv2.line(frame, (left, bottom), (left, bottom-height), color, thickness)
-        cv2.line(frame, (right, bottom), (right, bottom-height), color, thickness)
+        cv2.line(frame, (left, bottom),
+                 (left, bottom-height), color, thickness)
+        cv2.line(frame, (right, bottom),
+                 (right, bottom-height), color, thickness)
 
         # draw name
-        #cv2.rectangle(frame, (left, bottom + 35), (right, bottom), (0, 0, 255), cv2.FILLED)
+        # cv2.rectangle(frame, (left, bottom + 35), (right, bottom), (0, 0, 255), cv2.FILLED)
         font = cv2.FONT_HERSHEY_DUPLEX
         cv2.putText(frame, face.name, (left + 6, bottom + 30), font, 1.0,
                     (255, 255, 255), 1)
+
 
 new_order = 1
 app = FaceAnalysis(providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
 app.prepare(ctx_id=0, det_size=(640, 640))
 
 # main
-while(True):
-    #global new_order
+while (True):
+    # global new_order
 
     # print(sensor.distance)
     # dist of user to kiosk
-    if(sensor.distance>0.5): 
+    if (sensor.distance > 0.5):
         sleep(1)
         continue  # wait for dist <=5
 
-    if(new_order):
+    if (new_order):
         # kiosk mode num / 1:normal 2:easy
         mode = 0
 
@@ -185,18 +192,18 @@ while(True):
         ID = 0
 
         print("WELCOME!!")
-        
+
         # when man leave the kiosk
         reset = 0
-        while(sensor.distance>0.5 and reset<10):
+        while (sensor.distance > 0.5 and reset < 10):
             reset += 1
-            print("I'M WAITING FOR %d SEC" %reset)
+            print("I'M WAITING FOR %d SEC" % reset)
             sleep(1000)
-        
-        if(reset==10):
+
+        if (reset == 10):
             print("NOBODY HERE I'M BACK")
             new_order = 1
-            break    
+            break
 
         # camera ON (ORDER START!)
         src = cv2.VideoCapture(0)
@@ -236,7 +243,7 @@ while(True):
         if src_file == "0":
             src_file = 0
 
-        #src = cv2.VideoCapture(0)
+        # src = cv2.VideoCapture(0)
         if not src.isOpened():
             print("cannot open inputfile", src_file)
             src.release()
@@ -247,17 +254,18 @@ while(True):
         frame_rate = src.get(5)
         frames_between_capture = int(round(frame_rate * args.seconds))
 
-        #print("source", args.inputfile)
-        #print("original: %dx%d, %f frame/sec" % (src.get(3), src.get(4), frame_rate))
+        # print("source", args.inputfile)
+        # print("original: %dx%d, %f frame/sec" % (src.get(3), src.get(4), frame_rate))
         ratio = float(args.resize_ratio)
         if ratio != 1.0:
             s = "RESIZE_RATIO: " + args.resize_ratio
-            s += " -> %dx%d" % (int(src.get(3) * ratio), int(src.get(4) * ratio))
-            #print(s)
-        #print("process every %d frame" % frames_between_capture)
-        #print("similarity shreshold:", args.threshold)
-        #if args.stop > 0:
-            #print("Detecting will be stopped after %d second." % args.stop)
+            s += " -> %dx%d" % (int(src.get(3) * ratio),
+                                int(src.get(4) * ratio))
+            # print(s)
+            # print("process every %d frame" % frames_between_capture)
+            # print("similarity shreshold:", args.threshold)
+            # if args.stop > 0:
+            # print("Detecting will be stopped after %d second." % args.stop)
 
         # load person DB
         result_dir = "result"
@@ -268,7 +276,7 @@ while(True):
         # prepare capture directory
         num_capture = 0
         if args.capture:
-            #print("Captured frames are saved in '%s' directory." % args.capture)
+            # print("Captured frames are saved in '%s' directory." % args.capture)
             if not os.path.isdir(args.capture):
                 os.mkdir(args.capture)
 
@@ -277,17 +285,17 @@ while(True):
             global running
             running = False
         prev_handler = signal.signal(signal.SIGINT, signal_handler)
-        #if args.display:
-            #print("Press q to stop detecting...")
-        #else:
-            #print("Press ^C to stop detecting...")
+        # if args.display:
+        # print("Press q to stop detecting...")
+        # else:
+        # print("Press ^C to stop detecting...")
 
         fc = FaceClassifier(args.threshold, ratio)
         frame_id = 0
         running = True
 
         total_start_time = time.time()
-        USRID =''
+        USRID = ''
         while running:
 
             ret, frame = src.read()
@@ -300,10 +308,10 @@ while(True):
             #     continue
 
             frame_id += 1
-            if frames_between_capture!=0 and frame_id % frames_between_capture != 0:
+            if frames_between_capture != 0 and frame_id % frames_between_capture != 0:
                 continue
             if frame_rate == 0:
-                frame_rate+=1
+                frame_rate += 1
             seconds = round(frame_id / frame_rate, 3)
             if args.stop > 0 and seconds > args.stop:
                 src.release()
@@ -349,33 +357,35 @@ while(True):
             s += " -> " + repr(pdb)
             if num_capture > 0:
                 s += ", %d captures" % num_capture
-            #print(s, end="    ")
+            # print(s, end="    ")
 
             ##############################################################################
             # guess face age when (taging complete)
-            if(len(faces)!=0):
-                if(faces[0].name != 'unknown'):
+            if (len(faces) != 0):
+                if (faces[0].name != 'unknown'):
                     USRID = faces[0].name
                     print("TAG COMPLETE")
                     age = 0
                     for i in range(3):
                         img = frame
                         faces = app.get(img)
-                        #rimg = app.draw_on(img, faces)
+                        # rimg = app.draw_on(img, faces)
                         if faces != []:
                             age += faces[0]['age']
-                            print("AGE:",age)
-                        else: print("CAN NOT GUESS AGE")
+                            print("AGE:", age)
+                        else:
+                            print("CAN NOT GUESS AGE")
                         ret, frame = src.read()
-                        while ret==False:
+                        while ret == False:
                             ret, frame = src.read()
-                    if age>180:
+                    if age > 180:
                         mode = 2
                     else:
                         mode = 1
                     src.release()
                     break
-            else : print("check")
+            else:
+                print("check")
 
             #####################################################################################
 
@@ -384,8 +394,8 @@ while(True):
         running = False
         src.release()
         total_elapsed_time = time.time() - total_start_time
-        #print()
-        #print("total elapsed time: %.3f second" % total_elapsed_time)
+        # print()
+        # print("total elapsed time: %.3f second" % total_elapsed_time)
 
         pdb.save_db(result_dir)
         pdb.print_persons()
@@ -394,29 +404,30 @@ while(True):
         height = 170
 
         # send data
-        print("SENDING DATA MODE:%d , HEIGHT: %d, ID:%s" %(mode,height,USRID))
+        print("SENDING DATA MODE:%d , HEIGHT: %d, ID:%s" %
+              (mode, height, USRID))
 
         # camera OFF
         src.release()
         new_order = 0
-    
+
     # check recive message
     message = 0
 
     # check is ordering (wait 10 sec)
-    if(message == 'END'):
+    if (message == 'END'):
         print("THE ORDER IS END")
         new_order = 1
         continue
-    
+
     sleep(1)
     reset = 0
-    while(sensor.distance>0.5 and reset<10):
+    while (sensor.distance > 0.5 and reset < 10):
         reset += 1
-        print("I'M WAITING FOR %d SEC" %reset)
+        print("I'M WAITING FOR %d SEC" % reset)
         sleep(1)
-    
-    if(reset==10):
+
+    if (reset == 10):
         print("NOBODY HERE I'M BACK")
         new_order = 1
         continue
