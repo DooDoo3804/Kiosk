@@ -7,14 +7,12 @@ const styles = {
     wrapper:{
         marginBottom: 10,
         padding : 15,
-        border: "1px solid grey",
         borderRadius: 20,
         textAlign:"center",
         backgroundColor: "#FDF0D5",
         boxSizing: "content-box",
-        width: "28%",
-        height: "28%",
-       
+        width: "27%",
+        height: "27%",
     },
     nameText:{   
         color: "black",
@@ -24,23 +22,21 @@ const styles = {
     },
 };
 
-
-
 function Menu(props){
 
-    const [select, setState] = useState('');
-
-    function addCart(str)
-    {
-        props.imageMenu(str);
-        console.log(str);
-        setState({});
+    const [,setState] = useState(0);
+    
+     function addCart(str)
+     {
+         props.imageMenu(str);
+         props.setuse(props.id);
+         setState({});
     }
 
     return(
-       <button onClick={() => addCart(props.name)} style={styles.wrapper}>
+       <button className="menu" onClick={() => addCart(props.name)} style={styles.wrapper}>
          <span style={styles.nameText}>{props.name}</span>
-        <br></br>
+        <br></br><br></br>
         <span style={styles.nameText}>{props.price}</span>
         </button>
     );
