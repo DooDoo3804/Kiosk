@@ -44,6 +44,8 @@ function App() {
 
   <NomalMode/>
 
+
+
   // if(type === 0){
   //   return (
   //     <div>

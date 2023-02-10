@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 
 const styles = {
@@ -6,7 +6,7 @@ const styles = {
         border: 0,
         width:"180px",
         height:"100%",
-        marginTop: 40,
+        marginTop: 30,
     },
     menuBox:{
        padding: 0,
@@ -17,9 +17,11 @@ const styles = {
     } 
 };
 
+
 function Ingredient(props){
+
     return(
-        <button style={styles.menuBox}>
+        <button onClick={()=>{ props.setmenu(props.name); props.setcheck(1)}}style={styles.menuBox}>
          <img style={styles.nameText} src={process.env.PUBLIC_URL + `./images/${props.name}.png`} alt={props.name}/>
         </button>
     );
