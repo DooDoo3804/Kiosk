@@ -2,13 +2,13 @@ import React from "react";
 
 
 const styles = {
-    nameText:{   
+    nameTextS:{   
         border: 0,
         width:"300px",
         height:"100%",
         marginTop: 10,
     },
-    menuBox:{
+    menuBoxS:{
        padding: 0,
        margin:0,
        border: 0,
@@ -19,8 +19,8 @@ const styles = {
 
 function Ingredient(props){
     return(
-        <button style={styles.menuBox}>
-         <img style={styles.nameText} src={process.env.PUBLIC_URL + `./images/${props.name}.png`} alt={props.name}/>
+        <button style={styles.menuBoxS}>
+         <img style={styles.nameTextS} src={process.env.PUBLIC_URL + `./images/${props.name}.png`} alt={props.name}/>
          </button>
     );
 }

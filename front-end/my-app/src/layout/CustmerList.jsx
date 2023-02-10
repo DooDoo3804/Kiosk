@@ -5,6 +5,7 @@ import React, {userState, useState, useEffect} from "react";
 import toggle from './toggle.css'
 import { Link} from "react-router-dom";
 
+
 const styles = {
     wrapper:{
         margin: 10,
@@ -66,9 +67,9 @@ function CustmerList(props){
     },[state]);
 
     return(
-        <div style={styles.wrapper}>
-        <div style={styles.wrapper3}>
-        <button onClick={()=> {setstate(state + 1); props.setcustmer(!props.custmercheck);}} style={styles.Button}>담기</button>
+        <div className="Wrapper">
+        <div className="Wrapper3">
+        <button onClick={()=> {setstate(state + 1); props.setcustmer(!props.custmercheck);}} className="Button"><span>담기</span></button>
         <input type="checkbox" id="toggle" hidden /> 
         <label for="toggle" class="toggleSwitch" onClick={() =>  settoggle(!togglech)}>
         {togglech && <span class="toggleButton">세트</span>}
@@ -77,7 +78,7 @@ function CustmerList(props){
         </div>
 
         <CustmerBar setbutton={setbutton}/>
-         <div style={styles.wrapper2}>
+         <div className="Wrapper2">
         <CustmerSide selectbutton={selectbutton} selectmenu={selectmenu} setmenu={setmenu} />
         <CustmerImage menuname={props.imagemenu} selectmenu={selectmenu} setmenu={setmenu} togglech={togglech}/>
          </div>

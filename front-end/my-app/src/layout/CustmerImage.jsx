@@ -5,7 +5,7 @@ import Jsonfle from "../db/menusetting.json"
 //-1: 빼기 1: 넣기//
 
 const styles = {
-    wrapper:{
+    wrapperS:{
         display: "flex",
         flexDirection:"row",
         padding: 0,
@@ -41,7 +41,7 @@ function CustmertImage(props){
 
 
     return(
-       <div style={styles.wrapper}>
+       <div style={styles.wrapperS}>
         <div style={styles.foodBox}>
      
           {

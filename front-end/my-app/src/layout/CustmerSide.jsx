@@ -4,7 +4,7 @@ import Ingredient from "./Ingredient"
 
 
 const styles = {
-    wrapper:{
+    wrapperS:{
         marginLeft: 0,
         padding: 0,
         border: "1px solid grey",
@@ -20,7 +20,7 @@ function CustmerSide(props){
     let keyitems = 0;
 
     return(
-        <div style={styles.wrapper}>
+        <div style={styles.wrapperS}>
         {Jsonfle[props.selectbutton]["name"].map((comment) => {
             return (<Ingredient key={keyitems++} name={comment} selectmenu={props.selectmenu} setmenu={props.setmenu} />);
           })}
