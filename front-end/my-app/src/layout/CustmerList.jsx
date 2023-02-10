@@ -10,7 +10,7 @@ const styles = {
     wrapper:{
         margin: 10,
         padding: 0,
-        border: "1px solid grey",
+        // border: "1px solid grey",
         borderRadius: 20,
         display: "flex",
         flexDirection:"column",
@@ -25,13 +25,13 @@ const styles = {
         height: "100%",
     },
     wrapper3:{
-        margin: 0,
-        border: "1px solid grey",
+        margin: 6,
         borderRadius: 20,
         display: "flex",
         flexDirection:"row-reverse",
         flexWrap: "wrap",
         justifyContent:"space-between",
+        backgroundColor: "#F5F5F5"
     },
     menuBox:{
         margin: 0,
@@ -42,11 +42,16 @@ const styles = {
     },
     Button: {
         width: 150,
-        height: 100,
+        height: 80,
         textAlign: "center",
-        lineHeight : 6,
-        border: "1px solid grey",
-        borderRadius: 10,
+        lineHeight : 2,
+        border: 0,
+        borderRadius: 25,
+        fontSize: 30,
+        marginTop: "15px",
+        marginRight: "10px",
+        backgroundColor: "#006400",
+        fontColor: "white",
     }
 
 };
