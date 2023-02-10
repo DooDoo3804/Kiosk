@@ -5,22 +5,25 @@ import Jsonfle from "../db/menusetting.json"
 //-1: 빼기 1: 넣기//
 
 const styles = {
-    wrapperS:{
+    wrapper:{
         display: "flex",
         flexDirection:"row",
         padding: 0,
-        border: "1px solid grey",
     },
     foodBox:{
         padding: 0,
         margin: 0,
-        border: "1px solid grey",
-        borderRadius: 20, 
+        border:"1px",
         width: "70%",
+        backgroundColor: "#F5F5F5",
+        borderRadius: 20, 
+        margin: "20px",
     },
     sideBox:{
-        border: "1px solid grey",
         width: "50%",
+        backgroundColor: "#F5F5F5",
+        borderRadius: 20, 
+        margin: "20px",
     },
 };
 
@@ -41,7 +44,7 @@ function CustmertImage(props){
 
 
     return(
-       <div style={styles.wrapperS}>
+       <div style={styles.wrapper}>
         <div style={styles.foodBox}>
      
           {

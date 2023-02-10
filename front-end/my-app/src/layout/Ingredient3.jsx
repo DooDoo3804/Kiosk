@@ -4,15 +4,17 @@ import React from "react";
 const styles = {
     nameTextS:{   
         border: 0,
-        width:"300px",
+        width:"350px",
         height:"100%",
         marginTop: 10,
     },
     menuBoxS:{
+       position: "relative",
+       top: "30px",
        padding: 0,
        margin:0,
        border: 0,
-       backgroundColor: "#FFFFFF",
+       backgroundColor: "#F5F5F5",
        width: "100%",
     } 
 };

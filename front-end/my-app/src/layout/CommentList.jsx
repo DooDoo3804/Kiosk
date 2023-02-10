@@ -30,7 +30,6 @@ const comments = [
   }
 ];
 
-
 let Maxid;
 
 function CommentList(props)

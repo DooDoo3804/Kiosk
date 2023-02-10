@@ -4,16 +4,19 @@ import React, { useEffect } from "react";
 const styles = {
     nameTextS:{   
         border: 0,
-        width:"180px",
+        width:"150px",
         height:"100%",
         marginTop: 30,
     },
     menuBoxS:{
-       padding: 0,
-       margin:0,
-       border: 0,
-       backgroundColor: "#FFFFFF",
-       width: "100%",
+        position: "relative",
+        top: "5px",
+        padding: 0,
+        margin: 0,
+        border: 0,
+        borderRadius: 50,
+        width: "100%",
+        backgroundColor: "#F5F5F5",
     } 
 };
 

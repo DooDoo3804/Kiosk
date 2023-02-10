@@ -8,21 +8,20 @@ import { Link} from "react-router-dom";
 
 const styles = {
     wrapper:{
-        margin: 10,
+        margin: 20,
         padding: 0,
-        // border: "1px solid grey",
-        borderRadius: 20,
+        borderRadius: 30,
         display: "flex",
         flexDirection:"column",
-        height: 1000,
+        height: 900,
+        backgroundColor: "#D6CECE",
     },
     wrapper2:{
         margin: 0,
-        border: "1px solid grey",
         borderRadius: 20,
         display: "flex",
         flexDirection:"row",
-        height: "100%",
+        backgroundColor: "#D6CECE",
     },
     wrapper3:{
         margin: 6,
@@ -31,7 +30,7 @@ const styles = {
         flexDirection:"row-reverse",
         flexWrap: "wrap",
         justifyContent:"space-between",
-        backgroundColor: "#F5F5F5"
+     
     },
     menuBox:{
         margin: 0,
@@ -72,9 +71,9 @@ function CustmerList(props){
     },[state]);
 
     return(
-        <div className="Wrapper">
-        <div className="Wrapper3">
-        <button onClick={()=> {setstate(state + 1); props.setcustmer(!props.custmercheck);}} className="Button"><span>담기</span></button>
+        <div style={styles.wrapper}>
+        <div style={styles.wrapper3}>
+        <button onClick={()=> {setstate(state + 1); props.setcustmer(!props.custmercheck);}} style={styles.Button}><span style={{color:"white"}}>담기</span></button>
         <input type="checkbox" id="toggle" hidden /> 
         <label for="toggle" class="toggleSwitch" onClick={() =>  settoggle(!togglech)}>
         {togglech && <span class="toggleButton">세트</span>}
@@ -83,7 +82,7 @@ function CustmerList(props){
         </div>
 
         <CustmerBar setbutton={setbutton}/>
-         <div className="Wrapper2">
+         <div style={styles.wrapper2}>
         <CustmerSide selectbutton={selectbutton} selectmenu={selectmenu} setmenu={setmenu} />
         <CustmerImage menuname={props.imagemenu} selectmenu={selectmenu} setmenu={setmenu} togglech={togglech}/>
          </div>
