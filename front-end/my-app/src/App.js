@@ -22,6 +22,17 @@ import NomalMode from './layout/NormalMode';
 //   	  port: 3000
 //   	}}).then((response) => {console.log(response.data);})
 // .catch((response)=> console.log('errot!'));
+axios.get('http://3.36.49.220:8081/inburger/menu/user/1', {
+},{	
+  headers: {
+      'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
+      'Access-Control-Allow-Credentials': true
+  	},
+  	proxy: {
+  	  host: '3.36.49.220',
+  	  port: 3000
+  	}}).then((response) => {console.log(response.data);})
+.catch((response)=> console.log('errot!'));
 
 
 
@@ -43,6 +54,8 @@ function App() {
 
 
   <NomalMode/>
+
+
 
   // if(type === 0){
   //   return (
@@ -66,4 +79,3 @@ function App() {
 }
 
 export default App;
-

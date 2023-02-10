@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 
 const styles = {
-    nameText:{   
+    nameTextS:{   
         border: 0,
-        width:"180px",
+        width:"150px",
         height:"100%",
-        marginTop: 40,
+        marginTop: 30,
     },
-    menuBox:{
-       padding: 0,
-       margin:0,
-       border: 0,
-       backgroundColor: "#FFFFFF",
-       width: "100%",
+    menuBoxS:{
+        position: "relative",
+        top: "5px",
+        padding: 0,
+        margin: 0,
+        border: 0,
+        borderRadius: 50,
+        width: "100%",
+        backgroundColor: "#F5F5F5",
     } 
 };
 
+
 function Ingredient(props){
+
     return(
-        <button style={styles.menuBox}>
-         <img style={styles.nameText} src={process.env.PUBLIC_URL + `./images/${props.name}.png`} alt={props.name}/>
+        <button onClick={()=>{ props.setmenu(props.name); props.setcheck(1)}}style={styles.menuBoxS}>
+         <img style={styles.nameTextS} src={process.env.PUBLIC_URL + `./images/${props.name}.png`} alt={props.name}/>
         </button>
     );
 }

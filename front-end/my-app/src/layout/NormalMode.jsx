@@ -23,10 +23,10 @@ function NormalMode() {
   const [sidecheck, setside] = useState(true);
 
     return (
-      <div>
+      <div className=''>
       <Header stye={{border:"1px"}}/>
-      {sidecheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} setside={setside}/>}
-      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check}/>}
+      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} setside={setside}/>}
+      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} />}
       <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check}/> 
       </div>
   

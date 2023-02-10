@@ -30,7 +30,6 @@ const comments = [
   }
 ];
 
-
 let Maxid;
 
 function CommentList(props)
@@ -91,4 +90,5 @@ const Sumprice = () =>{
 
 
 export default CommentList;
+
 
