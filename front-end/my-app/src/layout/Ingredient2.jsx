@@ -2,11 +2,18 @@ import React from "react";
 
 
 const styles = {
+    wrapper:{
+        marginBottom: 10,
+        padding: 0,
+        border: 0,
+        height: "100px",
+        borderRadius: 20,
+    },
     nameText:{   
         border: 0,
-        width:"180px",
+        width:"200px",
         height:"100%",
-        marginTop: 40,
+        marginTop: 10,
     },
     menuBox:{
        padding: 0,
@@ -19,9 +26,11 @@ const styles = {
 
 function Ingredient(props){
     return(
+      
         <button style={styles.menuBox}>
          <img style={styles.nameText} src={process.env.PUBLIC_URL + `./images/${props.name}.png`} alt={props.name}/>
-        </button>
+         </button>
+
     );
 }
 

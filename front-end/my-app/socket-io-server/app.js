@@ -32,7 +32,6 @@ io.on("connection", (socket) =>{
     socket.on("client_msg", (data) =>{
         console.log(`클라이언트에서 보낸 메시지 수신: ${data}`);
         socket.broadcast.emit('event_name', data);
-        
     }); 
 
     socket.on("client_msg2", (data) =>{

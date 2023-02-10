@@ -1,21 +1,21 @@
-import React from "react";
-import Comment from "./sidebar2";
+import React, { useState, useEffect } from "react";
+import Menu from "./Menulist2"
 
 const comments = [
   {
-    id:4,
+    id:1,
     name: "추천메뉴",
   },
   {
-    id:1,
+    id:2,
     name: "세트만",
   },
   {
-    id:2,
+    id:3,
     name: "버거만",
   },
   {
-    id:3,
+    id:4,
     name: "음료",
   }
   ,  
@@ -26,28 +26,86 @@ const comments = [
  
 ];
 
-
 const styles = {
+  wrapper2:{
+    margin: 0,
+    padding: 5,
+    display: "flex",
+    flexDirection:"row",
+    borderBottom: "1px solid black",
+    borderTop: 0,
+    borderLeft: 0,
+    borderRight: 0,
+    borderRadius: 0,
+    height: 150,
+    width: "100%",
+    justifyContent: "center",
+    backgroundColor: "#FDF0D5",
+},
+nameText:{
+    color: "black",
+    fontSize: 35,
+    fontWeight: "bold",
+    lineHeight : 4.5,
+},
   wrapper:{
       margin: 0,
       padding: 0,
       width: "25%",
       borderRadius: 0,
-      height: 194,
-  }
+  },
+  wrapper3:{
+    margin: 0,
+    padding: 0,
+    display: "flex",
+    flexDirection:"row",
+    borderRadius: 0,
+},
+
 };
 
-function sidebalsit(props)
+let count = 1;
+
+function Sidebalist2(props)
 {
+  const [, setCount] = useState(0);
+  
+  let incrementCount = (e) =>{
+    count = e;
+    console.log(count);
+
+  let list =  document.getElementsByClassName("sidebar");
+
+  for(let i = 0; i < 5; i++)
+  {
+    list[i].style.backgroundColor = "#FDF0D5";
+  }
+  list[count - 1].style.backgroundColor = "#C1121F";
+
+  let list2 = document.getElementsByClassName("menu");
+         // console.log(list.length);
+
+   for(let i = 0; i < list2.length; i++)
+      list2[i].style.backgroundColor  = "#FDF0D5";
+
+  setCount({})
+  }
     return (
+      <div  style={styles.wrapper3}>
       <div style={styles.wrapper}>
         {comments.map((comment) => {
-            return (<Comment key={comment.id} id={comment.id} name={comment.name} comment={comment.comment}/>);
+            return (
+            <button className="sidebar" key={comment.id} onClick={()=>incrementCount(comment.id)} style={styles.wrapper2}>
+            <span style={styles.nameText}>{comment.name}</span>
+           </button>
+           );
           })}
-      </div>  
+        </div>
+          <Menu imageMenu={props.imagemenu} number={count} setcustmer={props.setcustmer} setside={props.setside}></Menu>
+        </div>
     );
 }
 
 
-export default sidebalsit;
+export default Sidebalist2;
 

@@ -3,7 +3,7 @@ import React from "react";
 
 const styles = {
     wrapper:{
-        margin: 0,
+        marginBottom: 15,
         padding: 0,
         textAlign: "center",
     },
