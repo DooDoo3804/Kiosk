@@ -1,4 +1,4 @@
-import React from "react";
+import React, {userState, useState, useEffect} from "react";
 import Jsonfle from "../db/sidebutton.json"
 import Ingredient from "./Ingredient"
 
@@ -14,11 +14,15 @@ const styles = {
     },
 };
 
+
 function CustmerSide(props){
+
+    let keyitems = 0;
+
     return(
         <div style={styles.wrapper}>
         {Jsonfle[props.selectbutton]["name"].map((comment) => {
-            return (<Ingredient key={comment.id} name={comment}/>);
+            return (<Ingredient key={keyitems++} name={comment} selectmenu={props.selectmenu} setmenu={props.setmenu} />);
           })}
        </div>
     );

@@ -11,7 +11,6 @@ export default function CutmerEasyMode(props) {
 
    useEffect(() => {
         if(props.imagemenu !== ''){
-        console.log("누름");
         props.checkfun(state);
         }
     },[state]);

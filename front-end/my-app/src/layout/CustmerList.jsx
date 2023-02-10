@@ -2,6 +2,8 @@ import CustmerBar from "./CustmerBar";
 import CustmerSide from "./CustmerSide";
 import CustmerImage from "./CustmerImage";
 import React, {userState, useState, useEffect} from "react";
+import toggle from './toggle.css'
+import { Link} from "react-router-dom";
 
 const styles = {
     wrapper:{
@@ -52,6 +54,9 @@ function CustmerList(props){
     const [selectbutton, setbutton] = useState('패티');
     const [custmenu, setcustmenu] = useState('')
     const [state, setstate] = useState(0);
+    const [selectmenu, setmenu] = useState('없음');
+    const [seleccheck, setcheck] = useState(0);
+    const [togglech, settoggle] = useState(true);
 
     useEffect(() => {
         if(props.imagemenu !== ''){
@@ -63,14 +68,18 @@ function CustmerList(props){
     return(
         <div style={styles.wrapper}>
         <div style={styles.wrapper3}>
-        <button onClick={()=> setstate(state + 1)} style={styles.Button}>담기</button>
-        <button style={styles.Button}>토글</button>
+        <button onClick={()=> {setstate(state + 1); props.setcustmer(!props.custmercheck);}} style={styles.Button}>담기</button>
+        <input type="checkbox" id="toggle" hidden /> 
+        <label for="toggle" class="toggleSwitch" onClick={() =>  settoggle(!togglech)}>
+        {togglech && <span class="toggleButton">세트</span>}
+        {!togglech && <span class="toggleButton">단품</span>}
+        </label>
         </div>
 
         <CustmerBar setbutton={setbutton}/>
          <div style={styles.wrapper2}>
-        <CustmerSide selectbutton={selectbutton}/>
-        <CustmerImage menuname={props.imagemenu}/>
+        <CustmerSide selectbutton={selectbutton} selectmenu={selectmenu} setmenu={setmenu} />
+        <CustmerImage menuname={props.imagemenu} selectmenu={selectmenu} setmenu={setmenu} togglech={togglech}/>
          </div>
         </div>
      );
