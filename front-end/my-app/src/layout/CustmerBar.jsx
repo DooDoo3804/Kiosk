@@ -6,19 +6,22 @@ const styles = {
         display: "flex",
         flexDirection:"row", 
         padding: 20,
-        border: "1px solid grey",
+        // border: "1px solid grey",
         borderRadius: 20,
         justifyContent : "space-around",
         alignItem: "center",
         margin : 10,
+        backgroundColor: "#F5F5F5"
     },
     nameText: {
-        border: "1px solid grey",
+        border: 0,
         borderRadius: 20,
         width: "20%",
         height: 100,
         textAlign: "center",
-        lineHeight : 6,
+        lineHeight : 2,
+        backgroundColor: "#D3D3D3",
+        fontSize: 30,
     }
 };
 
