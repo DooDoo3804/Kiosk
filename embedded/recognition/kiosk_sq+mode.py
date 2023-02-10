@@ -381,12 +381,12 @@ while(True):
         print("THE ORDER IS END")
         pdb.save_db(result_dir)
         pdb.print_persons()
-        origin_path = "/home/pi/PJT/unknown_face_classifier/result/"+ args.capture
+        origin_path = "/home/pi/PJT/unknown_face_classifier/result/"+ USRID
         move_path=""
         if mode==1:
-            move_path = origin_path+"normal"
+            move_path = origin_path+"_normal"
         elif mode==2:
-            move_path = origin_path+"easy"
+            move_path = origin_path+"_easy"
         replace_dir ="mv "+origin_path+" "+move_path
         os.system(replace_dir)
         order_end = 0
