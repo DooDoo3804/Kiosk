@@ -9,11 +9,14 @@ import EasyMode from './layout/EasyMode';
 import NomalMode from './layout/NormalMode';
 
 
-function Callaxios(){
+  
+
+function Callaxios(props){
+
 axios.post('http://70.12.246.124:8081/inburger/menu/user', {
-  name: '1',
-  isEasy: 1,
-  height: 100,
+  name: props.username,
+  isEasy: props.type,
+  height: props.Height,
 },{	
   headers: {
       'Access-Control-Allow-origin' : 'http://70.12.246.124:8081',
@@ -28,16 +31,21 @@ axios.post('http://70.12.246.124:8081/inburger/menu/user', {
 
 function App() {
 
+  const [type, settype] = useState(0);
+  const [Height, setHeightt] = useState();
+  const [username, setusername] = useState();
   
-  const [type, settype] = useState(2);
-
   const socket = io("http://3.36.49.220:4001");
   socket.connect();
   socket.on('pi', (data) => {
     console.log(data)
-    settype(data);
+    settype(data["mode"]);
+    setHeightt(data["height"]);
+    setusername(data["name"]);
     Callaxios();
   });
+
+
 
 console.log(type);
    if(type === 0){
