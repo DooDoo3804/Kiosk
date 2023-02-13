@@ -21,10 +21,11 @@ axios.post('http://3.36.49.220:8081/inburger/menu/user', {
       'Access-Control-Allow-Credentials': true
   	},
   	proxy: {
-  	  host: '70.12.246.87',
+  	  host: '3.36.49.220',
   	  port: 3000
   	}}).then((response) => {console.log(response.data);})
-.catch((response)=> console.log('errot!'));
+.catch((err)=> {console.log('errot!')
+console.log(err)});
 }
 
 
