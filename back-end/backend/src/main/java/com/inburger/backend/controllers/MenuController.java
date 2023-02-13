@@ -53,7 +53,7 @@ public class MenuController {
 
     // 유저 정보를 받고 메뉴 + 유저 정보 전달
     @GetMapping(value="/menu/user/{id}")
-    public Map<MenuDTO, Integer> getAllMenu(@PathVariable("id") Long id) {
+    public List<Map.Entry<MenuDTO, Integer>> getAllMenu(@PathVariable("id") Long id) {
 //        HashMap<String, List> returnMenu= new HashMap<>();
 //        returnMenu.put("User", userService.getAllUser());
 //        returnMenu.put("Menu", menuService.getAllMenu());
@@ -85,12 +85,65 @@ public class MenuController {
             }
         }
 
-//          각 oddList 에서 중복 제거 개수 세서 저장
+        // 각 oddList 에서 중복 제거 개수 세서 저장
         Map<MenuDTO, Integer> result = new HashMap<>();
         for(MenuDTO od : new HashSet<>(oddList)) {
             result.put(od, Collections.frequency(oddList, od));
         }
-        return result;
+
+
+        // 주문 많은 순서로 정렬
+        List<Map.Entry<MenuDTO, Integer>> entryList = new LinkedList<>(result.entrySet());
+        entryList.sort(new Comparator<Map.Entry<MenuDTO, Integer>>() {
+            @Override
+            public int compare(Map.Entry<MenuDTO, Integer> o1, Map.Entry<MenuDTO, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        // 만약 추천이 일정 개수 이하면 더 추가해줌
+        if (result.size() < 9) {
+            // 전체 주문 조회
+            List<Order> totalOrder = orderRepository.findAll();
+            List<MenuDTO> totalOddList = new ArrayList<>();
+            for (Order o : totalOrder) {
+                for (OrderDetail od : o.getOrderDetails()){
+                    List<CustomDTO> customDTOList2 = od.getCustoms().stream().map(custom ->
+                            (CustomDTO.builder()
+                                    .ingredientCount(custom.getCount())
+                                    .ingredientName(custom.getIngredient().getName())
+                                    .build())).collect(Collectors.toList());
+                MenuDTO menuDTO = MenuDTO.builder()
+                        .menuCustomDTO(customDTOList2)
+                        .menuName(od.getMenu().getName())
+                        .build();
+                totalOddList.add(menuDTO);
+                }
+            }
+
+            // 개수 세서 저장
+            Map<MenuDTO, Integer> result2 = new HashMap<>();
+            for(MenuDTO od : new HashSet<>(totalOddList)) {
+                result2.put(od, Collections.frequency(totalOddList, od));
+            }
+
+            List<Map.Entry<MenuDTO, Integer>> entryList2 = new LinkedList<>(result2.entrySet());
+            entryList2.sort(new Comparator<Map.Entry<MenuDTO, Integer>>() {
+                @Override
+                public int compare(Map.Entry<MenuDTO, Integer> o1, Map.Entry<MenuDTO, Integer> o2) {
+                    return o2.getValue() - o1.getValue();
+                }
+            });
+
+            entryList2.removeAll(entryList);
+            System.out.println(entryList2);
+            if (entryList2.size() != 0) {
+                for (int i = 0; i < 9 - entryList.size() && i < entryList2.size(); i++) {
+                    entryList.add(entryList2.get(i));
+                }
+            }
+        }
+        return entryList;
     }
 
     // 메뉴 하나 반환
