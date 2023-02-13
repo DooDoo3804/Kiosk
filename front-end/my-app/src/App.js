@@ -31,7 +31,7 @@ axios.post('http://70.12.246.124:8081/inburger/menu/user', {
 
 function App() {
 
-  const [type, settype] = useState(0);
+  const [type, settype] = useState(2);
   const [Height, setHeightt] = useState();
   const [username, setusername] = useState();
   
@@ -45,9 +45,6 @@ function App() {
     Callaxios();
   });
 
-
-
-console.log(type);
    if(type === 0){
      return (
        <Delay/>
