@@ -63,7 +63,7 @@ function CustmerList(props){
     const [seleccheck, setcheck] = useState(0);
     const [togglech, settoggle] = useState(true);
 
-    useEffefct(() => {
+    useEffect(() => {
         if(props.imagemenu !== ''){
         props.checkfun(state);
         }
