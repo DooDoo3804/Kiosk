@@ -23,7 +23,7 @@ let interval;
 
 io.on("connection", (socket) =>{
     console.log("접속");
-
+    
     socket.on("pi", (data) =>{
         console.log(`pi에서 들어온 메시지 수신: ${data}`);
         socket.broadcast.emit('react', data);
