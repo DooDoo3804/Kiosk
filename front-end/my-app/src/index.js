@@ -17,14 +17,12 @@ root.render(
     <App />
       <Routes>
         <Route path="/Easy" element={ <EasyMode /> }></Route>
-        <Route path="/" element={ <NomalMode /> }></Route>
+        <Route path="/NomalMode" element={ <NomalMode /> }></Route>
         <Route path="/Choose" element={ <Choose /> }></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

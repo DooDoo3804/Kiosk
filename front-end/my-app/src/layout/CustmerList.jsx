@@ -63,28 +63,27 @@ function CustmerList(props){
     const [seleccheck, setcheck] = useState(0);
     const [togglech, settoggle] = useState(true);
 
-    useEffect(() => {
+    useEffefct(() => {
         if(props.imagemenu !== ''){
-        console.log("누름");
         props.checkfun(state);
         }
-    },[state]);
+    },[props.custmercheck]);
 
     return(
         <div style={styles.wrapper}>
         <div style={styles.wrapper3}>
-        <button onClick={()=> {setstate(state + 1); props.setcustmer(!props.custmercheck);}} style={styles.Button}><span style={{color:"white"}}>담기</span></button>
+        <button style={styles.Button} onClick={()=> props.setcustmer(!props.custmercheck)} ><span style={{color:"white"}}>담기</span></button>
         <input type="checkbox" id="toggle" hidden /> 
-        <label for="toggle" class="toggleSwitch" onClick={() =>  settoggle(!togglech)}>
-        {togglech && <span class="toggleButton">세트</span>}
-        {!togglech && <span class="toggleButton">단품</span>}
+        <label htmlFor="toggle" className="toggleSwitch" onClick={() => settoggle(!togglech)}>
+        {togglech && <span className="toggleButton">세트</span>}
+        {!togglech && <span className="toggleButton">단품</span>}
         </label>
         </div>
 
-        <CustmerBar setbutton={setbutton}/>
+        <CustmerBar  setbutton={setbutton}/>
          <div style={styles.wrapper2}>
         <CustmerSide selectbutton={selectbutton} selectmenu={selectmenu} setmenu={setmenu} />
-        <CustmerImage menuname={props.imagemenu} selectmenu={selectmenu} setmenu={setmenu} togglech={togglech}/>
+        <CustmerImage menuname={props.imagemenu} selectmenu={selectmenu} setmenu={setmenu} togglech={togglech} state={state}/>
          </div>
         </div>
      );

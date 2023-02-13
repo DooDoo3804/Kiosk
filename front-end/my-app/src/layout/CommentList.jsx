@@ -3,42 +3,17 @@ import Comment from "./Comment";
 import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import Choose from "./Choose"
 import CommentListcss from "./CommentList.css"
-const comments = [
-  {
-    id:1,
-    name: "빅맥",
-    price: "2000",
-    count: 2,
-  },
-  {
-    id:2,
-    name: "불고기 버거",
-    price: "2000",
-    count: 2,
-  },
-  {
-    id:3,
-    name: "치즈버거",
-    price: "2000",
-    count: 1,
-  },
-  {
-    id:4,
-    name: "치즈버거",
-    price: "2000",
-    count: 1,
-  }
-];
 
 let Maxid;
 
 function CommentList(props)
 {
-  const [Cartlist, setCart] = useState(comments);
+  const [Cartlist, setCart] = useState([]);
 
   const [nextModal1, setModal1] = useState(false);
   const [nextModal2, setModal2] = useState(false);
-
+  const [setbool, setmenubool] =useState(true);
+  
   useEffect(() => {
     if(props.imagemenu !== ''){
         const addcomment = {
