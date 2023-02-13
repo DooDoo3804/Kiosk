@@ -64,7 +64,8 @@ function CustmerList(props){
     const [togglech, settoggle] = useState(true);
 
     useEffect(() => {
-        if(props.imagemenu !== ''){
+        if( props.custmercheck == false){
+            console.log("담았다링");
         props.checkfun(state);
         }
     },[props.custmercheck]);
