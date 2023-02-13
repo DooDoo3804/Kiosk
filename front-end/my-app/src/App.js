@@ -30,25 +30,24 @@ axios.post('http://3.36.49.220:8081/inburger/menu/user', {
 
 function App() {
 
-  const [type, settype] = useState(2);
+  const [type, settype] = useState(0);
   const [Height, setHeightt] = useState();
   const [username, setusername] = useState();
-  const [pullData, setdata] = useState('');
   
   const socket = io("http://3.36.49.220:4001");
   socket.connect();
   socket.on('react', (data) => {
-
-    setdata = data;
-
-    console.log(pullData)
-    settype(pullData["mode"]);
-    setHeightt(pullData["height"]);
-    setusername(pullData["name"]);
+    console.log(data)
+    settype(data["mode"]);
+    setHeightt(data["height"]);
+    setusername(data["name"]);
     Callaxios({type, username, Height});
-    setdata = '';
+    console.log(`${data}`, 1)
   });
 
+
+
+console.log(type);
    if(type === 0){
      return (
        <Delay/>
