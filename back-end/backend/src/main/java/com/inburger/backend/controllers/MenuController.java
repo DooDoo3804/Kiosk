@@ -52,15 +52,17 @@ public class MenuController {
     }
 
     // 유저 정보를 받고 메뉴 + 유저 정보 전달
-    @GetMapping(value="/menu/user/{id}")
-    public List<Map.Entry<MenuDTO, Integer>> getAllMenu(@PathVariable("id") Long id) {
+    @PostMapping(value="/menu/user")
+    public List<Map.Entry<MenuDTO, Integer>> getAllMenu(@RequestBody User user) {
 //        HashMap<String, List> returnMenu= new HashMap<>();
 //        returnMenu.put("User", userService.getAllUser());
 //        returnMenu.put("Menu", menuService.getAllMenu());
         // 추천 메뉴 검색
         // 해당 유저 검색
-        User order_user = userRepository.findById(id).orElseThrow(()->
-                new ResourceNotFoundException("user", "id", id));
+        User order_user = userService.saveUser(user);
+
+//        User order_user = userRepository.findById(id).orElseThrow(()->
+//                new ResourceNotFoundException("user", "id", id));
 
         // 해당 유저의 history 조회
         System.out.println(order_user);
@@ -121,7 +123,7 @@ public class MenuController {
                 }
             }
 
-            // 개수 세서 저장
+            // 갯수 세서 저장
             Map<MenuDTO, Integer> result2 = new HashMap<>();
             for(MenuDTO od : new HashSet<>(totalOddList)) {
                 result2.put(od, Collections.frequency(totalOddList, od));
@@ -143,6 +145,9 @@ public class MenuController {
                 }
             }
         }
+//        if (entryList.isEmpty()) {
+//            return menuRepository.findAll();
+//        }
         return entryList;
     }
 
