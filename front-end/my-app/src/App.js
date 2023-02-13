@@ -37,7 +37,7 @@ function App() {
   
   const socket = io("http://3.36.49.220:4001");
   socket.connect();
-  socket.on('pi', (data) => {
+  socket.on('react', (data) => {
     console.log(data)
     settype(data["mode"]);
     setHeightt(data["height"]);
