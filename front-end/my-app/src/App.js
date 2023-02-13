@@ -12,9 +12,9 @@ import socketIOClient from "socket.io-client";
 function Callaxios({type, username, Height}){
 
 axios.post('http://3.36.49.220:8081/inburger/menu/user', {
-  name: {username},
-  age: {type},
-  is_easy: {Height},
+  "name": {username},
+  "age": {type},
+  "is_easy": {Height},
 },{	
   headers: {
       'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
