@@ -1,4 +1,4 @@
-import React , {useState}from 'react';
+import React , {useState,  useEffect}from 'react';
 import CommentList from './CommentList';
 import Sidebar from './sidebarlist2'
 import Header from './Header'
@@ -21,13 +21,14 @@ function NormalMode() {
   const [check, setcheck] = useState('');
   const [custmercheck, setcustmer] = useState(false);
   const [sidecheck, setside] = useState(true);
+  const [selectmenu, setmenu] = useState('없음');
 
     return (
       <div className=''>
       <Header stye={{border:"1px"}}/>
       {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} setside={setside}/>}
-      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} />}
-      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check}/> 
+      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} setmenu={setmenu} selectmenu={selectmenu}/>}
+      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu} /> 
       </div>
   
     );

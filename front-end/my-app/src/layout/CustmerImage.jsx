@@ -27,10 +27,10 @@ const styles = {
     },
 };
 
-var jsonfile = Jsonfle;
+var jsonfile = JSON.parse(JSON.stringify(Jsonfle));
+;
 
 function CustmertImage(props){
-
     let keyitems = 0;
     const [check, setcheck] = useState(false);
 
@@ -41,6 +41,15 @@ function CustmertImage(props){
             setcheck(!check);
         }
     },[props.selectmenu]);
+
+    useEffect(() => {
+    
+        if(props.selectmenu !== '없음'){
+            console.log("리셋해라.");
+            jsonfile = JSON.parse(JSON.stringify(Jsonfle));
+        }
+    },[props.check]);
+
 
     return(
        <div style={styles.wrapper}>

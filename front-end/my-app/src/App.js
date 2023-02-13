@@ -10,23 +10,23 @@ import NomalMode from './layout/NormalMode';
 
 
 
-function Callaxios({name, type, Height}){
+// function Callaxios({name, type, Height}){
 
-axios.post('http://70.12.246.124:8081/inburger/menu/user', {
-  name: {name},
-  isEasy: {type},
-  height: {Height},
-},{	
-  headers: {
-      'Access-Control-Allow-origin' : 'http://70.12.246.124:8081',
-      'Access-Control-Allow-Credentials': true
-  	},
-  	proxy: {
-  	  host: '70.12.246.87',
-  	  port: 3000
-  	}}).then((response) => {console.log(response.data);})
-.catch((response)=> console.log('errot!'));
-}
+// axios.post('http://70.12.246.124:8081/inburger/menu/user', {
+//   name: {name},
+//   isEasy: {type},
+//   height: {Height},
+// },{	
+//   headers: {
+//       'Access-Control-Allow-origin' : 'http://70.12.246.124:8081',
+//       'Access-Control-Allow-Credentials': true
+//   	},
+//   	proxy: {
+//   	  host: '70.12.246.87',
+//   	  port: 3000
+//   	}}).then((response) => {console.log(response.data);})
+// .catch((response)=> console.log('errot!'));
+// }
 
 function App() {
 
@@ -34,15 +34,15 @@ function App() {
   const [Height, setHeightt] = useState();
   const [username, setusername] = useState();
   
-  const socket = io("http://3.36.49.220:4001");
-  socket.connect();
-  socket.on('react', (data) => {
-    console.log(data)
-    settype(data["mode"]);
-    setHeightt(data["height"]);
-    setusername(data["name"]);
-    Callaxios({type, username, Height});
-  });
+  // const socket = io("http://3.36.49.220:4001");
+  // socket.connect();
+  // socket.on('react', (data) => {
+  //   console.log(data)
+  //   settype(data["mode"]);
+  //   setHeightt(data["height"]);
+  //   setusername(data["name"]);
+  //   Callaxios({type, username, Height});
+  // });
 
    if(type === 0){
      return (

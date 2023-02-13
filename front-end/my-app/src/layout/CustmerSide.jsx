@@ -17,13 +17,12 @@ const styles = {
 
 
 function CustmerSide(props){
-
     let keyitems = 0;
-
+    
     return(
         <div style={styles.wrapper}>
         {Jsonfle[props.selectbutton]["name"].map((comment) => {
-            return (<Ingredient key={keyitems++} name={comment} selectmenu={props.selectmenu} setmenu={props.setmenu} />);
+            return (<Ingredient key={keyitems++} name={comment} selectmenu={props.selectmenu} setmenu={props.setmenu}  setcustmerlist={props.setcustmerlist}/>);
           })}
        </div>
     );
