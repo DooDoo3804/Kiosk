@@ -47,7 +47,7 @@ function App() {
 
 
 
-console.log(type);
+  console.log(type);
    if(type === 0){
      return (
        <Delay/>
@@ -65,6 +65,8 @@ console.log(type);
        <NomalMode />
        );
    }
+  console.log("ssafy");
 }
+
 
 export default App;
