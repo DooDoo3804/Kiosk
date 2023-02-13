@@ -42,18 +42,16 @@ function CustmertImage(props){
         }
     },[props.selectmenu]);
 
-
     return(
        <div style={styles.wrapper}>
         <div style={styles.foodBox}>
-     
           {
             jsonfile[props.menuname]['ingrdent'].map((comment) => {
                 return (<Ingredient key={ keyitems++} name={comment}/>);
             })}
        </div>
+       
        {props.togglech&&
-
         <div style={styles.sideBox}>
        <Ingredient3 name={Jsonfle[props.menuname]['sider']}/>
        <Ingredient3 name={Jsonfle[props.menuname]["drink"]}/>

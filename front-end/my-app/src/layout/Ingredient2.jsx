@@ -7,13 +7,13 @@ const styles = {
         border: 0,
         width:"250px",
         height:"100%",
-        margin: "-23.5px",
+        margin: "-36.5px",
         transform: "rotateX(50deg)",
       
     },
     menuBoxS:{
        position: "relative",
-       top: "80px",
+       bottom: "-45px",
        padding: 0,
        margin: 0,
        border: 0,
