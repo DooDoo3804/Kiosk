@@ -67,6 +67,7 @@ function App() {
        <NomalMode />
        );
    }
+  console.log("ssafy");
 }
 
 
