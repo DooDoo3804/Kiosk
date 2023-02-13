@@ -48,8 +48,9 @@ class Person():
             self.name = "person_%02d" % Person._last_id
         else:
             self.name = name
-            if name.startswith("person_") and name[7:].isdigit():
-                id = int(name[7:])
+            strings = name.split('_')
+            if name.startswith("person_") and strings[1].isdigit():
+                id = int(strings[1])
                 if id > Person._last_id:
                     Person._last_id = id
         self.encoding = None
@@ -73,6 +74,7 @@ class Person():
 
     def save_faces(self, base_dir):
         pathname = os.path.join(base_dir, self.name)
+        # print(pathname)
         try:
             shutil.rmtree(pathname)
         except OSError as e:
@@ -108,7 +110,7 @@ class Person():
             else:
                 face = Face(face_filename, image, face_encoding)
                 person.faces.append(face)
-        print(person.name, "has", len(person.faces), "faces")
+        # print(person.name, "has", len(person.faces), "faces")
         person.calculate_average_encoding()
         return person
 
@@ -120,9 +122,10 @@ class PersonDB():
         self.unknown = Person(self.unknown_dir)
 
     def load_db(self, dir_name):
+        print('start')
         if not os.path.isdir(dir_name):
             return
-        print("Start loading persons in the directory '%s'" % dir_name)
+        # print("Start loading persons in the directory '%s'" % dir_name)
         start_time = time.time()
 
         # read face_encodings
@@ -130,11 +133,12 @@ class PersonDB():
         try:
             with open(pathname, "rb") as f:
                 face_encodings = pickle.load(f)
-                print(len(face_encodings), "face_encodings in", pathname)
+                # print(len(face_encodings), "face_encodings in", pathname)
         except:
             face_encodings = {}
 
         # read persons
+        print('start')
         for entry in os.scandir(dir_name):
             if entry.is_dir(follow_symlinks=False):
                 pathname = os.path.join(dir_name, entry.name)
@@ -164,7 +168,7 @@ class PersonDB():
         for person in self.persons:
             person.save_montages(dir_name)
         self.unknown.save_montages(dir_name)
-        print("montages saved")
+        # print("montages saved")
 
     def save_db(self, dir_name):
         print("Start saving persons in the directory '%s'" % dir_name)
@@ -174,8 +178,9 @@ class PersonDB():
         except OSError as e:
             pass
         os.mkdir(dir_name)
-
+        # print(self.persons)
         for person in self.persons:
+            # print(person)
             person.save_faces(dir_name)
         self.unknown.save_faces(dir_name)
 
@@ -183,7 +188,10 @@ class PersonDB():
         self.save_encodings(dir_name)
 
         elapsed_time = time.time() - start_time
-        print("Saving persons finished in %.3f sec." % elapsed_time)
+        # print("Saving persons finished in %.3f sec." % elapsed_time)
+
+    def get_dir_name(self):
+        return self.unknown.name
 
     def __repr__(self):
         s = "%d persons" % len(self.persons)
@@ -193,7 +201,7 @@ class PersonDB():
         return s
 
     def print_persons(self):
-        print(self)
+        # print(self)
         persons = sorted(self.persons, key=lambda obj : obj.name)
         encodings = [person.encoding for person in persons]
         for person in persons:
@@ -203,7 +211,7 @@ class PersonDB():
             mn, av, mx = person.distance_statistics()
             s += " ] %.3f, %.3f, %.3f" % (mn, av, mx)
             s += ", %d faces" % len(person.faces)
-            print(s)
+            # print(s)
 
 
 if __name__ == '__main__':
