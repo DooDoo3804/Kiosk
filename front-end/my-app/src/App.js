@@ -35,19 +35,23 @@ function App() {
   const [Height, setHeightt] = useState(0);
   const [username, setusername] = useState('');
   
-  const socket = socketIOClient("http://3.36.49.220:4001");
-  socket.on('react', (data) => {
-    console.log(data)
-    console.log(data["mode"])
-    console.log(data["Height"])
-    console.log(data["name "])
-    settype(data["mode"]);
-    setHeightt(data["height"]);
-    setusername(data["name"]);
-    Callaxios({type, username, Height});
-  });
+  useEffect(()=>
+  {
+    const socket = socketIOClient("http://3.36.49.220:4001");
+    socket.on('react', (data) => {
+      console.log(data)
+      console.log(data["mode"])
+      console.log(data["height"])
+      console.log(data["name"])
+      settype(data["mode"]);
+      setHeightt(data["height"]);
+      setusername(data["name"]);
+      Callaxios({type, username, Height});
+    });
+  }, [])
+  
 
-  socket.emit('react', 1);
+  // socket.emit('react', 1);
 
   console.log(type);
    if(type === 0){
