@@ -26,7 +26,7 @@ io.on("connection", (socket) =>{
     
     socket.on("pi", (data) =>{
         console.log(`pi에서 들어온 메시지 수신: ${data}`);
-        socket.emit('react', data);
+        // socket.broadcast.emit('react', data);
     }); 
 
     socket.on("react", (data) =>{
