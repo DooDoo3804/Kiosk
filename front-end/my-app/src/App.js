@@ -10,10 +10,10 @@ import NomalMode from './layout/NormalMode';
 
 
 
-function Callaxios({name, type, Height}){
+function Callaxios({type, username, Height}){
 
 axios.post('http://3.36.49.220:8081/inburger/menu/user', {
-  name: {name},
+  name: {username},
   isEasy: {type},
   height: {Height},
 },{	
@@ -31,23 +31,25 @@ axios.post('http://3.36.49.220:8081/inburger/menu/user', {
 function App() {
 
   const [type, settype] = useState(0);
-  const [Height, setHeightt] = useState();
-  const [username, setusername] = useState();
+  const [Height, setHeightt] = useState(0);
+  const [username, setusername] = useState('');
   
   const socket = io("http://3.36.49.220:4001");
   socket.connect();
   socket.on('react', (data) => {
     console.log(data)
+    console.log(data["mode"])
+    console.log(data["Height"])
+    console.log(data["name "])
     settype(data["mode"]);
     setHeightt(data["height"]);
     setusername(data["name"]);
     Callaxios({type, username, Height});
-    console.log(`${data}`, 1)
   });
 
+  socket.emit('react', 1);
 
-
-console.log(type);
+  console.log(type);
    if(type === 0){
      return (
        <Delay/>
@@ -66,5 +68,6 @@ console.log(type);
        );
    }
 }
+
 
 export default App;
