@@ -28,20 +28,20 @@ INSERT INTO table_menu(menu_name, menu_price, category_id) VALUES("감자튀김 
 
 -- 저장 과정
 -- user 데이터 추가
-INSERT INTO table_user(user_name, is_easy, kiosk_height) VALUES("사람1", 1, 2);
-INSERT INTO table_user(user_name, is_easy, kiosk_height) VALUES("사람2", 0, 3);
+-- INSERT INTO table_user(user_name, is_easy, kiosk_height) VALUES("사람1", 1, 2);
+-- INSERT INTO table_user(user_name, is_easy, kiosk_height) VALUES("사람2", 0, 3);
 
 -- 한 명의 유저와 선택한 옵션 여러개
 -- 선택한 하나 이상의 메뉴가 넘어옴
 
 -- 주문이 들어오면 USER와 메뉴를 이용하여 ORDER를 먼저 생성
 -- ORDER 데이터 추가
-INSERT INTO table_order(total_count, total_price, is_packaging, order_date, user_id) VALUES(1, 3000, false,"1999-12-31", 1);
-INSERT INTO table_order(total_count, total_price, is_packaging, order_date, user_id) VALUES(3, 8500, true,"1999-01-01", 2);
+-- INSERT INTO table_order(total_count, total_price, is_packaging, order_date, user_id) VALUES(1, 3000, false,"1999-12-31", 1);
+-- INSERT INTO table_order(total_count, total_price, is_packaging, order_date, user_id) VALUES(3, 8500, true,"1999-01-01", 2);
 -- INGREDIENT와 Menu로 ORDER_DETAIL 생성
-INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, menu_id) VALUES(1, 3000, false, 1, 1);
-INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, menu_id) VALUES(2, 3000, false, 2, 2);
-INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, menu_id) VALUES(1, 2500, true, 2, 2);
+-- INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, menu_id) VALUES(1, 3000, false, 1, 1);
+-- INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, menu_id) VALUES(2, 3000, false, 2, 2);
+-- INSERT INTO table_order_detail(menu_count, each_menu_price, is_set, order_id, menu_id) VALUES(1, 2500, true, 2, 2);
 -- MenuDetail로 Custom 생성 가능
 
 -- 결제 시에 받을 데이터
