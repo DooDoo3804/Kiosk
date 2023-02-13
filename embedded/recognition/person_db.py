@@ -48,8 +48,9 @@ class Person():
             self.name = "person_%02d" % Person._last_id
         else:
             self.name = name
-            if name.startswith("person_") and name[7:].isdigit():
-                id = int(name[7:])
+            strings = name.split('_')
+            if name.startswith("person_") and strings[1].isdigit():
+                id = int(strings[1])
                 if id > Person._last_id:
                     Person._last_id = id
         self.encoding = None
