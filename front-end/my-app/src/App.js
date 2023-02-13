@@ -7,7 +7,7 @@ import axios from 'axios'
 import Delay from './layout/delay';
 import EasyMode from './layout/EasyMode';
 import NomalMode from './layout/NormalMode';
-
+import socketIOClient from "socket.io-client";
 
 
 function Callaxios({type, username, Height}){
@@ -28,14 +28,14 @@ axios.post('http://3.36.49.220:8081/inburger/menu/user', {
 .catch((response)=> console.log('errot!'));
 }
 
+
 function App() {
 
   const [type, settype] = useState(0);
   const [Height, setHeightt] = useState(0);
   const [username, setusername] = useState('');
   
-  const socket = io("http://3.36.49.220:4001");
-  socket.connect();
+  const socket = socketIOClient("http://3.36.49.220:4001");
   socket.on('react', (data) => {
     console.log(data)
     console.log(data["mode"])
