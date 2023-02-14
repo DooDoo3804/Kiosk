@@ -367,9 +367,9 @@ while(True):
 
         #send data
         if(USRID.rfind('normal')!=-1):
-            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-6]})
+            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-7]})
         elif(USRID.rfind('easy')!=-1):
-            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-4]})
+            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-5]})
         else:
             sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID})
         print("SEND COMPLETE")
