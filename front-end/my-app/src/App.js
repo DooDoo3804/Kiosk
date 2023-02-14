@@ -10,7 +10,7 @@ import NomalMode from './layout/NormalMode';
 import socketIOClient from "socket.io-client";
 
 
-
+let count = 0;
 
 function App() {
 
@@ -19,8 +19,12 @@ function App() {
   const [username, setusername] = useState('');
   const [callfunction, setcall] = useState(false);
   const [start, setstart] = useState(false);
- 
-  setstart(!start);
+  
+  if(count === 0)
+  {
+    setstart(!start);
+    count = count + 1;
+  }
 
   useEffect(()=>
   {
