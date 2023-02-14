@@ -19,12 +19,6 @@ function App() {
   const [username, setusername] = useState('');
   const [callfunction, setcall] = useState(false);
   const [start, setstart] = useState(false);
-  
-  if(count === 0)
-  {
-    setstart(!start);
-    count = count + 1;
-  }
 
   useEffect(()=>
   {
@@ -57,12 +51,12 @@ function App() {
       setHeightt(data['height']);
       setusername(data['name']);
 
-      typeof(data['name'], data['mode'], data['height']);
+      console.log(typeof(data['name']), typeof(data['mode']), typeof(data['height']));
 
       setcall(!callfunction);
     
     });
-  }, [start]);
+  }, []);
   
 
   // socket.emit('react', 1);
