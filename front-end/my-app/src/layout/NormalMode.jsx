@@ -15,18 +15,38 @@ const styles = {
   };
   
 
+
 function NormalMode() {
+
 
   const [selectMenu, setMenu] = useState('');
   const [check, setcheck] = useState('');
   const [custmercheck, setcustmer] = useState(false);
-  const [sidecheck, setside] = useState(true);
+  const [sidecheck, setside] = useState(1);
   const [selectmenu, setmenu] = useState('없음');
 
+  const [height, setheight] = useState(1)
+  useEffect(() => {       
+          if (height === 1) {
+            // console.log(1)
+            document.getElementById("level").style.transform = "translateY(0px)"
+            document.getElementById("level").style.transition = "transform 2s" 
+          } else if (height === 2) {
+            // console.log(2)
+            document.getElementById("level").style.transform = "translateY(300px)"
+            document.getElementById("level").style.transition = "transform 2s"
+          } else {
+            // console.log(3)
+            document.getElementById("level").style.transform = "translateY(600px)"
+            document.getElementById("level").style.transition = "transform 2s"
+          }  
+},[height]);
+
+
     return (
-      <div className=''>
+      <div id="level">
       <Header stye={{border:"1px"}}/>
-      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} setside={setside}/>}
+      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} sidecheck={sidecheck} setside={setside}/>}
       {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} setmenu={setmenu} selectmenu={selectmenu}/>}
       <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu} /> 
       </div>

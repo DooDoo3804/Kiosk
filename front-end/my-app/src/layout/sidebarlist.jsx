@@ -64,9 +64,9 @@ nameText:{
 let count = 1;
 function Sidebalist(props)
 {
-  const [, setCount] = useState(0);
-  
+
   let incrementCount = (e) =>{
+
     count = e;
     console.log(count);
 
@@ -83,8 +83,9 @@ function Sidebalist(props)
 
    for(let i = 0; i < list2.length; i++)
       list2[i].style.backgroundColor  = "#FDF0D5";
-
-  setCount({})
+ 
+      props.setside(e);
+     
   }
     return (
       <div  style={styles.wrapper3}>
@@ -97,7 +98,7 @@ function Sidebalist(props)
            );
           })}
         </div>
-          <Menu imageMenu={props.imagemenu} number={count}></Menu>
+          <Menu imageMenu={props.imagemenu} number={count} side={props.side}></Menu>
         </div>
     );
 }

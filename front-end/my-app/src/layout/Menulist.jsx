@@ -53,7 +53,7 @@ function MenuList(props)
       <div style={styles.wrapper}>
         { 
           jsonfile[props.number - 1].map((comment) => {
-              return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} />);
+              return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} side={props.side}/>);
             })
         }
       </div>  

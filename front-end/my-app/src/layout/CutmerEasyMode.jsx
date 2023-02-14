@@ -18,7 +18,6 @@ export default function CutmerEasyMode(props) {
     
   return (
     <div className='imagebar'>
-        
         <img src={process.env.PUBLIC_URL + `./images/${props.imagemenu}.png`}/>
   
         <div className="btn">

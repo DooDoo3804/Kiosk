@@ -39,7 +39,7 @@ function MenuList(props)
   
           for(let i = 0; i < list.length; i++)
           {
-              list[i].style.backgroundColor  = "#FDF0D5";
+              list[i].style.backgroundColor="#FDF0D5";
           }
           list[select - 1].style.backgroundColor="#C1121F";
           }
@@ -49,7 +49,7 @@ function MenuList(props)
       <div style={styles.wrapper}>
         { 
           jsonfile[props.number - 1].map((comment) => {
-              return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} setcustmer={props.setcustmer} setside={props.setside}/>);
+              return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} setcustmer={props.setcustmer} sidecheck={props.sidecheck} setside={props.setside}/>);
             })
         }
       </div>  

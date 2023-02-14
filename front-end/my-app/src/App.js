@@ -30,7 +30,7 @@ import NomalMode from './layout/NormalMode';
 
 function App() {
 
-  const [type, settype] = useState(2);
+  const [type, settype] = useState(0);
   const [Height, setHeightt] = useState();
   const [username, setusername] = useState();
   
@@ -53,7 +53,6 @@ function App() {
        return(
        <EasyMode />
        );
-
    }
    else if(type === 2)
    {

@@ -23,14 +23,15 @@ const styles = {
 };
 
 function Menu(props){
-
-    const [,setState] = useState(0);
     
      function addCart(str)
      {
          props.imageMenu(str);
+
+         if(props.sidecheck === 2 || props.sidechekc === 3){
+            props.setcustmer(1);
+          }
          props.setuse(props.id);
-         setState({});
     }
 
     return(
