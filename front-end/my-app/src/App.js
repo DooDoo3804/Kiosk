@@ -35,7 +35,7 @@ function App() {
 
   const [type, settype] = useState(0);
   const [Height, setHeightt] = useState(0);
-  const [username, setusername] = useState('');
+  const [username, setusername] = useState();
   
   useEffect(()=>
   {
