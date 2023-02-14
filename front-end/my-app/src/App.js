@@ -41,13 +41,9 @@ function App() {
   {
     const socket = socketIOClient("http://3.36.49.220:4001");
     socket.on('react', (data) => {
-      console.log(data)
-      console.log(data.mode)
-      console.log(data.height)
-      console.log(data.name)
-      settype(data.mode);
-      setHeightt(data.height);
-      setusername(data.name);
+      settype(data['mode']);
+      setHeightt(data['height']);
+      setusername(data['name']);
       Callaxios(type, Height, username);
     });
   }, [])
