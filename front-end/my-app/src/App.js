@@ -9,7 +9,7 @@ import EasyMode from './layout/EasyMode';
 import NomalMode from './layout/NormalMode';
 import socketIOClient from "socket.io-client";
 
-function Callaxios(type, Height, username){
+function Callaxios({type, Height, username}){
 
 axios.post('http://3.36.49.220:8081/inburger/menu/user', {
   name: username,
@@ -35,7 +35,7 @@ function App() {
 
   const [type, settype] = useState(0);
   const [Height, setHeightt] = useState(0);
-  const [username, setusername] = useState();
+  const [username, setusername] = useState('');
   
   useEffect(()=>
   {
@@ -46,7 +46,7 @@ function App() {
       setHeightt(data['height']);
       setusername(data['name']);
       console.log(type, Height, username);
-      Callaxios(type, Height, username);
+      Callaxios({type, Height, username});
     });
   }, [])
   
