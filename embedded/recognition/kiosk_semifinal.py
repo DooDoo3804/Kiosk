@@ -279,7 +279,7 @@ while(True):
         while running and sensor.distance<=0.5:
 
             ret, frame = src.read()
-            frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+            frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
             print("TAKE PICTURE")
 
             frame_id += 1
@@ -364,8 +364,6 @@ while(True):
         signal.signal(signal.SIGINT, prev_handler)
         running = False
         total_elapsed_time = time.time() - total_start_time
-        #print()
-        #print("total elapsed time: %.3f second" % total_elapsed_time)
 
         # booting web with mode
 
