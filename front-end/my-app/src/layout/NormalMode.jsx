@@ -25,13 +25,12 @@ function NormalMode() {
   const [sidecheck, setside] = useState(1);
   const [selectmenu, setmenu] = useState('없음');
 
-  const [height, setheight] = useState(1)
   useEffect(() => {       
-          if (height === 1) {
+          if (props.height === 1) {
             // console.log(1)
             document.getElementById("level").style.transform = "translateY(0px)"
             document.getElementById("level").style.transition = "transform 2s" 
-          } else if (height === 2) {
+          } else if (props.height === 2) {
             // console.log(2)
             document.getElementById("level").style.transform = "translateY(300px)"
             document.getElementById("level").style.transition = "transform 2s"
@@ -40,7 +39,7 @@ function NormalMode() {
             document.getElementById("level").style.transform = "translateY(600px)"
             document.getElementById("level").style.transition = "transform 2s"
           }  
-},[height]);
+},[props.height]);
 
 
     return (

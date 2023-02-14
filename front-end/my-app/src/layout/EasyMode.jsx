@@ -21,20 +21,19 @@ function EasyMode() {
 
   const [selectMenu, setMenu] = useState('');
   const [check, setcheck] = useState('');
-  const [height, setheight] = useState(2)
-  
+ 
   useEffect(() => {       
-          if (height === 1) {
+          if (props.height === 1) {
             document.getElementById("level").style.transform = "translateY(0px)"
             document.getElementById("level").style.transition = "transform 2s" 
-          } else if (height === 2) {
+          } else if (props.height === 2) {
             document.getElementById("level").style.transform = "translateY(300px)"
             document.getElementById("level").style.transition = "transform 2s"
           } else {
             document.getElementById("level").style.transform = "translateY(600px)"
             document.getElementById("level").style.transition = "transform 2s"
           }  
-  },[height]);
+  },[props.height]);
 
     return (
       <div id="level">

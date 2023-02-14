@@ -14,6 +14,7 @@ function App() {
 
 
   const [type, settype] = useState(['', 0, 0]);
+  const [height, setheight] = useState(1)
 
   useEffect(()=>
   {
@@ -21,6 +22,7 @@ function App() {
     socket.on('react', (data) => {
 
       settype([data['name'], data['height'], data['mode']])
+      height = data['height'];
       axios.post('http://3.36.49.220:8081/inburger/menu/user', {
         name: data['name'],
         height: data['height'],
@@ -44,22 +46,23 @@ function App() {
 
   }, []);
 
+  
 
    if(type[2] === 0){
 
      return (
-       <Delay/>
+       <Delay height={height}/>
      );
    }
    else if(type[2] === 1){
        return(
-       <EasyMode />
+       <EasyMode height={height}/>
        );
    }
    else if(type[2] === 2)
    {
        return(
-       <NomalMode />
+       <NomalMode height={height}/>
        );
    }
 
