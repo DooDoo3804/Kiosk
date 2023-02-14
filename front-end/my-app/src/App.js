@@ -56,6 +56,9 @@ function App() {
       settype(data['mode']);
       setHeightt(data['height']);
       setusername(data['name']);
+
+      typeof(data['name'], data['mode'], data['height']);
+
       setcall(!callfunction);
     
     });
