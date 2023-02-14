@@ -400,14 +400,14 @@ while(True):
             move_path = origin_path[:-4] +"normal"
             replace_dir ="mv "+origin_path+" "+move_path
             os.system(replace_dir)
-            
-        order_end = 0
+
         new_order = 1
+        end_mode = 0
         continue
 
-    if(end_mode == "trash"):
-        order_end = 0
+    if(end_mode == 999):
         new_order = 1
+        end_mode = 0
         continue
 
     sleep(1)
