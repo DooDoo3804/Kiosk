@@ -14,9 +14,7 @@ let count = 0;
 
 function App() {
 
-  const [type, settype] = useState(0);
-  const [Height, setHeightt] = useState(0);
-  const [username, setusername] = useState('');
+  const [type, settype] = useState([]);
   const [callfunction, setcall] = useState(false);
   const [start, setstart] = useState(false);
 
@@ -31,17 +29,15 @@ function App() {
     const socket = socketIOClient("http://3.36.49.220:4001");
     socket.on('react', (data) => {
 
-      settype(data['mode']);
-      setHeightt(data['height']);
-      setusername(data['name']);
+      settype(data['mode'], data['height'], data['name']);
 
       console.log(typeof(data['name']), typeof(data['mode']), typeof(data['height']));
 
       console.log("ffff");
       axios.post('http://3.36.49.220:8081/inburger/menu/user', {
-        name: data['name'],
-        age: data['mode'],
-        is_easy: data['height']
+        name: type[2],
+        age: type[0],
+        is_easy: type[1]
       },{	
         headers: {
             'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
@@ -62,7 +58,6 @@ function App() {
 
   // socket.emit('react', 1);
 
-  console.log(type);
    if(type === 0){
      return (
        <Delay/>
