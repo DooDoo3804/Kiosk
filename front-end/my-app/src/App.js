@@ -50,7 +50,7 @@ function App() {
       setHeightt(data['height']);
       setusername(data['name']);
 
-      console.log(data['mode'], data['height'], data['name']);
+      console.log(a,b,c);
 
       Callaxios(a, b, c);
     });
