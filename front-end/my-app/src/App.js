@@ -9,7 +9,7 @@ import EasyMode from './layout/EasyMode';
 import NomalMode from './layout/NormalMode';
 import socketIOClient from "socket.io-client";
 
-function Callaxios(){
+function Callaxios(type, Height, username){
 
 axios.post('http://3.36.49.220:8081/inburger/menu/user', {
   name: username,
@@ -48,7 +48,7 @@ function App() {
       settype(data.mode);
       setHeightt(data.height);
       setusername(data.name);
-      Callaxios();
+      Callaxios(type, Height, username);
     });
   }, [])
   
