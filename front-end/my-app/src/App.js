@@ -9,26 +9,7 @@ import EasyMode from './layout/EasyMode';
 import NomalMode from './layout/NormalMode';
 import socketIOClient from "socket.io-client";
 
-function Callaxios(a, b, c){
 
-axios.post('http://3.36.49.220:8081/inburger/menu/user', {
-  name: c,
-  age: b,
-  is_easy: a
-},{	
-  headers: {
-      'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
-      'Access-Control-Allow-Credentials': true,
-      'Content-Type' : 'application/json'
-  	},
-  	proxy: {
-  	  host: '3.36.49.220',
-  	  port: 3000
-  	},
-  }).then((response) => {console.log(response.data);})
-.catch((err)=> {console.log('errot!')
-console.log(err)});
-}
 
 
 function App() {
@@ -37,22 +18,38 @@ function App() {
   const [Height, setHeightt] = useState(0);
   const [username, setusername] = useState('');
   
+
+  function Callaxios(a, b, c){
+
+    axios.post('http://3.36.49.220:8081/inburger/menu/user', {
+      name: c,
+      age: b,
+      is_easy: a
+    },{	
+      headers: {
+          'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
+          'Access-Control-Allow-Credentials': true,
+          'Content-Type' : 'application/json'
+        },
+        proxy: {
+          host: '3.36.49.220',
+          port: 3000
+        },
+      }).then((response) => {console.log(response.data);})
+    .catch((err)=> {console.log('errot!')
+    console.log(err)});
+    }
+
   useEffect(()=>
   {
     const socket = socketIOClient("http://3.36.49.220:4001");
     socket.on('react', (data) => {
-      let a,b,c;
-      a = data['mode'];
-      b = data['height'];
-      c = data['username'];
 
       settype(data['mode']);
       setHeightt(data['height']);
       setusername(data['name']);
 
-      console.log(a,b,c);
-
-      Callaxios(a, b, c);
+      Callaxios({type, Height, username});
     });
   }, [])
   
