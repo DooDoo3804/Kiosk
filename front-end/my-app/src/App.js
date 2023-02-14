@@ -29,7 +29,7 @@ function App() {
     const socket = socketIOClient("http://3.36.49.220:4001");
     socket.on('react', (data) => {
 
-      settype(data['mode'], data['height'], data['name']);
+      settype([data['mode'], data['height'], data['name']]);
 
       console.log(typeof(data['name']), typeof(data['mode']), typeof(data['height']));
 
