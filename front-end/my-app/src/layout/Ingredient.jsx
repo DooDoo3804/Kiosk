@@ -20,11 +20,9 @@ const styles = {
     } 
 };
 
-
 function Ingredient(props){
-
     return(
-        <button onClick={()=>{ props.setmenu(props.name); props.setcheck(1)}}style={styles.menuBoxS}>
+        <button onClick={()=>{props.setmenu(props.name); props.setcheck(1);}}style={styles.menuBoxS}>
          <img style={styles.nameTextS} src={process.env.PUBLIC_URL + `./images/${props.name}.png`} alt={props.name}/>
         </button>
     );

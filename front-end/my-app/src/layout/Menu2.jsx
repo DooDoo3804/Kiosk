@@ -33,12 +33,12 @@ function Menu(props){
      {
          props.imageMenu(str);
          props.setuse(props.id);
-         props.setcustmer(1);
-         props.setside(0);
-         console.log(props.name);
+
+        if(props.sidecheck === 2 || props.sidecheck === 3){
+          props.setcustmer(1);
+        }
          setState({});
     }
-
     return(
        <button className="menu" onClick={() => addCart(props.name)} style={styles.wrapper}>
          <span style={styles.nameText}>{props.name}</span>

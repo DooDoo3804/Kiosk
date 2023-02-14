@@ -5,6 +5,7 @@ import Choose from "./Choose"
 import CommentListcss from "./CommentList.css"
 
 let Maxid;
+var pp = 0;
 
 function CommentList(props)
 {
@@ -13,19 +14,28 @@ function CommentList(props)
   const [nextModal1, setModal1] = useState(false);
   const [nextModal2, setModal2] = useState(false);
   const [setbool, setmenubool] =useState(true);
-  
+
   useEffect(() => {
+    console.log("dhfjks");
     if(props.imagemenu !== ''){
         const addcomment = {
         id: `${Maxid + 1}`,
         name: props.imagemenu,
-        price: "1000",
+        price: pp,
         count: 1,
       }
+
+      pp = 0;
       setCart([...Cartlist, addcomment]);
     }
 
   }, [props.check]);
+
+  useEffect(() => {
+    if(props.selectmenu !== '없음'){
+         pp = pp + 100;
+    }
+  }, [props.selectmenu]);
   
 const Sumprice = () =>{
 

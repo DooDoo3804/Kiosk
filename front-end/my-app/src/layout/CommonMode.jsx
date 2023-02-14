@@ -17,7 +17,6 @@ const styles = {
     },
   };
   
-
 function CommonMode() {
     return (
       <div>
