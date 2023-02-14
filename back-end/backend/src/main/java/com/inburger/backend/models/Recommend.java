@@ -15,11 +15,13 @@ public class Recommend {
 
     private String menuName;
     private List<CustomDTO> ingredientList;
-
+    private Integer menuPrice;
     public Recommend(String menuName,
-                     List<CustomDTO> ingredientList) {
+                     List<CustomDTO> ingredientList,
+                     Integer menuPrice) {
         this.menuName = menuName;
         this.ingredientList = ingredientList;
+        this.menuPrice = menuPrice;
     }
 
 }

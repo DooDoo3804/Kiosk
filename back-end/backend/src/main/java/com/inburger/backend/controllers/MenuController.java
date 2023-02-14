@@ -75,14 +75,17 @@ public class MenuController {
         // order-detail_menuDTO list
         for (Order o : historyList) {
             for (OrderDetail od : o.getOrderDetails()){
+                int customPrice;
                 List<CustomDTO> customDTOList = od.getCustoms().stream().map(custom ->
                         (CustomDTO.builder()
                                     .ingredientCount(custom.getCount())
                                     .ingredientName(custom.getIngredient().getName())
                                     .build())).collect(Collectors.toList());
+                customPrice = od.getPrice();
             MenuDTO menuDTO = MenuDTO.builder()
                             .menuCustomDTO(customDTOList)
                             .menuName(od.getMenu().getName())
+                            .customPrice(customPrice)
                             .build();
             oddList.add(menuDTO);
             }
@@ -110,15 +113,18 @@ public class MenuController {
             List<Order> totalOrder = orderRepository.findAll();
             List<MenuDTO> totalOddList = new ArrayList<>();
             for (Order o : totalOrder) {
+                Integer customPrice;
                 for (OrderDetail od : o.getOrderDetails()){
                     List<CustomDTO> customDTOList2 = od.getCustoms().stream().map(custom ->
                             (CustomDTO.builder()
                                     .ingredientCount(custom.getCount())
                                     .ingredientName(custom.getIngredient().getName())
                                     .build())).collect(Collectors.toList());
+                    customPrice = od.getPrice();
                 MenuDTO menuDTO = MenuDTO.builder()
                         .menuCustomDTO(customDTOList2)
                         .menuName(od.getMenu().getName())
+                        .customPrice(customPrice)
                         .build();
                 totalOddList.add(menuDTO);
                 }
@@ -153,6 +159,7 @@ public class MenuController {
                         Recommend.builder()
                                 .menuName(i.getKey().getMenuName())
                                 .ingredientList(i.getKey().getMenuCustomDTO())
+                                .menuPrice(i.getKey().getCustomPrice())
                                 .build()
                 );
             }
