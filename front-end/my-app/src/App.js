@@ -19,7 +19,7 @@ axios.post('http://3.36.49.220:8081/inburger/menu/user', {
   headers: {
       'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
       'Access-Control-Allow-Credentials': true,
-      'Content-Type' : 'applicatioin/json'
+      'Content-Type' : 'application/json'
   	},
   	proxy: {
   	  host: '3.36.49.220',
