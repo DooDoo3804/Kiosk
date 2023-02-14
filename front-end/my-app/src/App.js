@@ -20,28 +20,12 @@ function App() {
   const [callfunction, setcall] = useState(false);
   const [start, setstart] = useState(false);
 
-  useEffect(()=>
-  {
-    console.log("ffff");
-    axios.post('http://3.36.49.220:8081/inburger/menu/user', {
-      name: "username",
-      age: 1,
-      is_easy: 1
-    },{	
-      headers: {
-          'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
-          'Access-Control-Allow-Credentials': true,
-          'Content-Type' : 'application/json'
-        },
-        proxy: {
-          host: '3.36.49.220',
-          port: 3000
-        },
-      }).then((response) => {console.log(response.data);})
-    .catch((err)=> {console.log('errot!')
-    console.log(err)});
-  }, [callfunction])
 
+  if(count === 0)
+  {
+    count = count + 1;
+    setstart(!start);
+  }
   useEffect(()=>
   {
     const socket = socketIOClient("http://3.36.49.220:4001");
@@ -53,10 +37,27 @@ function App() {
 
       console.log(typeof(data['name']), typeof(data['mode']), typeof(data['height']));
 
-      setcall(!callfunction);
-    
-    });
-  }, []);
+      console.log("ffff");
+      axios.post('http://3.36.49.220:8081/inburger/menu/user', {
+        name: data['name'],
+        age: data['mode'],
+        is_easy: data['height']
+      },{	
+        headers: {
+            'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
+            'Access-Control-Allow-Credentials': true,
+            'Content-Type' : 'application/json'
+          },
+          proxy: {
+            host: '3.36.49.220',
+            port: 3000
+          },
+        }).then((response) => {console.log(response.data);})
+      .catch((err)=> {console.log('errot!')});
+
+  });
+
+},[start]);
   
 
   // socket.emit('react', 1);
