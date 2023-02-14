@@ -32,18 +32,13 @@ import socketio
 sio = socketio.Client()
 sio.connect('http://3.36.49.220:4001')
 
-order_end = 0
 end_mode = 0
 
 # listen message from front
 @sio.on('react')
 def on_message(data):
-    global order_end
     global end_mode
-    order_end = data[0]
-    end_mode = data[1]
-    print(data)
-
+    end_mode = data
 
 img = []
 height = 0
@@ -198,7 +193,7 @@ args = ap.parse_args()
 while(True):
 
     # dist of user to kiosk
-    if(sensor.distance>0.5): 
+    if(sensor.distance>0.6): 
         sleep(1)
         continue  # wait for dist <=5
 
@@ -216,7 +211,7 @@ while(True):
         
         # when man leave the kiosk
         reset = 0
-        while(sensor.distance>0.5 and reset<10):
+        while(sensor.distance>0.6 and reset<10):
             reset += 1
             print("I'M WAITING FOR %d SEC" %reset)
             sleep(1000)
@@ -276,7 +271,7 @@ while(True):
 
         total_start_time = time.time()
         USRID =''
-        while running and sensor.distance<=0.5:
+        while running and sensor.distance<=0.6:
 
             ret, frame = src.read()
             frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
@@ -369,7 +364,7 @@ while(True):
             height_mode = 1
         elif height > 180:
             height_mode = 3
-            
+
         #send data
         if(USRID.rfind('normal')!=-1):
             sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-6]})
@@ -384,7 +379,7 @@ while(True):
         new_order = 0
 
     # check is ordering (wait 5 sec)
-    if(order_end):
+    if(end_mode == 1 or end_mode == 2):
         print("THE ORDER IS END")
         pdb.save_db(result_dir)
         pdb.print_persons()
@@ -409,10 +404,15 @@ while(True):
         order_end = 0
         new_order = 1
         continue
-    
+
+    if(end_mode == "trash"):
+        order_end = 0
+        new_order = 1
+        continue
+
     sleep(1)
     reset = 0
-    while(sensor.distance>0.5 and reset<10):
+    while(sensor.distance>0.6 and reset<5):
         reset += 1
         print("I'M WAITING FOR %d SEC" %reset)
         sleep(1)
