@@ -17,14 +17,18 @@ function App() {
   const [type, settype] = useState(0);
   const [Height, setHeightt] = useState(0);
   const [username, setusername] = useState('');
-  
+  const [callfunction, setcall] = useState(false);
+  const [start, setstart] = useState(false);
+ 
+  setstart(!start);
 
-  function Callaxios(a, b, c){
-
+  useEffect(()=>
+  {
+    console.log("ffff");
     axios.post('http://3.36.49.220:8081/inburger/menu/user', {
-      name: c,
-      age: b,
-      is_easy: a
+      name: username,
+      age: type,
+      is_easy: Height
     },{	
       headers: {
           'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
@@ -38,7 +42,7 @@ function App() {
       }).then((response) => {console.log(response.data);})
     .catch((err)=> {console.log('errot!')
     console.log(err)});
-    }
+  }, [callfunction])
 
   useEffect(()=>
   {
@@ -48,10 +52,10 @@ function App() {
       settype(data['mode']);
       setHeightt(data['height']);
       setusername(data['name']);
-
-      Callaxios({type, Height, username});
+      setcall(!callfunction);
+    
     });
-  }, [])
+  }, [start]);
   
 
   // socket.emit('react', 1);
