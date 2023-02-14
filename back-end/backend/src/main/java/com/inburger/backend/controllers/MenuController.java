@@ -53,7 +53,7 @@ public class MenuController {
 
     // 유저 정보를 받고 메뉴 + 유저 정보 전달
     @PostMapping(value="/menu/user")
-    public List<Map.Entry<MenuDTO, Integer>> getAllMenu(@RequestBody User user) {
+    public List<Object> getAllMenu(@RequestBody User user) {
 //        HashMap<String, List> returnMenu= new HashMap<>();
 //        returnMenu.put("User", userService.getAllUser());
 //        returnMenu.put("Menu", menuService.getAllMenu());
@@ -138,17 +138,25 @@ public class MenuController {
             });
 
             entryList2.removeAll(entryList);
-            System.out.println(entryList2);
             if (entryList2.size() != 0) {
                 for (int i = 0; i < 9 - entryList.size() && i < entryList2.size(); i++) {
                     entryList.add(entryList2.get(i));
                 }
             }
         }
-//        if (entryList.isEmpty()) {
-//            return menuRepository.findAll();
-//        }
-        return entryList;
+        List<Object> resultRecommend = new ArrayList<>();
+
+        if (!entryList.isEmpty()) {
+            for (Map.Entry<MenuDTO, Integer> i : entryList) {
+                resultRecommend.add(
+                        Recommend.builder()
+                                .menuName(i.getKey().getMenuName())
+                                .ingredientList(i.getKey().getMenuCustomDTO())
+                                .build()
+                );
+            }
+        }
+        return resultRecommend;
     }
 
     // 메뉴 하나 반환
