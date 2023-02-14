@@ -34,8 +34,8 @@ function App() {
       console.log("ffff");
       axios.post('http://3.36.49.220:8081/inburger/menu/user', {
         name: data['name'],
-        age: data['height'],
-        is_easy: data['mode']
+        height: data['height'],
+        isEasy: data['mode']
       },{
         headers: {
             'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
