@@ -14,23 +14,17 @@ let count = 0;
 
 function App() {
 
-  const [type, settype] = useState([]);
+  const [type, settype] = useState(['', 0, 0]);
   const [callfunction, setcall] = useState(false);
   const [start, setstart] = useState(false);
 
 
-  if(count === 0)
-  {
-    count = count + 1;
-    setstart(!start);
-  }
   useEffect(()=>
   {
     const socket = socketIOClient("http://3.36.49.220:4001");
     socket.on('react', (data) => {
 
-      console.log(typeof(data['name']), typeof(data['mode']), typeof(data['height']));
-
+      settype([data['name'], data['height'], data['mode']])
       console.log("ffff");
       axios.post('http://3.36.49.220:8081/inburger/menu/user', {
         name: data['name'],
@@ -58,18 +52,18 @@ function App() {
 
   // socket.emit('react', 1);
 
-   if(type === 0){
+   if(type[2] === 0){
      return (
        <Delay/>
      );
    }
-   else if(type === 1){
+   else if(type[2] === 1){
        return(
        <EasyMode />
        );
 
    }
-   else if(type === 2)
+   else if(type[2] === 2)
    {
        return(
        <NomalMode />
