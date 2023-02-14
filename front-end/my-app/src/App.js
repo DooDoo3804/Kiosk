@@ -29,18 +29,14 @@ function App() {
     const socket = socketIOClient("http://3.36.49.220:4001");
     socket.on('react', (data) => {
 
-      settype([data['mode'], data['height'], data['name']]);
-
       console.log(typeof(data['name']), typeof(data['mode']), typeof(data['height']));
-      
 
       console.log("ffff");
-      axios.post('http://3.36.49.220:8081/inburger/menu/user', null, {
-        data:{
-          name: type[2],
-          age: type[0],
-          is_easy: type[1]
-        },
+      axios.post('http://3.36.49.220:8081/inburger/menu/user', {
+        name: data['name'],
+        age: data['height'],
+        is_easy: data['mode']
+      },{
         headers: {
             'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
             'Access-Control-Allow-Credentials': true,
@@ -53,8 +49,7 @@ function App() {
         }).then((response) => {console.log(response.data);})
       .catch((err)=> {
       console.log('errot!')
-      console.log(err)
-    });
+      console.log(err)});
 
   });
 
