@@ -18,7 +18,7 @@ export default function CutmerEasyMode(props) {
     
   return (
     <div className='imagebar'>
-        <img src={process.env.PUBLIC_URL + `./images/${props.imagemenu}.png`}/>
+        <img className="imagechange"src={process.env.PUBLIC_URL + `./images/${props.imagemenu}.png`}/>
   
         <div className="btn">
             <button className="blue">커스텀하기</button>

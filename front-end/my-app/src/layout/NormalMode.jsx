@@ -16,7 +16,7 @@ const styles = {
   
 
 
-function NormalMode() {
+function NormalMode(props) {
 
 
   const [selectMenu, setMenu] = useState('');

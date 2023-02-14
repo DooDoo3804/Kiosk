@@ -8,6 +8,7 @@ import Delay from './layout/delay';
 import EasyMode from './layout/EasyMode';
 import NomalMode from './layout/NormalMode';
 import socketIOClient from "socket.io-client";
+import Jsonfle1 from "./db/recommend.json"
 
 
 function App() {
@@ -37,7 +38,11 @@ function App() {
             host: '3.36.49.220',
             port: 3000
           },
-        }).then((response) => {console.log(response.data);})
+        }).then((response) => {console.log(response.data);
+        
+          Jsonfle1 = response.data;
+        
+        })
       .catch((err)=> {
       console.log('errot!')
       console.log(err)});

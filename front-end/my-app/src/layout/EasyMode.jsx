@@ -17,7 +17,7 @@ const styles = {
   };
   
 
-function EasyMode() {
+function EasyMode(props) {
 
   const [selectMenu, setMenu] = useState('');
   const [check, setcheck] = useState('');
