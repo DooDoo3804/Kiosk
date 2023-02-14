@@ -368,7 +368,12 @@ while(True):
         # booting web with mode
 
         #send data
-        sio.emit('pi',{"mode":mode,"height":height,"name":USRID})
+        if(USRID.rfind('normal')!=-1):
+            sio.emit('pi',{"mode":mode,"height":height,"name":USRID[:-6]})
+        elif(USRID.rfind('easy')!=-1):
+            sio.emit('pi',{"mode":mode,"height":height,"name":USRID[:-4]})
+        else:
+            sio.emit('pi',{"mode":mode,"height":height,"name":USRID})
         print("SEND COMPLETE")
         
         # camera OFF
