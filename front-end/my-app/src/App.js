@@ -9,12 +9,12 @@ import EasyMode from './layout/EasyMode';
 import NomalMode from './layout/NormalMode';
 import socketIOClient from "socket.io-client";
 
-function Callaxios({type, Height, username}){
+function Callaxios(a, b, c){
 
 axios.post('http://3.36.49.220:8081/inburger/menu/user', {
-  name: username,
-  age: type,
-  is_easy: Height
+  name: c,
+  age: b,
+  is_easy: a
 },{	
   headers: {
       'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
@@ -41,12 +41,18 @@ function App() {
   {
     const socket = socketIOClient("http://3.36.49.220:4001");
     socket.on('react', (data) => {
-      
+      let a,b,c;
+      a = data['mode'];
+      b = data['height'];
+      c = data['username'];
+
       settype(data['mode']);
       setHeightt(data['height']);
       setusername(data['name']);
-      console.log(type, Height, username);
-      Callaxios({type, Height, username});
+
+      console.log(data['mode'], data['height'], data['name']);
+
+      Callaxios(a, b, c);
     });
   }, [])
   
