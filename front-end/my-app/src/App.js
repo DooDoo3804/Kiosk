@@ -31,7 +31,7 @@ console.log(err)});
 
 function App() {
 
-  const [type, settype] = useState(0);
+  const [type, settype] = useState(2);
   const [Height, setHeightt] = useState(0);
   const [username, setusername] = useState('');
   
@@ -50,9 +50,6 @@ function App() {
     });
   }, [])
   
-
-  // socket.emit('react', 1);
-
   console.log(type);
    if(type === 0){
      return (
