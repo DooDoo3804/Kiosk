@@ -332,7 +332,6 @@ while(True):
                         for i in range(len(img)):
                             imgs = img[i]
                             age_face = app.get(imgs,max_num=1)
-                            #rimg = app.draw_on(img, faces)
                             if age_face != []:
                                 age += age_face[0]['age']
                                 print("AGE:",age)
@@ -364,16 +363,20 @@ while(True):
         signal.signal(signal.SIGINT, prev_handler)
         running = False
         total_elapsed_time = time.time() - total_start_time
-
+        height_mode = 2
         # booting web with mode
-
+        if height < 150:
+            height_mode = 1
+        elif height > 180:
+            height_mode = 3
+            
         #send data
         if(USRID.rfind('normal')!=-1):
-            sio.emit('pi',{"mode":mode,"height":height,"name":USRID[:-6]})
+            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-6]})
         elif(USRID.rfind('easy')!=-1):
-            sio.emit('pi',{"mode":mode,"height":height,"name":USRID[:-4]})
+            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-4]})
         else:
-            sio.emit('pi',{"mode":mode,"height":height,"name":USRID})
+            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID})
         print("SEND COMPLETE")
         
         # camera OFF
