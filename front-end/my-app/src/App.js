@@ -51,7 +51,10 @@ function App() {
             port: 3000
           },
         }).then((response) => {console.log(response.data);})
-      .catch((err)=> {console.log('errot!')});
+      .catch((err)=> {
+      console.log('errot!')
+      console.log(err)
+    });
 
   });
 
