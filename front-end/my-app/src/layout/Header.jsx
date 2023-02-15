@@ -35,8 +35,7 @@ function headerText(props)
     <div>
       <div style={styles.wrapper}>
         <span style={styles.text}>INBurger</span>    
-        { window.location.pathname === "/Normal" && <Link to="/Easy"><button style={styles.btn}>간편모드</button></Link> } 
-        { window.location.pathname === "/Easy" && <Link to="/Normal"><button style={styles.btn}>일반모드</button></Link> }
+        {props.type===2 && <button style={styles.btn} onClick={() => props.settype(1)}>간편모드</button>} 
       </div>
     </div>  
     );

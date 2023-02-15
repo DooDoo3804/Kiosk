@@ -39,6 +39,8 @@ function MenuList(props)
   const [select, setselect] = useState(-1);
 
     useEffect(() => {
+
+        if(props.sidecheck > 1){
       
           if(select !== -1){
           let list = document.getElementsByClassName("menu");
@@ -50,8 +52,7 @@ function MenuList(props)
 
           list[select - 1].style.backgroundColor="#C1121F";
           }
-          console.log(Jsonfle1);
-
+        }
       },[props.menu]);
 
       var index = 0;
@@ -63,11 +64,11 @@ function MenuList(props)
             console.log(props.number);
             if(props.number === 1){
               if(index < 2){
-                return (<Comment imageMenu={props.imageMenu} key={id} name={comment.menuName} price={comment.menuPrice} setuse={setselect} side={props.side} number={props.number}/>);
+                return (<Comment imageMenu={props.imageMenu} key={id} name={comment.menuName} price={comment.menuPrice} setuse={setselect} side={props.side} number={props.number}  setprice={props.setprice}/>);
               }
             }
             else{
-                return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} side={props.side} number={props.number}/>);
+                return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} side={props.side} number={props.number}  setprice={props.setprice}/>);
              }
                 index = index + 1;
            })

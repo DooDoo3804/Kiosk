@@ -100,7 +100,7 @@ function Sidebalist(props)
            );
           })}
         </div>
-          <Menu imageMenu={props.imagemenu} number={count} sidecheck={props.sidecheck} menu={props.menu}></Menu>
+          <Menu imageMenu={props.imagemenu} number={count} sidecheck={props.sidecheck} menu={props.menu} setprice={props.setprice}></Menu>
         </div>
     );
 }

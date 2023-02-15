@@ -18,10 +18,10 @@ root.render(
         <Route path="/Easy" element={ <EasyMode /> }></Route>
         <Route path="/NomalMode" element={ <NomalMode /> }></Route>
         <Route path="/Choose" element={ <Choose /> }></Route>
+        <Route path="/Delay" element={ <Delay /> }></Route>
       </Routes>
     </BrowserRouter>
 
 );
-
 
 reportWebVitals();

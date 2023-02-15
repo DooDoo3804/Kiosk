@@ -12,14 +12,30 @@ function CommentList(props)
 {
   const [Cartlist, setCart] = useState([]);
 
+  console.log(props.price);
+
   useEffect(() => {
  
     if(props.imagemenu !== ''){
-        const addcomment = {
+
+      var addcomment = {};
+      
+      if(props.sidecheck ===1)
+      {
+        addcomment = {
+          id: `${Maxid + 1}`,
+          name: props.imagemenu,
+          price: `${props.price + pp}`,
+          count: 1,
+        }
+      }
+      else{
+        addcomment = {
         id: `${Maxid + 1}`,
         name: props.imagemenu,
         price: `${jsonfle[props.imagemenu].price + pp}`,
         count: 1,
+        }
       }
       pp = 0;
       setCart([...Cartlist, addcomment]);
@@ -45,7 +61,8 @@ const Sumprice = () =>{
     return total;
   }
 
-  const location = useMemo(() =>Sumprice(), [Cartlist]);
+  const location1 = useMemo(() =>Sumprice(), [Cartlist]);
+
 
     return (
       <div className="wrapper">
@@ -60,8 +77,10 @@ const Sumprice = () =>{
           })}
         <div className="wrapper2"> 
          <div className="headerText">총합</div>
-         <div className="headerText">{location}</div>
-         <Link to="/Choose"> 
+         <div className="headerText">{location1}</div>
+         <Link to={{pathname:"/Choose",
+                    type: props.settype,
+                    }}> 
          <button  className="Button">결제</button>
          </Link>
         </div>

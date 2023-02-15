@@ -49,7 +49,9 @@ function Menu(props){
      function addCart(str)
      {
          props.imageMenu(str);
-
+         props.setprice(props.price);
+         console.log(props.price);
+         console.log("asdfasdfasdfasdfasdfasdf");
          if(props.sidecheck === 2 || props.sidecheck === 3){
             props.setcustmer(1);
           }
@@ -58,13 +60,13 @@ function Menu(props){
 
     if(props.number === 1){
     return(
-        <a className='btnSP' href='#' title='Shop Now' onClick={() => addCart(props.name)}>
+        <div className='btnSP' title='Shop Now' onClick={() => addCart(props.name)}>
         <span className='top'> 
         <span style={styles.nameText2}>{props.name}</span>
         <br></br><br></br>
         <span style={styles.nameText2}>{props.price}</span>
         </span>
-        </a>
+        </div>
     );
     }
     else{

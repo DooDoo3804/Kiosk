@@ -15,8 +15,9 @@ import Jsonfle1 from "./db/recommend.json"
 
 function App() {
 
-  const [type, settype] = useState(['', 1, 1]);
-  const [height, setheight] = useState(1);
+  const [type, settype] = useState(2);
+  const [height, setheight] = useState(2);
+  const [name, setname] = useState('');
 
 
   // useEffect(()=>
@@ -52,24 +53,22 @@ function App() {
 
   // }, []);
 
-   if(type[2] === 0){
-
+   if(type === 0){
      return (
        <Delay height={height}/>
      );
    }
-   else if(type[2] === 1){
+   else if(type === 1){
        return(
-       <EasyMode height={height}/>
+       <EasyMode height={height} settype={settype}/>
        );
    }
-   else if(type[2] === 2)
+   else if(type === 2)
    {
        return(
-       <NomalMode height={height}/>
+       <NomalMode height={height} settype={settype} type={type}/>
        );
    }
-
 
 }
 

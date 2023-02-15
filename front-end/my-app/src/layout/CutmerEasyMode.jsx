@@ -20,7 +20,7 @@ export default function CutmerEasyMode(props) {
     <div className='imagebar'>
         <img className="imagechange"src={process.env.PUBLIC_URL + `./images/${props.imagemenu}.png`}/>
         <div className="btn">
-            <Link to="/NomalMode"><button className="blue">일반모드</button></Link>
+            <button className="blue" onClick={()=>{console.log(2); props.settype(2)}}>일반모드</button>
             <button  onClick={()=> setstate(state + 1)} className="blue" >이거먹기</button>
         </div>
     </div>

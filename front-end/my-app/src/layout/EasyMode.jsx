@@ -22,6 +22,7 @@ function EasyMode(props) {
   const [check, setcheck] = useState('');
   const [sidecheck, setside] = useState(1);
   const [selectmenu, setmenu] = useState('없음');
+  const [price, setprice ] = useState(0);
 
   useEffect(() => {       
           if (props.height === 1) {
@@ -39,9 +40,9 @@ function EasyMode(props) {
     return (
       <div id="level">
        <Header/>
-       <CutmerEasyMode checkfun={setcheck} check={check} imagemenu={selectMenu}/>
-        <Sidebar imagemenu={setMenu} menu={selectMenu} sidecheck={sidecheck} setside={setside}/>
-      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} sidecheck={sidecheck} selectmenu={selectmenu}/> 
+       <CutmerEasyMode checkfun={setcheck} check={check} imagemenu={selectMenu} settype={props.settype}/>
+        <Sidebar imagemenu={setMenu} menu={selectMenu} sidecheck={sidecheck} setside={setside} setprice={setprice}/>
+      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} sidecheck={sidecheck} selectmenu={selectmenu} price={price} settype={props.settype}/> 
       </div>
     );
   }

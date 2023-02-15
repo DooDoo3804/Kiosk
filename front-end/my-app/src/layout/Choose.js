@@ -4,9 +4,10 @@ import Modal from "./Modal";
 import choose from "./choose.css"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import socketIOClient from "socket.io-client";
 
 
-function Choose() {
+function Choose(props) {
   // 매장식사, 포장 여부 모달
   const [takeoutModal, setTakeoutModal] = useState(true);
 
@@ -21,7 +22,7 @@ function Choose() {
 
   // 첫화면으로 이동
   const navigate = useNavigate()
-
+const {location} = props;
   // useEffect(() => {
    
   //   if(isClick)
@@ -40,8 +41,15 @@ function Choose() {
 
   //   set
 
-  // }, [isClick, isSelect]);
+  // }, [isClick, isSelect]); 
   
+  function send()
+  {
+    const socket = socketIOClient("http://3.36.49.220:4001");
+    socket.emit('react', 999);
+
+  }
+
   return (
   <div>
       {takeoutModal && (
@@ -63,8 +71,8 @@ function Choose() {
         <Modal closeModal={() => setPayModal(!payModal)}>
           <div id="rectangle">
             <button className="bigbox" onClick={() => {
-              setPayModal(!payModal)
-              navigate('/')}}> <div style={{margin:"120px"}}>결제가<br/>완료 되었습니다</div></button>     
+              setPayModal(!payModal);
+              navigate('/'); send();}}> <div style={{margin:"120px"}}>결제가<br/>완료 되었습니다</div></button>     
           </div>
         </Modal>
         )}

@@ -24,6 +24,8 @@ function NormalMode(props) {
   const [custmercheck, setcustmer] = useState(false);
   const [sidecheck, setside] = useState(1);
   const [selectmenu, setmenu] = useState('없음');
+  const [price, setprice ] = useState(0);
+
 
   useEffect(() => {       
           if (props.height === 1) {
@@ -44,10 +46,10 @@ function NormalMode(props) {
 
     return (
       <div id="level">
-      <Header stye={{border:"1px"}}/>
-      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} sidecheck={sidecheck} setside={setside}/>}
-      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} setmenu={setmenu} selectmenu={selectmenu}/>}
-      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu} /> 
+      <Header stye={{border:"1px"}}  settype={props.settype} type={props.type}/>
+      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} sidecheck={sidecheck} setside={setside}  settype={props.settype}/>}
+      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} setmenu={setmenu} selectmenu={selectmenu} setprice={setprice}/>}
+      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu}  price={price} settype={props.settype}/> 
       </div>
   
     );
