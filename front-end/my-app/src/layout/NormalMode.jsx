@@ -47,9 +47,9 @@ function NormalMode(props) {
     return (
       <div id="level">
       <Header stye={{border:"1px"}}  settype={props.settype} type={props.type}/>
-      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} sidecheck={sidecheck} setside={setside}  settype={props.settype}/>}
-      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} setmenu={setmenu} selectmenu={selectmenu} setprice={setprice}/>}
-      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu}  price={price} settype={props.settype}/> 
+      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} sidecheck={sidecheck} setside={setside} />}
+      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} setmenu={setmenu} selectmenu={selectmenu}/>}
+      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu}/> 
       </div>
   
     );
