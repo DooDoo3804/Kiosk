@@ -41,15 +41,14 @@ function NormalMode(props) {
             document.getElementById("level").style.transform = "translateY(600px)"
             document.getElementById("level").style.transition = "transform 2s"
           }  
-},[props.height]);
-
-
+          },[]);
+          console.log(custmercheck);
     return (
       <div id="level">
       <Header stye={{border:"1px"}}  settype={props.settype} type={props.type}/>
-      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} sidecheck={sidecheck} setside={setside} />}
+      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} sidecheck={sidecheck} setside={setside} setprice={setprice}/>}
       {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} setmenu={setmenu} selectmenu={selectmenu}/>}
-      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu}/> 
+      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu} price={price} settype={props.settype}/> 
       </div>
   
     );

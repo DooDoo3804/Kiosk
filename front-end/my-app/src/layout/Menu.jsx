@@ -50,8 +50,7 @@ function Menu(props){
      {
          props.imageMenu(str);
          props.setprice(props.price);
-         console.log(props.price);
-         console.log("asdfasdfasdfasdfasdfasdf");
+
          if(props.sidecheck === 2 || props.sidecheck === 3){
             props.setcustmer(1);
           }

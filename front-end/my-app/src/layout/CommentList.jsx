@@ -20,7 +20,7 @@ function CommentList(props)
 
       var addcomment = {};
       
-      if(props.sidecheck ===1)
+      if(props.sidecheck === 1)
       {
         addcomment = {
           id: `${Maxid + 1}`,
