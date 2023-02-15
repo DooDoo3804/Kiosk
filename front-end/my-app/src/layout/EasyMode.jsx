@@ -16,12 +16,13 @@ const styles = {
     },
   };
   
-
 function EasyMode(props) {
 
   const [selectMenu, setMenu] = useState('');
   const [check, setcheck] = useState('');
- 
+  const [sidecheck, setside] = useState(1);
+  const [selectmenu, setmenu] = useState('없음');
+
   useEffect(() => {       
           if (props.height === 1) {
             document.getElementById("level").style.transform = "translateY(0px)"
@@ -33,16 +34,15 @@ function EasyMode(props) {
             document.getElementById("level").style.transform = "translateY(600px)"
             document.getElementById("level").style.transition = "transform 2s"
           }  
-  },[props.height]);
+  },[]);
 
     return (
       <div id="level">
        <Header/>
        <CutmerEasyMode checkfun={setcheck} check={check} imagemenu={selectMenu}/>
-        <Sidebar imagemenu={setMenu}/>
-      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check}/> 
+        <Sidebar imagemenu={setMenu} menu={selectMenu} sidecheck={sidecheck} setside={setside}/>
+      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} sidecheck={sidecheck} selectmenu={selectmenu}/> 
       </div>
-  
     );
   }
   

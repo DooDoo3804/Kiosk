@@ -49,8 +49,12 @@ function MenuList(props)
       <div style={styles.wrapper}>
         { 
           jsonfile[props.number - 1].map((comment) => {
-              return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} setcustmer={props.setcustmer} sidecheck={props.sidecheck} setside={props.setside}/>);
-            })
+            console.log(1);
+            if(props.number === 1)
+              return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.menuName} price={comment.menuPrice} setuse={setselect} setcustmer={props.setcustmer} sidecheck={props.sidecheck} setside={props.setside}/>);
+           else
+              return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price}setuse={setselect} setcustmer={props.setcustmer} sidecheck={props.sidecheck} setside={props.setside}/>);
+           })
         }
       </div>  
     );

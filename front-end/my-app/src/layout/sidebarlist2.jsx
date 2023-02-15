@@ -68,10 +68,12 @@ let count = 1;
 
 function Sidebalist2(props)
 {
+  const [,setCount] = useState(0);
   
   let incrementCount = (e) =>{
-    count = e;
 
+  count = e;
+  console.log(e);
   let list =  document.getElementsByClassName("sidebar");
 
   for(let i = 0; i < 5; i++)
@@ -83,7 +85,10 @@ function Sidebalist2(props)
   let list2 = document.getElementsByClassName("menu");
    for(let i = 0; i < list2.length; i++)
       list2[i].style.backgroundColor  = "#FDF0D5";
+
+      props.imagemenu("없음");
       props.setside(e);
+      setCount({});
   }
     return (
       <div  style={styles.wrapper3}>

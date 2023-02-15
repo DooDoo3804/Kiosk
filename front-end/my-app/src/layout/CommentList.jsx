@@ -1,8 +1,9 @@
 import React , {useState,useCallback, useEffect, useMemo}from "react";
 import Comment from "./Comment";
 import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import Choose from "./Choose"
-import CommentListcss from "./CommentList.css"
+import Choose from "./Choose";
+import CommentListcss from "./CommentList.css";
+import jsonfle from "../db/menuprice.json";
 
 let Maxid;
 var pp = 0;
@@ -11,20 +12,15 @@ function CommentList(props)
 {
   const [Cartlist, setCart] = useState([]);
 
-  const [nextModal1, setModal1] = useState(false);
-  const [nextModal2, setModal2] = useState(false);
-  const [setbool, setmenubool] =useState(true);
-
   useEffect(() => {
-    console.log("dhfjks");
+ 
     if(props.imagemenu !== ''){
         const addcomment = {
         id: `${Maxid + 1}`,
         name: props.imagemenu,
-        price: pp,
+        price: `${jsonfle[props.imagemenu].price + pp}`,
         count: 1,
       }
-
       pp = 0;
       setCart([...Cartlist, addcomment]);
     }
@@ -32,6 +28,7 @@ function CommentList(props)
   }, [props.check]);
 
   useEffect(() => {
+    console.log("dfj");
     if(props.selectmenu !== '없음'){
          pp = pp + 100;
     }
@@ -61,7 +58,6 @@ const Sumprice = () =>{
             Maxid = comment.id;
             return (<Comment key={comment.id} menu={comment.name} count={comment.count} price={comment.price}/>);
           })}
-
         <div className="wrapper2"> 
          <div className="headerText">총합</div>
          <div className="headerText">{location}</div>

@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import CustmerEasyModeCSS from './CutmerEasyMode.css'
+import { Link } from "react-router-dom";
 
 export default function CutmerEasyMode(props) {
 
@@ -14,14 +15,12 @@ export default function CutmerEasyMode(props) {
         props.checkfun(state);
         }
     },[state]);
-
     
   return (
     <div className='imagebar'>
         <img className="imagechange"src={process.env.PUBLIC_URL + `./images/${props.imagemenu}.png`}/>
-  
         <div className="btn">
-            <button className="blue">커스텀하기</button>
+            <Link to="/NomalMode"><button className="blue">일반모드</button></Link>
             <button  onClick={()=> setstate(state + 1)} className="blue" >이거먹기</button>
         </div>
     </div>

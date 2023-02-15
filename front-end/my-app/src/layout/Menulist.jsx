@@ -6,14 +6,6 @@ import Jsonfle3 from "../db/single.json"
 import Jsonfle4 from "../db/drink.json"
 import Jsonfle5 from "../db/sidemenu.json"
 
-
-let jsonfile = [];
-jsonfile.push(Jsonfle1);
-jsonfile.push(Jsonfle2);
-jsonfile.push(Jsonfle3);
-jsonfile.push(Jsonfle4);
-jsonfile.push(Jsonfle5);
-
 const styles = {
     wrapper:{
         margin: 0,
@@ -28,8 +20,21 @@ const styles = {
         justifyContent: "space-between",
     },
 };
+
+
 function MenuList(props)
 {
+
+  let jsonfile = [];
+
+  Jsonfle1 = JSON.parse(localStorage.getItem('reacommend'));
+  console.log(Jsonfle1);
+  jsonfile.push(Jsonfle1);
+  jsonfile.push(Jsonfle2);
+  jsonfile.push(Jsonfle3);
+  jsonfile.push(Jsonfle4);
+  jsonfile.push(Jsonfle5);
+  
 
   const [select, setselect] = useState(-1);
 
@@ -44,17 +49,28 @@ function MenuList(props)
           }
 
           list[select - 1].style.backgroundColor="#C1121F";
-
           }
+          console.log(Jsonfle1);
 
-      },[select]);
+      },[props.menu]);
 
+      var index = 0;
+      console.log(props.number);
   return (
       <div style={styles.wrapper}>
         { 
-          jsonfile[props.number - 1].map((comment) => {
-              return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} side={props.side}/>);
-            })
+          jsonfile[props.number - 1].map((comment, id) => { 
+            console.log(props.number);
+            if(props.number === 1){
+              if(index < 2){
+                return (<Comment imageMenu={props.imageMenu} key={id} name={comment.menuName} price={comment.menuPrice} setuse={setselect} side={props.side} number={props.number}/>);
+              }
+            }
+            else{
+                return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} side={props.side} number={props.number}/>);
+             }
+                index = index + 1;
+           })
         }
       </div>  
     );
