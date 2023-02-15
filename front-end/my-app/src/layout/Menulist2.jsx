@@ -61,9 +61,9 @@ function MenuList(props)
               { 
                 jsonfile[props.number - 1].map((comment) => {
                   if(props.number === 1)
-                    return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.menuName} price={comment.menuPrice} setuse={setselect} setcustmer={props.setcustmer} sidecheck={props.sidecheck} setside={props.setside} setprice={props.setprice}/>);
+                    return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.menuName} price={comment.menuPrice} setuse={setselect} setcustmer={props.setcustmer} sidecheck={props.sidecheck} setside={props.setside} setprice={props.setprice} checkfun={props.checkfun}/>);
                 else
-                    return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price}setuse={setselect} setcustmer={props.setcustmer} sidecheck={props.sidecheck} setside={props.setside} setprice={props.setprice}/>);
+                    return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price}setuse={setselect} setcustmer={props.setcustmer} sidecheck={props.sidecheck} setside={props.setside} setprice={props.setprice} checkfun={props.checkfun}/>);
                 })
               }
             </div>  

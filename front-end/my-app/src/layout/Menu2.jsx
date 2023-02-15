@@ -31,14 +31,15 @@ function Menu(props){
     
      function addCart(str)
      {
-       
          props.imageMenu(str);
          props.setuse(props.id);
          props.setprice(props.price);
-         console.log("asdfasdfasdfasd");
         if(props.sidecheck === 2 || props.sidecheck === 3 || props.sidecheck === 1){
           props.setcustmer(1);
         }
+
+        if(props.sidecheck === 4 || props.sidecheck === 5)
+                 props.checkfun(str);
          setState({});
     }
     return(

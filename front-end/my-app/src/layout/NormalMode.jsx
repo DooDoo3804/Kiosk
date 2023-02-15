@@ -21,6 +21,7 @@ function NormalMode(props) {
 
   const [selectMenu, setMenu] = useState('');
   const [check, setcheck] = useState('');
+  const [check2, setcheck2] = useState('');
   const [custmercheck, setcustmer] = useState(false);
   const [sidecheck, setside] = useState(1);
   const [selectmenu, setmenu] = useState('없음');
@@ -42,13 +43,13 @@ function NormalMode(props) {
             document.getElementById("level").style.transition = "transform 2s"
           }  
           },[]);
-          console.log(custmercheck);
+          console.log(custmercheck)
     return (
       <div id="level">
       <Header stye={{border:"1px"}}  settype={props.settype} type={props.type}/>
-      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} sidecheck={sidecheck} setside={setside} setprice={setprice}/>}
-      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check} setcustmer={setcustmer} custmercheck={custmercheck} setmenu={setmenu} selectmenu={selectmenu}/>}
-      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu} price={price} settype={props.settype}/> 
+      {!custmercheck && <Sidebar imagemenu={setMenu} setcustmer={setcustmer} sidecheck={sidecheck} setside={setside} setprice={setprice} checkfun={setcheck2}/>}
+      {custmercheck && <CustmerList imagemenu={selectMenu} checkfun={setcheck} check={check}  setcustmer={setcustmer} custmercheck={custmercheck} setmenu={setmenu} selectmenu={selectmenu}/>}
+      <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} selectmenu={selectmenu} price={price} settype={props.settype} check2={check2}/> 
       </div>
   
     );
