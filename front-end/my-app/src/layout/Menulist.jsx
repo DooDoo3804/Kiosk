@@ -27,8 +27,8 @@ function MenuList(props)
 
   let jsonfile = [];
 
+  const save = localStorage.getItem('reacommend');
   Jsonfle1 = JSON.parse(localStorage.getItem('reacommend'));
-  console.log(Jsonfle1);
   jsonfile.push(Jsonfle1);
   jsonfile.push(Jsonfle2);
   jsonfile.push(Jsonfle3);
@@ -57,25 +57,34 @@ function MenuList(props)
 
       var index = 0;
       console.log(props.number);
-  return (
-      <div style={styles.wrapper}>
-        { 
-          jsonfile[props.number - 1].map((comment, id) => { 
-            console.log(props.number);
-            if(props.number === 1){
-              if(index < 2){
-                return (<Comment imageMenu={props.imageMenu} key={id} name={comment.menuName} price={comment.menuPrice} setuse={setselect} side={props.side} number={props.number}  setprice={props.setprice}/>);
-              }
-            }
-            else{
-                return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} side={props.side} number={props.number}  setprice={props.setprice}/>);
-             }
-                index = index + 1;
-           })
-        }
-      </div>  
-    );
-}
 
+      if(save === null && props.number === 1)
+      {
+        
+        return(<div style={styles.wrapper}></div>);
+      }
+      else
+      {
+        return (
+          <div style={styles.wrapper}>
+            { 
+              jsonfile[props.number - 1].map((comment, id) => { 
+                console.log(props.number);
+                if(props.number === 1){
+                  if(index < 2){
+                    return (<Comment imageMenu={props.imageMenu} key={id} name={comment.menuName} price={comment.menuPrice} setuse={setselect} side={props.side} number={props.number}  setprice={props.setprice}/>);
+                  }
+                }
+                else{
+                    return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} side={props.side} number={props.number}  setprice={props.setprice}/>);
+                }
+                    index = index + 1;
+              })
+            }
+          </div>  
+        );
+    }
+
+}
 
 export default MenuList;
