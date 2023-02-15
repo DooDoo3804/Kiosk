@@ -46,6 +46,11 @@ public class MenuController {
         this.orderDetailRepository = orderDetailRepository;
     }
 
+    @GetMapping(value = "/menu")
+    public List<Menu> getAllMenu() {
+        return menuService.getAllMenu();
+    }
+
     // 메뉴 저장
     @PostMapping(value="/menu")
     public Menu createMenu(@RequestBody Menu menu) {
