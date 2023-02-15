@@ -24,8 +24,10 @@ function App() {
     const socket = socketIOClient("http://3.36.49.220:4001");
     socket.on('react', (data) => {
 
-      settype([data['name'], data['height'], data['mode']])
+      setname(data['name']);
       setheight(data['height']);
+      settype(data['mode']);
+
       axios.post('http://3.36.49.220:8081/inburger/menu/user', {
         name: data['name'],
         height: data['height'],

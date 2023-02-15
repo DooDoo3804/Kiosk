@@ -55,12 +55,11 @@ function MenuList(props)
         }
       },[props.menu]);
 
-      var index = 0;
+    
       console.log(props.number);
 
       if(save === null && props.number === 1)
-      {
-        
+      { 
         return(<div style={styles.wrapper}></div>);
       }
       else
@@ -71,14 +70,13 @@ function MenuList(props)
               jsonfile[props.number - 1].map((comment, id) => { 
                 console.log(props.number);
                 if(props.number === 1){
-                  if(index < 2){
+                  if(id < 2){
                     return (<Comment imageMenu={props.imageMenu} key={id} name={comment.menuName} price={comment.menuPrice} setuse={setselect} side={props.side} number={props.number}  setprice={props.setprice}/>);
                   }
                 }
                 else{
                     return (<Comment imageMenu={props.imageMenu} key={comment.id} id={comment.id} name={comment.name} price={comment.price} setuse={setselect} side={props.side} number={props.number}  setprice={props.setprice}/>);
                 }
-                    index = index + 1;
               })
             }
           </div>  
