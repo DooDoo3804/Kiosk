@@ -324,14 +324,17 @@ while(True):
                         mode = 1
                     else:
                         age = 0
+                        minus =0
                         for i in range(len(img)):
                             imgs = img[i]
                             age_face = app.get(imgs,max_num=1)
                             if age_face != []:
                                 age += age_face[0]['age']
                                 print("AGE:",age)
-                            else: print("CAN NOT GUESS AGE")
-                        if age>60*len(img):
+                            else:
+                                minus += 1 
+                                print("CAN NOT GUESS AGE")
+                        if age>60*(len(img)-minus):
                             mode = 2
                         else:
                             mode = 1
@@ -400,7 +403,7 @@ while(True):
             move_path = origin_path[:-4] +"normal"
             replace_dir ="mv "+origin_path+" "+move_path
             os.system(replace_dir)
-
+        sio.emit('pi',{"mode": 0})
         new_order = 1
         end_mode = 0
         continue
@@ -408,6 +411,7 @@ while(True):
     if(end_mode == 999):
         new_order = 1
         end_mode = 0
+        sio.emit('pi',{"mode": 0})
         continue
 
     sleep(1)
