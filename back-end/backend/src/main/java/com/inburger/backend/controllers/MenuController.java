@@ -18,7 +18,8 @@ import java.util.stream.Stream;
 
 @RestController
 @RequestMapping(path = "/inburger")
-@CrossOrigin("http://3.36.49.220:3000/")
+//@CrossOrigin("http://3.36.49.220:3000/")
+@CrossOrigin("http://70.12.246.87:3000/")
 public class MenuController {
 
     private UserService userService;
@@ -43,6 +44,11 @@ public class MenuController {
         this.userService = userService;
         this.orderRepository = orderRepository;
         this.orderDetailRepository = orderDetailRepository;
+    }
+
+    @GetMapping(value = "/menu")
+    public List<Menu> getAllMenu() {
+        return menuService.getAllMenu();
     }
 
     // 메뉴 저장
@@ -74,14 +80,17 @@ public class MenuController {
         // order-detail_menuDTO list
         for (Order o : historyList) {
             for (OrderDetail od : o.getOrderDetails()){
+                int customPrice;
                 List<CustomDTO> customDTOList = od.getCustoms().stream().map(custom ->
                         (CustomDTO.builder()
                                     .ingredientCount(custom.getCount())
                                     .ingredientName(custom.getIngredient().getName())
                                     .build())).collect(Collectors.toList());
+                customPrice = od.getPrice();
             MenuDTO menuDTO = MenuDTO.builder()
                             .menuCustomDTO(customDTOList)
                             .menuName(od.getMenu().getName())
+                            .customPrice(customPrice)
                             .build();
             oddList.add(menuDTO);
             }
@@ -109,15 +118,18 @@ public class MenuController {
             List<Order> totalOrder = orderRepository.findAll();
             List<MenuDTO> totalOddList = new ArrayList<>();
             for (Order o : totalOrder) {
+                Integer customPrice;
                 for (OrderDetail od : o.getOrderDetails()){
                     List<CustomDTO> customDTOList2 = od.getCustoms().stream().map(custom ->
                             (CustomDTO.builder()
                                     .ingredientCount(custom.getCount())
                                     .ingredientName(custom.getIngredient().getName())
                                     .build())).collect(Collectors.toList());
+                    customPrice = od.getPrice();
                 MenuDTO menuDTO = MenuDTO.builder()
                         .menuCustomDTO(customDTOList2)
                         .menuName(od.getMenu().getName())
+                        .customPrice(customPrice)
                         .build();
                 totalOddList.add(menuDTO);
                 }
@@ -152,6 +164,7 @@ public class MenuController {
                         Recommend.builder()
                                 .menuName(i.getKey().getMenuName())
                                 .ingredientList(i.getKey().getMenuCustomDTO())
+                                .menuPrice(i.getKey().getCustomPrice())
                                 .build()
                 );
             }

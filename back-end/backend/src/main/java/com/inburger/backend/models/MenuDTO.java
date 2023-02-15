@@ -16,10 +16,11 @@ public class MenuDTO {
 
     String menuName;
     List<CustomDTO> menuCustomDTO;
+    Integer customPrice;
 
-
-    public MenuDTO(String menuName, List<CustomDTO> menuCustomDTO) {
+    public MenuDTO(String menuName, List<CustomDTO> menuCustomDTO, Integer customPrice) {
         this.menuName = menuName;
         this.menuCustomDTO = menuCustomDTO;
+        this.customPrice = customPrice;
     }
 }

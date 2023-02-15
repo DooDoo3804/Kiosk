@@ -360,16 +360,16 @@ while(True):
         total_elapsed_time = time.time() - total_start_time
         height_mode = 2
         # booting web with mode
-        if height < 150:
+        if h < 150:
             height_mode = 1
-        elif height > 180:
+        elif h > 180:
             height_mode = 3
 
         #send data
         if(USRID.rfind('normal')!=-1):
-            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-6]})
+            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-7]})
         elif(USRID.rfind('easy')!=-1):
-            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-4]})
+            sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID[:-5]})
         else:
             sio.emit('pi',{"mode":mode,"height":height_mode,"name":USRID})
         print("SEND COMPLETE")
@@ -381,11 +381,11 @@ while(True):
     # check is ordering (wait 5 sec)
     if(end_mode == 1 or end_mode == 2):
         print("THE ORDER IS END")
-        pdb.save_db(result_dir)
-        pdb.print_persons()
         origin_path = "/home/pi/PJT/unknown_face_classifier/result/"+ USRID
         move_path=""
         if USRID.rfind('normal')==-1 and USRID.rfind('easy')==-1:
+            pdb.save_db(result_dir)
+            pdb.print_persons()
             if mode==1:
                 move_path = origin_path+"_normal"
             elif mode==2:
