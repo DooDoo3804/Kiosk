@@ -65,7 +65,7 @@ let count = 1;
 function Sidebalist(props)
 {
 
-  const [,setCount] = useState(0);
+  const [,setCount] = useState(1);
 
   let incrementCount = (e) =>{
     count = e;
@@ -89,6 +89,13 @@ function Sidebalist(props)
     props.setside(e);
     setCount({});
   }
+
+  useEffect(() => {    
+    setCount({});
+
+  },[props.type]);
+
+
     return (
       <div  style={styles.wrapper3}>
       <div style={styles.wrapper}>
@@ -100,7 +107,7 @@ function Sidebalist(props)
            );
           })}
         </div>
-          <Menu imageMenu={props.imagemenu} number={count} sidecheck={props.sidecheck} menu={props.menu} setprice={props.setprice}></Menu>
+          <Menu imageMenu={props.imagemenu} number={count} sidecheck={props.sidecheck} menu={props.menu} setprice={props.setprice} type={props.type}></Menu>
         </div>
     );
 }

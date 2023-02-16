@@ -27,7 +27,7 @@ const styles = {
 
 function Menu(props){
 
-    const [,setState] = useState(0);
+    const [,setState] = useState(-1);
     
      function addCart(str)
      {

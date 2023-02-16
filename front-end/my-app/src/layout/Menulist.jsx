@@ -26,7 +26,7 @@ function MenuList(props)
 {
 
   let jsonfile = [];
-
+  const [,setCount] = useState(1);
   const save = localStorage.getItem('reacommend');
   Jsonfle1 = JSON.parse(localStorage.getItem('reacommend'));
   jsonfile.push(Jsonfle1);
@@ -55,6 +55,13 @@ function MenuList(props)
         }
       },[props.menu]);
 
+
+      useEffect(() => {    
+        setCount({});
+    
+      },[props.type]);
+    
+    
     
       console.log(props.number);
 

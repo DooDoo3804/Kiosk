@@ -61,7 +61,7 @@ function App() {
    }
    else if(type === 1){
        return(
-       <EasyMode height={height} settype={settype}/>
+       <EasyMode height={height} settype={settype} type={type}/>
        );
    }
    else if(type === 2)
