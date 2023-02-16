@@ -50,6 +50,7 @@ const {location} = props;
 
   }
 
+
   return (
   <div>
       {takeoutModal && (
