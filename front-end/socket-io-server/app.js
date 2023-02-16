@@ -5,7 +5,7 @@ const http = require("http");
 const sockeIo = require("socket.io");
 
 
-const port = 'http://i8a203.p.ssafy.io:4001';
+const port = 'http://3.36.49.220:4001';
 const index = require("./routes/index");
 const app = express();
 app.use(index);
