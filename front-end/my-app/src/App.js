@@ -20,41 +20,41 @@ function App() {
   const [name, setname] = useState('');
 
 
-  // useEffect(()=>
-  // {
-  //   const socket = socketIOClient("http://3.36.49.220:4001");
-  //   socket.on('react', (data) => {
+  useEffect(()=>
+  {
+    const socket = socketIOClient("http://3.36.49.220:4001");
+    socket.on('react', (data) => {
 
-  //     setname(data['name']);
-  //     setheight(data['height']);
-  //     settype(data['mode']);
+      setname(data['name']);
+      setheight(data['height']);
+      settype(data['mode']);
 
-  //     axios.post('http://3.36.49.220:8081/inburger/menu/user', {
-  //       name: data['name'],
-  //       height: data['height'],
-  //       isEasy: data['mode']
-  //     },{
-  //       headers: {
-  //           'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
-  //           'Access-Control-Allow-Credentials': true,
-  //           'Content-Type' : 'application/json'
-  //         },
-  //         proxy: {
-  //           host: '3.36.49.220',
-  //           port: 80
-  //         },
-  //       }).then((response) => {
-  //         console.log(response.data);
-  //         localStorage.setItem('reacommend', JSON.stringify(response.data));
-   //        localStorage.setItem('height', data['height']);
-  //       })
-  //     .catch((err)=> {
-  //     console.log('errot!')
-  //     console.log(err)});
+      axios.post('http://3.36.49.220:8081/inburger/menu/user', {
+        name: data['name'],
+        height: data['height'],
+        isEasy: data['mode']
+      },{
+        headers: {
+            'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
+            'Access-Control-Allow-Credentials': true,
+            'Content-Type' : 'application/json'
+          },
+          proxy: {
+            host: '3.36.49.220',
+            port: 80
+          },
+        }).then((response) => {
+          console.log(response.data);
+          localStorage.setItem('reacommend', JSON.stringify(response.data));
+          localStorage.setItem('height', data['height']);
+        })
+      .catch((err)=> {
+      console.log('errot!')
+      console.log(err)});
 
-  // });
+  });
 
-  // }, []);
+  }, []);
 
    if(type === 0){
      return (
