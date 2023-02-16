@@ -62,38 +62,49 @@ nameText:{
 };
 
 let count = 1;
+
+
 function Sidebalist(props)
 {
-
-  const [,setCount] = useState(1);
+  const [,setCount] = useState(0);
+  
 
   let incrementCount = (e) =>{
+
     count = e;
+  
+    let list =  document.getElementsByClassName("sidebar");
+    
+    for(let i = 0; i < 5; i++)
+    {
+      list[i].style.backgroundColor = "#FDF0D5";
+    }
+    
+    list[count - 1].style.backgroundColor = "#C1121F";
 
-  let list =  document.getElementsByClassName("sidebar");
+    let list2 = document.getElementsByClassName("menu");
 
-  for(let i = 0; i < 5; i++)
-  {
-    list[i].style.backgroundColor = "#FDF0D5";
+    for(let i = 0; i < list2.length; i++)
+        list2[i].style.backgroundColor  = "#FDF0D5";
+      props.imagemenu("없음");
+      console.log("asdfasd",e);
+      props.setside(e);
+      setCount({});
   }
-  list[count - 1].style.backgroundColor = "#C1121F";
 
-  let list2 = document.getElementsByClassName("menu");
-         // console.log(list.length);
-
-   for(let i = 0; i < list2.length; i++)
-      list2[i].style.backgroundColor  = "#FDF0D5";
-
-    props.imagemenu("없음");
-      
-    props.setside(e);
-    setCount({});
-  }
-
-  useEffect(() => {    
+  useEffect(() => { 
+    
     setCount({});
 
   },[props.type]);
+
+  useEffect(() => { 
+    let list =  document.getElementsByClassName("sidebar");
+     
+    list[0].style.backgroundColor = "#C1121F";
+
+
+  },[]);
 
 
     return (

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 export default function CutmerEasyMode(props) {
 
     const [state, setstate] = useState(0);
+    const [, setcount] = useState(0);
 
    // console.log('&' + props.imagemenu);
 
@@ -15,6 +16,11 @@ export default function CutmerEasyMode(props) {
         props.checkfun(state);
         }
     },[state]);
+
+    useEffect(() => {
+     props.setimagemenu("없음");
+      setcount({});
+  },[props.sidecheck]);
     
   return (
     <div className='imagebar'>

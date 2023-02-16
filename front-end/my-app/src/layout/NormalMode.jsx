@@ -39,7 +39,7 @@ function NormalMode(props) {
             document.getElementById("level").style.transition = "transform 2s"
           } else {
             // console.log(3)
-            document.getElementById("level").style.transform = "translateY(650px)"
+            document.getElementById("level").style.transform = "translateY(620px)"
             document.getElementById("level").style.transition = "transform 2s"
           }  
           },[]);

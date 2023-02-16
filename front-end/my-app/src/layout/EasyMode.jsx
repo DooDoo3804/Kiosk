@@ -32,7 +32,7 @@ function EasyMode(props) {
             document.getElementById("level").style.transform = "translateY(250px)"
             document.getElementById("level").style.transition = "transform 2s"
           } else {
-            document.getElementById("level").style.transform = "translateY(650px)"
+            document.getElementById("level").style.transform = "translateY(620px)"
             document.getElementById("level").style.transition = "transform 2s"
           }  
   },[]);
@@ -40,7 +40,7 @@ function EasyMode(props) {
     return (
       <div id="level">
        <Header/>
-       <CutmerEasyMode checkfun={setcheck} check={check} imagemenu={selectMenu} settype={props.settype}/>
+       <CutmerEasyMode checkfun={setcheck} check={check} imagemenu={selectMenu} settype={props.settype} setimagemenu={setMenu} sidecheck={sidecheck}/>
         <Sidebar imagemenu={setMenu} menu={selectMenu} sidecheck={sidecheck} setside={setside} setprice={setprice} type={props.type}/>
       <CommentList imagemenu={selectMenu} checkfun={setcheck} check={check} sidecheck={sidecheck} selectmenu={selectmenu} price={price} settype={props.settype}/> 
       </div>

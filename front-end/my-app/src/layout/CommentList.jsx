@@ -12,7 +12,6 @@ function CommentList(props)
 {
   const [Cartlist, setCart] = useState([]);
 
-  console.log(props.price);
 
   useEffect(() => {
     if(props.imagemenu !== ''){
@@ -44,7 +43,7 @@ function CommentList(props)
 
   useEffect(() => {
     if(props.imagemenu !== ''){
-
+     
       var addcomment = {};
       
       if(props.sidecheck === 1)

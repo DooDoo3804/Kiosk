@@ -21,7 +21,6 @@ const styles = {
     },
 };
 
-
 function MenuList(props)
 {
 
@@ -35,15 +34,13 @@ function MenuList(props)
   jsonfile.push(Jsonfle4);
   jsonfile.push(Jsonfle5);
   
-
   const [select, setselect] = useState(-1);
 
     useEffect(() => {
-
         if(props.sidecheck > 1){
-      
-          if(select !== -1){
-          let list = document.getElementsByClassName("menu");
+
+          if(select !== -1 && props.sidecheck !== 1){
+          let list = document.getElementsByClassName('menu');
   
           for(let i = 0; i < list.length; i++)
           {
@@ -61,9 +58,6 @@ function MenuList(props)
     
       },[props.type]);
     
-    
-    
-      console.log(props.number);
 
       if(save === null && props.number === 1)
       { 

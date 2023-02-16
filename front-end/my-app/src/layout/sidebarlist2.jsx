@@ -90,6 +90,13 @@ function Sidebalist2(props)
       props.setside(e);
       setCount({});
   }
+
+  useEffect(() => { 
+    let list =  document.getElementsByClassName("sidebar");
+    list[0].style.backgroundColor = "#C1121F";
+  },[]);
+
+
     return (
       <div  style={styles.wrapper3}>
       <div style={styles.wrapper}>

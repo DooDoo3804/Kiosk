@@ -44,22 +44,22 @@ const styles = {
 
 function Menu(props){
     
-    const [,setState] = useState(-1);
+    const [,setState] = useState();
     
      function addCart(str)
      {
          props.imageMenu(str);
          props.setprice(props.price);
-
          if(props.sidecheck === 2 || props.sidecheck === 3){
             props.setcustmer(1);
           }
          props.setuse(props.id);
+         console.log(str);
     }
 
     if(props.number === 1){
     return(
-        <div className='btnSP' title='Shop Now' onClick={() => addCart(props.name)}>
+        <div  className='btnSP' title='Shop Now' onClick={() => addCart(props.name)}>
         <span className='top'> 
         <span style={styles.nameText2}>{props.name}</span>
         <br></br><br></br>
@@ -70,7 +70,7 @@ function Menu(props){
     }
     else{
         return(
-            <button className="menu" onClick={() => addCart(props.name)} style={styles.wrapper}>
+            <button className="menu btnSP" onClick={() => addCart(props.name)} style={styles.wrapper}>
               <span style={styles.nameText}>{props.name}</span>
              <br></br><br></br>
              <span style={styles.nameText}>{props.price}</span>
