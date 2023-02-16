@@ -18,8 +18,8 @@ import java.util.stream.Stream;
 
 @RestController
 @RequestMapping(path = "/inburger")
-@CrossOrigin("http://i8a203.p.ssafy.io/")
-//@CrossOrigin("http://3.36.49.220:80/")
+//@CrossOrigin("http://i8a203.p.ssafy.io/")
+@CrossOrigin("http://3.36.49.220:80/")
 //@CrossOrigin("http://70.12.246.87:3000/")
 public class MenuController {
 
