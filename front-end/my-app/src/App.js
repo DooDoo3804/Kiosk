@@ -15,7 +15,7 @@ import Jsonfle1 from "./db/recommend.json"
 
 function App() {
 
-  const [type, settype] = useState(0);
+  const [type, settype] = useState(1);
   const [height, setheight] = useState(1);
   const [name, setname] = useState('none');
 

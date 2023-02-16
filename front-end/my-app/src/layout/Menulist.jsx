@@ -39,7 +39,7 @@ function MenuList(props)
     useEffect(() => {
         if(props.sidecheck > 1){
 
-          if(select !== -1 && props.sidecheck !== 1){
+          if(select !== -1){
           let list = document.getElementsByClassName('menu');
   
           for(let i = 0; i < list.length; i++)
