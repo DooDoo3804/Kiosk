@@ -8,10 +8,28 @@ function Modal(props) {
 function closeModal() {
   props.closeModal(); 
   }
-   
+
+  const value = localStorage.getItem('height');
+  var index = "0px";
+  if(Number(value) === 1)
+  {
+    index = "0px";
+  }
+  else if(Number(value) === 2)
+  {
+    index = "300px";
+  }
+  else if(Number(value) === 3)
+  {
+    index = "650px";
+  }
+ // document.getElementByClassName("Modal").style.top = "100px";
+
+
+
     return (
 
-      <div className="Modal" onClick={closeModal}>
+      <div className="Modal" style={{top: `${index}`}}onClick={closeModal}>
         <div className="modalBody" onClick={(e) => e.stopPropagation()}>
           <Link to="/">
           <button id="modalCloseBtn" onClick={closeModal}>
