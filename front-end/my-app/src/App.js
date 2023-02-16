@@ -39,8 +39,8 @@ function App() {
             'Content-Type' : 'application/json'
           },
           proxy: {
-            host: 'i8a203.p.ssafy.io',
-            // port: 80
+            host: '3.36.49.220',
+            port: 80
           },
         }).then((response) => {
           console.log(response.data);
