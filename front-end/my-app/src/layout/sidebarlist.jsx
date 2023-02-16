@@ -86,26 +86,20 @@ function Sidebalist(props)
 
     for(let i = 0; i < list2.length; i++)
         list2[i].style.backgroundColor  = "#FDF0D5";
-      props.imagemenu("없음");
-      console.log("asdfasd",e);
-      props.setside(e);
+       props.imagemenu("없음");
       setCount({});
   }
 
-  useEffect(() => { 
-    
-    setCount({});
 
-  },[props.type]);
 
   useEffect(() => { 
     let list =  document.getElementsByClassName("sidebar");
      
     list[0].style.backgroundColor = "#C1121F";
 
-
+    setCount({});
   },[]);
-
+ 
 
     return (
       <div  style={styles.wrapper3}>

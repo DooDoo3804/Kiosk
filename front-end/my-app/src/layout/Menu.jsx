@@ -59,7 +59,7 @@ function Menu(props){
 
     if(props.number === 1){
     return(
-        <div  className='btnSP' title='Shop Now' onClick={() => addCart(props.name)}>
+        <div className='btnSP' title='Shop Now' onClick={() => addCart(props.name)}>
         <span className='top'> 
         <span style={styles.nameText2}>{props.name}</span>
         <br></br><br></br>

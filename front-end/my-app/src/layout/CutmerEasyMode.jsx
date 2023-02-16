@@ -9,7 +9,6 @@ export default function CutmerEasyMode(props) {
     const [state, setstate] = useState(0);
     const [, setcount] = useState(0);
 
-   // console.log('&' + props.imagemenu);
 
    useEffect(() => {
         if(props.imagemenu !== ''){
