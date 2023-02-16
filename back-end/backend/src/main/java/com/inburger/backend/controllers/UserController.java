@@ -35,7 +35,12 @@ public class UserController {
     // 유저 정보 저장
     @PostMapping(value = "/user", produces = "application/json;charset=UTF-8")
     public User saveUser(@RequestBody User user) {
-        return userService.saveUser(user);
+        if (user.getName() == "none"){
+            return null;
+        }
+        else {
+            return userService.saveUser(user);
+        }
     }
 
     // 유저 정보 삭제

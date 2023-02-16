@@ -66,6 +66,9 @@ public class MenuController {
 //        returnMenu.put("Menu", menuService.getAllMenu());
         // 추천 메뉴 검색
         // 해당 유저 검색
+        if (user.getName() == "none") {
+            return null;
+        }
         User order_user = userService.saveUser(user);
 
 //        User order_user = userRepository.findById(id).orElseThrow(()->
