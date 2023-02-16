@@ -21,20 +21,20 @@ function App() {
 
   useEffect(()=>
   {
-    const socket = socketIOClient("http://i8a203.p.ssafy.io:4001");
+    const socket = socketIOClient("http://3.36.49.220:4001");
     socket.on('react', (data) => {
 
       setname(data['name']);
       setheight(data['height']);
       settype(data['mode']);
 
-      axios.post('http://i8a203.p.ssafy.io:8081/inburger/menu/user', {
+      axios.post('http://3.36.49.220:8081/inburger/menu/user', {
         name: data['name'],
         height: data['height'],
         isEasy: data['mode']
       },{
         headers: {
-            'Access-Control-Allow-origin' : 'http://i8a203.p.ssafy.io:8081',
+            'Access-Control-Allow-origin' : 'http://3.36.49.220:8081',
             'Access-Control-Allow-Credentials': true,
             'Content-Type' : 'application/json'
           },
