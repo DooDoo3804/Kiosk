@@ -32,7 +32,7 @@ function EasyMode(props) {
             document.getElementById("level").style.transform = "translateY(250px)"
             document.getElementById("level").style.transition = "transform 2s"
           } else {
-            document.getElementById("level").style.transform = "translateY(750px)"
+            document.getElementById("level").style.transform = "translateY(650px)"
             document.getElementById("level").style.transition = "transform 2s"
           }  
   },[]);
