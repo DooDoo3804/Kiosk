@@ -5,7 +5,7 @@ const http = require("http");
 const sockeIo = require("socket.io");
 
 
-const port = 'http://3.36.49.220:4001';
+const port = process.env.PORT || 4001;
 const index = require("./routes/index");
 const app = express();
 app.use(index);
@@ -14,7 +14,7 @@ const server = http.createServer(app);
 
 const io = sockeIo(server, {
     cors: {
-        origin: ['http://localhost:80', 'http://3.36.49.220:80','http://70.12.246.87:3000', 'http://i8a203.p.ssafy.io'],
+        origin: ['http://localhost:3000', 'http://3.36.49.220:80','http://70.12.246.87:3000', 'http://i8a203.p.ssafy.io'],
         megthods: ["GET", "POST"]
     }
 });
