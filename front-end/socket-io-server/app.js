@@ -14,7 +14,7 @@ const server = http.createServer(app);
 
 const io = sockeIo(server, {
     cors: {
-        origin: ['http://localhost:3000', 'http://3.36.49.220:80','http://70.12.246.87:3000', 'http://i8a203.p.ssafy.io'],
+        origin: ['http://localhost:3000', 'http://3.36.49.220:3000','http://70.12.246.87:3000'],
         megthods: ["GET", "POST"]
     }
 });

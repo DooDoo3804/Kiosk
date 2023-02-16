@@ -40,7 +40,7 @@ function App() {
           },
           proxy: {
             host: '3.36.49.220',
-            port: 80
+            port: 3000
           },
         }).then((response) => {
           console.log(response.data);
