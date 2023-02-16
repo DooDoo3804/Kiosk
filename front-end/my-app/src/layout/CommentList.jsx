@@ -71,7 +71,6 @@ function CommentList(props)
   }, [props.check2]);
 
   useEffect(() => {
-    console.log("dfj");
     if(props.selectmenu !== '없음'){
          pp = pp + 100;
     }
