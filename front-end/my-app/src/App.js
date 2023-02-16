@@ -17,7 +17,7 @@ function App() {
 
   const [type, settype] = useState(1);
   const [height, setheight] = useState(3);
-  const [name, setname] = useState('');
+  const [name, setname] = useState('none');
 
 
   useEffect(()=>
