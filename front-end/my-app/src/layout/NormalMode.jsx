@@ -35,7 +35,7 @@ function NormalMode(props) {
             document.getElementById("level").style.transition = "transform 2s" 
           } else if (props.height === 2) {
             // console.log(2)
-            document.getElementById("level").style.transform = "translateY(300px)"
+            document.getElementById("level").style.transform = "translateY(250px)"
             document.getElementById("level").style.transition = "transform 2s"
           } else {
             // console.log(3)

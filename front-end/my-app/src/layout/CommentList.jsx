@@ -71,7 +71,6 @@ function CommentList(props)
   }, [props.check2]);
 
   useEffect(() => {
-    console.log("dfj");
     if(props.selectmenu !== '없음'){
          pp = pp + 100;
     }
@@ -98,7 +97,7 @@ const Sumprice = () =>{
          <div className="headerText">갯수</div>
          <div className="headerText">가격</div>
         </div>
-        <div style={{ height: "300px", overflow: "auto" }}>
+        <div style={{ height: "200px", overflow: "auto"}}>
         {Cartlist.map((comment) => {
             Maxid = comment.id;
             return (<Comment key={comment.id} menu={comment.name} count={comment.count} price={comment.price}/>);
