@@ -2,13 +2,11 @@ import './App.css';
 import React, {userState, useState, useEffect} from "react";
 import io from 'socket.io-client';
 import { Link, Route, BrowserRouter , Routes } from "react-router-dom";
-import Choose from './layout/Choose';
 import axios from 'axios'
 import Delay from './layout/delay';
 import EasyMode from './layout/EasyMode';
 import NomalMode from './layout/NormalMode';
 import socketIOClient from "socket.io-client";
-import Jsonfle1 from "./db/recommend.json"
 
 
 function App() {
@@ -56,18 +54,24 @@ function App() {
 
    if(type === 0){
      return (
+      
        <Delay height={height}/>
+      
      );
    }
    else if(type === 1){
        return(
+       
        <EasyMode height={height} settype={settype} type={type}/>
+     
        );
    }
    else if(type === 2)
    {
        return(
+       
        <NomalMode height={height} settype={settype} type={type}/>
+     
        );
    }
 

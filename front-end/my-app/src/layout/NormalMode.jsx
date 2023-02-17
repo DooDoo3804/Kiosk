@@ -3,6 +3,7 @@ import CommentList from './CommentList';
 import Sidebar from './sidebarlist2'
 import Header from './Header'
 import CustmerList from './CustmerList';
+import easycss from './easymode.css';
 
 const styles = {
     wrapper:{
@@ -39,7 +40,7 @@ function NormalMode(props) {
             document.getElementById("level").style.transition = "transform 2s"
           } else {
             // console.log(3)
-            document.getElementById("level").style.transform = "translateY(600px)"
+            document.getElementById("level").style.transform = "translateY(590px)"
             document.getElementById("level").style.transition = "transform 2s"
           }  
           },[]);

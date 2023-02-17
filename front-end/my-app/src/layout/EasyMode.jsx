@@ -5,6 +5,7 @@ import Menu from './Menulist'
 import CustmerList from './CustmerList';
 import Header from './Header'
 import CutmerEasyMode from './CutmerEasyMode';
+import easycss from './easymode.css';
 
 const styles = {
     wrapper:{
@@ -32,7 +33,7 @@ function EasyMode(props) {
             document.getElementById("level").style.transform = "translateY(250px)"
             document.getElementById("level").style.transition = "transform 2s"
           } else {
-            document.getElementById("level").style.transform = "translateY(600px)"
+            document.getElementById("level").style.transform = "translateY(590px)"
             document.getElementById("level").style.transition = "transform 2s"
           }  
   },[]);
